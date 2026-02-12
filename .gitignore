@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output
+frontend/dist/
+bettermind-crm/frontend/dist/
+bettermind-crm/frontend/node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# SQLite local dev DB
+*.db
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vite
+.vite/
+
+# Archives
+*.tar.gz
+*.zip
+
+# Env files
+.env
+.env.local
