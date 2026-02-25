@@ -2,7 +2,9 @@
 BetterMind CRM Database — Schema & Seed Data (PostgreSQL via Cloud SQL)
 Run directly to initialize: python database.py
 """
+import hashlib
 import os
+import secrets
 from datetime import datetime
 
 import sqlalchemy
@@ -185,6 +187,16 @@ def init_schema(conn):
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_interactions_contact ON interactions(contact_id)"))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_interactions_date ON interactions(date)"))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_deals_stage ON deals(stage)"))
+        conn.execute(sqlalchemy.text("""
+        CREATE TABLE IF NOT EXISTS users (
+            id SERIAL PRIMARY KEY,
+            email TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            password_salt TEXT NOT NULL,
+            name TEXT,
+            role TEXT DEFAULT 'user',
+            created_at TEXT DEFAULT (now()::text)
+        )"""))
         conn.commit()
     else:
         conn.execute(sqlalchemy.text("""
@@ -277,7 +289,24 @@ def init_schema(conn):
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_interactions_contact ON interactions(contact_id)"))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_interactions_date ON interactions(date)"))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_deals_stage ON deals(stage)"))
+        conn.execute(sqlalchemy.text("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            password_salt TEXT NOT NULL,
+            name TEXT,
+            role TEXT DEFAULT 'user',
+            created_at TEXT DEFAULT (datetime('now'))
+        )"""))
         conn.commit()
+
+
+def _hash_password(password, salt=None):
+    if salt is None:
+        salt = secrets.token_hex(16)
+    h = hashlib.sha256((salt + password).encode()).hexdigest()
+    return h, salt
 
 
 def seed_data(conn):
@@ -447,9 +476,22 @@ def seed_data(conn):
     print(f"  {result.fetchone()[0]} organizations seeded")
 
 
+def seed_users(conn):
+    result = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM users"))
+    if result.fetchone()[0] > 0:
+        return
+    pw_hash, pw_salt = _hash_password("Onelongpassword!")
+    conn.execute(sqlalchemy.text(
+        "INSERT INTO users (email, password_hash, password_salt, name, role) VALUES (:e, :h, :s, :n, :r)"
+    ), {"e": "jess@clinicianassist.ai", "h": pw_hash, "s": pw_salt, "n": "Jess Jessop", "r": "admin"})
+    conn.commit()
+    print("  1 admin user seeded")
+
+
 if __name__ == "__main__":
     engine = get_engine()
     with engine.connect() as conn:
         init_schema(conn)
         seed_data(conn)
+        seed_users(conn)
     print("Database initialized.")

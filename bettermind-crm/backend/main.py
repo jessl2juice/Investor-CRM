@@ -19,38 +19,49 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from database import get_engine, get_connection, init_schema, seed_data
+from database import get_engine, get_connection, init_schema, seed_data, seed_users, _hash_password
 
-AUTH_EMAIL = os.environ.get("AUTH_EMAIL", "jess@clinicianassist.ai")
-AUTH_PASSWORD = os.environ.get("AUTH_PASSWORD", "Onelongpassword!")
+import json, base64
+
 TOKEN_SECRET = os.environ.get("TOKEN_SECRET", secrets.token_hex(32))
 TOKEN_TTL = 86400 * 7  # 7 days
 
 
-def _make_token():
+def _make_token(email, role="user"):
     ts = str(int(time.time()))
-    sig = hmac.new(TOKEN_SECRET.encode(), ts.encode(), hashlib.sha256).hexdigest()
-    return f"{ts}.{sig}"
+    payload = base64.b64encode(json.dumps({"email": email, "role": role}).encode()).decode()
+    msg = f"{ts}.{payload}"
+    sig = hmac.new(TOKEN_SECRET.encode(), msg.encode(), hashlib.sha256).hexdigest()
+    return f"{ts}.{payload}.{sig}"
 
 
-def _verify_token(token: str) -> bool:
+def _verify_token(token: str):
     try:
-        ts, sig = token.split(".", 1)
-        expected = hmac.new(TOKEN_SECRET.encode(), ts.encode(), hashlib.sha256).hexdigest()
+        ts, payload, sig = token.split(".", 2)
+        expected = hmac.new(TOKEN_SECRET.encode(), f"{ts}.{payload}".encode(), hashlib.sha256).hexdigest()
         if not hmac.compare_digest(sig, expected):
-            return False
+            return None
         if time.time() - int(ts) > TOKEN_TTL:
-            return False
-        return True
+            return None
+        return json.loads(base64.b64decode(payload))
     except Exception:
-        return False
+        return None
 
 
 def require_auth(request: Request):
     auth = request.headers.get("Authorization", "")
-    if auth.startswith("Bearer ") and _verify_token(auth[7:]):
-        return True
+    if auth.startswith("Bearer "):
+        claims = _verify_token(auth[7:])
+        if claims:
+            return claims
     raise HTTPException(401, "Unauthorized")
+
+
+def require_admin(request: Request):
+    claims = require_auth(request)
+    if claims.get("role") != "admin":
+        raise HTTPException(403, "Admin access required")
+    return claims
 
 app = FastAPI(
     title="BetterMind CRM API",
@@ -94,6 +105,7 @@ def startup():
     with engine.connect() as conn:
         init_schema(conn)
         seed_data(conn)
+        seed_users(conn)
 
 
 # ==================== AUTH ====================
@@ -105,14 +117,87 @@ class LoginRequest(BaseModel):
 
 @app.post("/api/login")
 def login(data: LoginRequest):
-    if data.email == AUTH_EMAIL and data.password == AUTH_PASSWORD:
-        return {"token": _make_token(), "email": data.email}
-    raise HTTPException(401, "Invalid credentials")
+    with db() as conn:
+        row = conn.execute(sqlalchemy.text(
+            "SELECT id, email, password_hash, password_salt, name, role FROM users WHERE email = :e"
+        ), {"e": data.email}).fetchone()
+        if not row:
+            raise HTTPException(401, "Invalid credentials")
+        user = dict(row._mapping)
+        pw_hash, _ = _hash_password(data.password, user["password_salt"])
+        if pw_hash != user["password_hash"]:
+            raise HTTPException(401, "Invalid credentials")
+        return {"token": _make_token(user["email"], user["role"]), "email": user["email"], "name": user["name"], "role": user["role"]}
 
 
 @app.get("/api/me")
 def me(auth=Depends(require_auth)):
-    return {"email": AUTH_EMAIL}
+    return {"email": auth["email"], "role": auth["role"]}
+
+
+# ==================== USER MANAGEMENT ====================
+
+class UserCreate(BaseModel):
+    email: str
+    password: str
+    name: Optional[str] = None
+    role: str = "user"
+
+
+class PasswordUpdate(BaseModel):
+    password: str
+
+
+@app.get("/api/users")
+def list_users(auth=Depends(require_admin)):
+    with db() as conn:
+        return rows_to_list(conn.execute(sqlalchemy.text(
+            "SELECT id, email, name, role, created_at FROM users ORDER BY id"
+        )).fetchall())
+
+
+@app.post("/api/users", status_code=201)
+def create_user(data: UserCreate, auth=Depends(require_admin)):
+    pw_hash, pw_salt = _hash_password(data.password)
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT id FROM users WHERE email = :e"), {"e": data.email}).fetchone()
+        if existing:
+            raise HTTPException(409, "User with this email already exists")
+        row = conn.execute(sqlalchemy.text(
+            "INSERT INTO users (email, password_hash, password_salt, name, role) VALUES (:e, :h, :s, :n, :r) RETURNING id"
+        ), {"e": data.email, "h": pw_hash, "s": pw_salt, "n": data.name, "r": data.role}).fetchone()
+        conn.commit()
+        return {"id": row[0], "email": data.email, "name": data.name, "role": data.role}
+
+
+@app.put("/api/users/{user_id}/password")
+def update_password(user_id: int, data: PasswordUpdate, auth=Depends(require_auth)):
+    with db() as conn:
+        user = conn.execute(sqlalchemy.text("SELECT id, email, role FROM users WHERE id = :uid"), {"uid": user_id}).fetchone()
+        if not user:
+            raise HTTPException(404, "User not found")
+        user_dict = dict(user._mapping)
+        if auth["role"] != "admin" and auth["email"] != user_dict["email"]:
+            raise HTTPException(403, "Can only change your own password")
+        pw_hash, pw_salt = _hash_password(data.password)
+        conn.execute(sqlalchemy.text(
+            "UPDATE users SET password_hash = :h, password_salt = :s WHERE id = :uid"
+        ), {"h": pw_hash, "s": pw_salt, "uid": user_id})
+        conn.commit()
+        return {"ok": True}
+
+
+@app.delete("/api/users/{user_id}")
+def delete_user(user_id: int, auth=Depends(require_admin)):
+    with db() as conn:
+        user = conn.execute(sqlalchemy.text("SELECT email FROM users WHERE id = :uid"), {"uid": user_id}).fetchone()
+        if not user:
+            raise HTTPException(404, "User not found")
+        if dict(user._mapping)["email"] == auth["email"]:
+            raise HTTPException(400, "Cannot delete yourself")
+        conn.execute(sqlalchemy.text("DELETE FROM users WHERE id = :uid"), {"uid": user_id})
+        conn.commit()
+        return {"deleted": user_id}
 
 
 # ==================== MODELS ====================
