@@ -5,11 +5,12 @@ const API = "/api";
 function getToken() { return localStorage.getItem("bm_token"); }
 function setToken(t) { if (t) localStorage.setItem("bm_token", t); else localStorage.removeItem("bm_token"); }
 
-async function api(path, opts) {
+async function api(path, opts = {}) {
   const token = getToken();
+  const { headers: customHeaders, ...restOpts } = opts;
   const r = await fetch(`${API}${path}`, {
-    headers: { "Content-Type": "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}) },
-    ...opts,
+    ...restOpts,
+    headers: { "Content-Type": "application/json", ...customHeaders, ...(token ? { Authorization: `Bearer ${token}` } : {}) },
   });
   if (r.status === 401) { setToken(null); window.location.reload(); throw new Error("Unauthorized"); }
   if (!r.ok) throw new Error(`API ${r.status}`);
@@ -33,6 +34,7 @@ function LoginScreen({ onLogin }) {
       if (!r.ok) { setError("Invalid email or password"); setLoading(false); return; }
       const data = await r.json();
       setToken(data.token);
+      setLoading(false);
       onLogin(data.email, data.role);
     } catch { setError("Connection error"); setLoading(false); }
   };
@@ -131,7 +133,7 @@ function ContactDetail({id, onClose}) {
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:18}}>
           {c.email && <div style={{background:"#f8fafc",borderRadius:8,padding:10}}><div style={{fontSize:12,color:"#94a3b8",fontWeight:600,textTransform:"uppercase"}}>Email</div><div style={{fontSize:15,color:"#0f172a",wordBreak:"break-all"}}>{c.email}</div></div>}
           {c.phone && <div style={{background:"#f8fafc",borderRadius:8,padding:10}}><div style={{fontSize:12,color:"#94a3b8",fontWeight:600,textTransform:"uppercase"}}>Phone</div><div style={{fontSize:15,color:"#0f172a"}}>{c.phone}</div></div>}
-          {c.linkedin_url && <div style={{background:"#f8fafc",borderRadius:8,padding:10}}><div style={{fontSize:12,color:"#94a3b8",fontWeight:600,textTransform:"uppercase"}}>LinkedIn</div><a href={`https://${c.linkedin_url}`} target="_blank" rel="noopener noreferrer" style={{fontSize:15,color:"#2563eb"}}>{c.linkedin_url}</a></div>}
+          {c.linkedin_url && <div style={{background:"#f8fafc",borderRadius:8,padding:10}}><div style={{fontSize:12,color:"#94a3b8",fontWeight:600,textTransform:"uppercase"}}>LinkedIn</div><a href={c.linkedin_url.startsWith("http")?c.linkedin_url:`https://${c.linkedin_url}`} target="_blank" rel="noopener noreferrer" style={{fontSize:15,color:"#2563eb"}}>{c.linkedin_url}</a></div>}
           {c.last_contact_date && <div style={{background:"#f8fafc",borderRadius:8,padding:10}}><div style={{fontSize:12,color:"#94a3b8",fontWeight:600,textTransform:"uppercase"}}>Last Contact</div><div style={{fontSize:15}}>{c.last_contact_date}</div></div>}
         </div>
 
@@ -360,7 +362,7 @@ export default function App() {
         {/* Pipeline */}
         {tab === "pipeline" && (
           <div>
-            <h3 style={{fontSize:18,fontWeight:700,margin:"0 0 10px"}}>💰 Fundraising Pipeline — $2.5M Seed</h3>
+            <h3 style={{fontSize:18,fontWeight:700,margin:"0 0 10px"}}>💰 Fundraising Pipeline{deals.length>0?` — ${deals.length} Deal${deals.length!==1?"s":""}`:""}</h3>
             {deals.map((d,i)=>(
               <div key={i} onClick={()=>d.contact_id&&setSelectedId(d.contact_id)} style={{background:"#fff",borderRadius:10,border:"1px solid #e2e8f0",padding:"12px 16px",marginBottom:8,cursor:d.contact_id?"pointer":"default",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                 <div><div style={{fontWeight:700,fontSize:16}}>{d.deal_name}</div><div style={{fontSize:14,color:"#64748b"}}>{d.contact_name}{d.org_name?` · ${d.org_name}`:""}</div></div>

@@ -2,12 +2,13 @@
 BetterMind CRM — FastAPI Backend
 Serves REST API + static React frontend
 """
+import logging
 import os
 import hashlib
 import hmac
 import secrets
 import time
-from contextlib import contextmanager
+from contextlib import asynccontextmanager, contextmanager
 from datetime import datetime
 from typing import Optional
 
@@ -19,11 +20,17 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from database import get_engine, get_connection, init_schema, seed_data, seed_users, _hash_password
+from database import get_engine, get_connection, init_schema, seed_data, seed_users, _hash_password, _verify_password
 
 import json, base64
 
-TOKEN_SECRET = os.environ.get("TOKEN_SECRET", secrets.token_hex(32))
+logger = logging.getLogger(__name__)
+
+_configured_secret = os.environ.get("TOKEN_SECRET", "")
+if not _configured_secret:
+    logger.warning("TOKEN_SECRET env var not set — generating ephemeral secret. Tokens will not survive restarts.")
+    _configured_secret = secrets.token_hex(32)
+TOKEN_SECRET = _configured_secret
 TOKEN_TTL = 86400 * 7  # 7 days
 
 
@@ -63,15 +70,36 @@ def require_admin(request: Request):
         raise HTTPException(403, "Admin access required")
     return claims
 
+ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "").split(",")
+if not ALLOWED_ORIGINS or ALLOWED_ORIGINS == [""]:
+    ALLOWED_ORIGINS = [
+        "https://bettermind-crm-679757168518.us-west1.run.app",
+        "https://bettermind.buzz",
+        "http://localhost:5173",
+        "http://localhost:8080",
+    ]
+
+
+@asynccontextmanager
+async def lifespan(app):
+    engine = get_engine()
+    with engine.connect() as conn:
+        init_schema(conn)
+        seed_data(conn)
+        seed_users(conn)
+    yield
+
+
 app = FastAPI(
     title="BetterMind CRM API",
     description="Contact management, investor pipeline, and program tracking for BetterMind.Space",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -83,6 +111,9 @@ def db():
     conn = get_engine().connect()
     try:
         yield conn
+    except Exception:
+        conn.rollback()
+        raise
     finally:
         conn.close()
 
@@ -95,17 +126,6 @@ def row_to_dict(row):
 
 def rows_to_list(rows):
     return [dict(r._mapping) for r in rows]
-
-
-# ==================== STARTUP ====================
-
-@app.on_event("startup")
-def startup():
-    engine = get_engine()
-    with engine.connect() as conn:
-        init_schema(conn)
-        seed_data(conn)
-        seed_users(conn)
 
 
 # ==================== AUTH ====================
@@ -124,8 +144,7 @@ def login(data: LoginRequest):
         if not row:
             raise HTTPException(401, "Invalid credentials")
         user = dict(row._mapping)
-        pw_hash, _ = _hash_password(data.password, user["password_salt"])
-        if pw_hash != user["password_hash"]:
+        if not _verify_password(data.password, user["password_hash"], user["password_salt"]):
             raise HTTPException(401, "Invalid credentials")
         return {"token": _make_token(user["email"], user["role"]), "email": user["email"], "name": user["name"], "role": user["role"]}
 
@@ -345,7 +364,12 @@ def update_contact(contact_id: int, data: ContactUpdate, auth=Depends(require_au
         existing = conn.execute(sqlalchemy.text("SELECT * FROM contacts WHERE id = :cid"), {"cid": contact_id}).fetchone()
         if not existing:
             raise HTTPException(404, "Contact not found")
-        updates = {k: v for k, v in data.dict().items() if v is not None}
+        ALLOWED_COLUMNS = {
+            "first_name", "last_name", "email", "phone", "linkedin_url",
+            "organization_id", "title", "category", "subcategory", "status",
+            "tier", "last_contact_date", "next_action", "next_action_date", "notes",
+        }
+        updates = {k: v for k, v in data.dict(exclude_unset=True).items() if k in ALLOWED_COLUMNS}
         if not updates:
             return row_to_dict(existing)
         updates["updated_at"] = datetime.now().isoformat()
@@ -360,6 +384,9 @@ def update_contact(contact_id: int, data: ContactUpdate, auth=Depends(require_au
 @app.delete("/api/contacts/{contact_id}")
 def delete_contact(contact_id: int, auth=Depends(require_auth)):
     with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT id FROM contacts WHERE id = :cid"), {"cid": contact_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Contact not found")
         conn.execute(sqlalchemy.text("DELETE FROM contacts WHERE id = :cid"), {"cid": contact_id})
         conn.commit()
         return {"deleted": contact_id}

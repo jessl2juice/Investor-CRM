@@ -3,6 +3,7 @@ BetterMind CRM Database — Schema & Seed Data (PostgreSQL via Cloud SQL)
 Run directly to initialize: python database.py
 """
 import hashlib
+import hmac
 import os
 import secrets
 from datetime import datetime
@@ -305,8 +306,19 @@ def init_schema(conn):
 def _hash_password(password, salt=None):
     if salt is None:
         salt = secrets.token_hex(16)
-    h = hashlib.sha256((salt + password).encode()).hexdigest()
+    h = hashlib.pbkdf2_hmac("sha256", password.encode(), salt.encode(), iterations=600_000).hex()
     return h, salt
+
+
+def _verify_password(password, stored_hash, salt):
+    """Verify password against stored hash. Supports both legacy SHA-256 and new PBKDF2."""
+    # Try new PBKDF2 format first
+    pbkdf2_hash = hashlib.pbkdf2_hmac("sha256", password.encode(), salt.encode(), iterations=600_000).hex()
+    if hmac.compare_digest(pbkdf2_hash, stored_hash):
+        return True
+    # Fall back to legacy single SHA-256 for old hashes
+    legacy_hash = hashlib.sha256((salt + password).encode()).hexdigest()
+    return hmac.compare_digest(legacy_hash, stored_hash)
 
 
 def seed_data(conn):
