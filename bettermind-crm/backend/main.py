@@ -73,7 +73,7 @@ def require_admin(request: Request):
 ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "").split(",")
 if not ALLOWED_ORIGINS or ALLOWED_ORIGINS == [""]:
     ALLOWED_ORIGINS = [
-        "https://bettermind-crm-679757168518.us-west1.run.app",
+        "https://bettermind-crm-340933752067.us-west1.run.app",
         "https://bettermind.buzz",
         "http://localhost:5173",
         "http://localhost:8080",
@@ -111,6 +111,8 @@ def db():
     conn = get_engine().connect()
     try:
         yield conn
+    except HTTPException:
+        raise
     except Exception:
         conn.rollback()
         raise
@@ -245,7 +247,9 @@ class ContactUpdate(BaseModel):
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     email: Optional[str] = None
+    email_secondary: Optional[str] = None
     phone: Optional[str] = None
+    phone_secondary: Optional[str] = None
     linkedin_url: Optional[str] = None
     organization_id: Optional[int] = None
     title: Optional[str] = None
@@ -268,6 +272,28 @@ class InteractionCreate(BaseModel):
     date: str
 
 
+class OrganizationCreate(BaseModel):
+    name: str
+    type: Optional[str] = None
+    website: Optional[str] = None
+    phone: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    focus_areas: Optional[str] = None
+    notes: Optional[str] = None
+
+
+class OrganizationUpdate(BaseModel):
+    name: Optional[str] = None
+    type: Optional[str] = None
+    website: Optional[str] = None
+    phone: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    focus_areas: Optional[str] = None
+    notes: Optional[str] = None
+
+
 class DealCreate(BaseModel):
     contact_id: Optional[int] = None
     organization_id: Optional[int] = None
@@ -276,6 +302,57 @@ class DealCreate(BaseModel):
     amount: Optional[str] = None
     probability: Optional[int] = None
     notes: Optional[str] = None
+
+
+class DealUpdate(BaseModel):
+    contact_id: Optional[int] = None
+    organization_id: Optional[int] = None
+    deal_name: Optional[str] = None
+    stage: Optional[str] = None
+    amount: Optional[str] = None
+    probability: Optional[int] = None
+    notes: Optional[str] = None
+
+
+class InteractionUpdate(BaseModel):
+    type: Optional[str] = None
+    channel: Optional[str] = None
+    subject: Optional[str] = None
+    summary: Optional[str] = None
+    date: Optional[str] = None
+
+
+class ProgramCreate(BaseModel):
+    name: str
+    organization_id: Optional[int] = None
+    status: Optional[str] = None
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    value: Optional[str] = None
+    primary_contact_id: Optional[int] = None
+    notes: Optional[str] = None
+
+
+class ProgramUpdate(BaseModel):
+    name: Optional[str] = None
+    organization_id: Optional[int] = None
+    status: Optional[str] = None
+    start_date: Optional[str] = None
+    end_date: Optional[str] = None
+    value: Optional[str] = None
+    primary_contact_id: Optional[int] = None
+    notes: Optional[str] = None
+
+
+class TagCreate(BaseModel):
+    name: str
+
+
+class BulkContactUpdate(BaseModel):
+    contact_ids: list[int]
+    status: Optional[str] = None
+    category: Optional[str] = None
+    tier: Optional[int] = None
 
 
 # ==================== CONTACTS ====================
@@ -365,7 +442,8 @@ def update_contact(contact_id: int, data: ContactUpdate, auth=Depends(require_au
         if not existing:
             raise HTTPException(404, "Contact not found")
         ALLOWED_COLUMNS = {
-            "first_name", "last_name", "email", "phone", "linkedin_url",
+            "first_name", "last_name", "email", "email_secondary",
+            "phone", "phone_secondary", "linkedin_url",
             "organization_id", "title", "category", "subcategory", "status",
             "tier", "last_contact_date", "next_action", "next_action_date", "notes",
         }
@@ -400,6 +478,18 @@ def list_organizations(auth=Depends(require_auth)):
         return rows_to_list(conn.execute(sqlalchemy.text("SELECT * FROM organizations ORDER BY name")).fetchall())
 
 
+@app.post("/api/organizations", status_code=201)
+def create_organization(data: OrganizationCreate, auth=Depends(require_auth)):
+    with db() as conn:
+        row = conn.execute(sqlalchemy.text(
+            """INSERT INTO organizations (name,type,website,phone,city,state,focus_areas,notes)
+            VALUES (:name,:type,:website,:phone,:city,:state,:focus_areas,:notes) RETURNING id"""),
+            {"name":data.name,"type":data.type,"website":data.website,"phone":data.phone,
+             "city":data.city,"state":data.state,"focus_areas":data.focus_areas,"notes":data.notes}).fetchone()
+        conn.commit()
+        return row_to_dict(conn.execute(sqlalchemy.text("SELECT * FROM organizations WHERE id = :oid"), {"oid": row[0]}).fetchone())
+
+
 @app.get("/api/organizations/{org_id}")
 def get_organization(org_id: int, auth=Depends(require_auth)):
     with db() as conn:
@@ -411,6 +501,36 @@ def get_organization(org_id: int, auth=Depends(require_auth)):
             conn.execute(sqlalchemy.text("SELECT * FROM contacts WHERE organization_id = :oid ORDER BY category, status"), {"oid": org_id}).fetchall()
         )
         return result
+
+
+@app.put("/api/organizations/{org_id}")
+def update_organization(org_id: int, data: OrganizationUpdate, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT * FROM organizations WHERE id = :oid"), {"oid": org_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Organization not found")
+        ALLOWED_COLUMNS = {"name", "type", "website", "phone", "city", "state", "focus_areas", "notes"}
+        updates = {k: v for k, v in data.dict(exclude_unset=True).items() if k in ALLOWED_COLUMNS}
+        if not updates:
+            return row_to_dict(existing)
+        set_clause = ", ".join(f"{k} = :val_{k}" for k in updates.keys())
+        params = {f"val_{k}": v for k, v in updates.items()}
+        params["oid"] = org_id
+        conn.execute(sqlalchemy.text(f"UPDATE organizations SET {set_clause} WHERE id = :oid"), params)
+        conn.commit()
+        return row_to_dict(conn.execute(sqlalchemy.text("SELECT * FROM organizations WHERE id = :oid"), {"oid": org_id}).fetchone())
+
+
+@app.delete("/api/organizations/{org_id}")
+def delete_organization(org_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT id FROM organizations WHERE id = :oid"), {"oid": org_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Organization not found")
+        conn.execute(sqlalchemy.text("UPDATE contacts SET organization_id = NULL WHERE organization_id = :oid"), {"oid": org_id})
+        conn.execute(sqlalchemy.text("DELETE FROM organizations WHERE id = :oid"), {"oid": org_id})
+        conn.commit()
+        return {"deleted": org_id}
 
 
 # ==================== INTERACTIONS ====================
@@ -431,28 +551,87 @@ def list_interactions(contact_id: Optional[int] = None, limit: int = 50, auth=De
 @app.post("/api/interactions", status_code=201)
 def create_interaction(data: InteractionCreate, auth=Depends(require_auth)):
     with db() as conn:
-        row = conn.execute(sqlalchemy.text("""INSERT INTO interactions (contact_id,type,channel,subject,summary,date)
-            VALUES (:a,:b,:c,:d,:e,:f) RETURNING id"""),
-            {"a":data.contact_id,"b":data.type,"c":data.channel,"d":data.subject,"e":data.summary,"f":data.date}).fetchone()
-        conn.execute(sqlalchemy.text("UPDATE contacts SET last_contact_date = :dt, updated_at = :ua WHERE id = :cid"),
-                     {"dt":data.date,"ua":datetime.now().isoformat(),"cid":data.contact_id})
+        contact = conn.execute(sqlalchemy.text(
+            "SELECT id FROM contacts WHERE id = :cid"), {"cid": data.contact_id}).fetchone()
+        if not contact:
+            raise HTTPException(404, f"Contact {data.contact_id} not found")
+        try:
+            row = conn.execute(sqlalchemy.text("""INSERT INTO interactions (contact_id,type,channel,subject,summary,date)
+                VALUES (:a,:b,:c,:d,:e,:f) RETURNING id"""),
+                {"a":data.contact_id,"b":data.type,"c":data.channel,"d":data.subject,"e":data.summary,"f":data.date}).fetchone()
+            conn.execute(sqlalchemy.text("UPDATE contacts SET last_contact_date = :dt, updated_at = :ua WHERE id = :cid"),
+                         {"dt":data.date,"ua":datetime.now().isoformat(),"cid":data.contact_id})
+            conn.commit()
+            return {"id": row[0]}
+        except (sqlalchemy.exc.IntegrityError, sqlalchemy.exc.DatabaseError) as e:
+            conn.rollback()
+            raise HTTPException(422, f"Invalid data: {str(e.orig)}")
+
+
+@app.get("/api/interactions/{interaction_id}")
+def get_interaction(interaction_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        row = conn.execute(sqlalchemy.text("SELECT * FROM interactions WHERE id = :iid"), {"iid": interaction_id}).fetchone()
+        if not row:
+            raise HTTPException(404, "Interaction not found")
+        return row_to_dict(row)
+
+
+@app.put("/api/interactions/{interaction_id}")
+def update_interaction(interaction_id: int, data: InteractionUpdate, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT * FROM interactions WHERE id = :iid"), {"iid": interaction_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Interaction not found")
+        ALLOWED_COLUMNS = {"type", "channel", "subject", "summary", "date"}
+        updates = {k: v for k, v in data.dict(exclude_unset=True).items() if k in ALLOWED_COLUMNS}
+        if not updates:
+            return row_to_dict(existing)
+        set_clause = ", ".join(f"{k} = :val_{k}" for k in updates.keys())
+        params = {f"val_{k}": v for k, v in updates.items()}
+        params["iid"] = interaction_id
+        try:
+            conn.execute(sqlalchemy.text(f"UPDATE interactions SET {set_clause} WHERE id = :iid"), params)
+            conn.commit()
+            return row_to_dict(conn.execute(sqlalchemy.text("SELECT * FROM interactions WHERE id = :iid"), {"iid": interaction_id}).fetchone())
+        except (sqlalchemy.exc.IntegrityError, sqlalchemy.exc.DatabaseError) as e:
+            conn.rollback()
+            raise HTTPException(422, f"Invalid data: {str(e.orig)}")
+
+
+@app.delete("/api/interactions/{interaction_id}")
+def delete_interaction(interaction_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT id FROM interactions WHERE id = :iid"), {"iid": interaction_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Interaction not found")
+        conn.execute(sqlalchemy.text("DELETE FROM interactions WHERE id = :iid"), {"iid": interaction_id})
         conn.commit()
-        return {"id": row[0]}
+        return {"deleted": interaction_id}
 
 
 # ==================== DEALS ====================
 
 @app.get("/api/deals")
-def list_deals(auth=Depends(require_auth)):
+def list_deals(stage: Optional[str] = None, contact_id: Optional[int] = None, auth=Depends(require_auth)):
     with db() as conn:
-        return rows_to_list(conn.execute(sqlalchemy.text("""
-            SELECT d.*, c.first_name || ' ' || COALESCE(c.last_name, '') as contact_name,
+        query = """SELECT d.*, c.first_name || ' ' || COALESCE(c.last_name, '') as contact_name,
                    o.name as org_name
             FROM deals d
             LEFT JOIN contacts c ON d.contact_id = c.id
-            LEFT JOIN organizations o ON d.organization_id = o.id
-            ORDER BY d.probability DESC
-        """)).fetchall())
+            LEFT JOIN organizations o ON d.organization_id = o.id"""
+        conditions = []
+        params = {}
+        if stage:
+            conditions.append("d.stage = :stage")
+            params["stage"] = stage
+        if contact_id:
+            conditions.append("d.contact_id = :cid")
+            params["cid"] = contact_id
+        if conditions:
+            query += " WHERE " + " AND ".join(conditions)
+        query += " ORDER BY d.probability DESC"
+        return rows_to_list(conn.execute(sqlalchemy.text(query), params).fetchall())
 
 
 @app.post("/api/deals", status_code=201)
@@ -466,19 +645,227 @@ def create_deal(data: DealCreate, auth=Depends(require_auth)):
         return {"id": row[0]}
 
 
+@app.get("/api/deals/{deal_id}")
+def get_deal(deal_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        row = conn.execute(sqlalchemy.text("""
+            SELECT d.*, c.first_name || ' ' || COALESCE(c.last_name, '') as contact_name,
+                   o.name as org_name
+            FROM deals d
+            LEFT JOIN contacts c ON d.contact_id = c.id
+            LEFT JOIN organizations o ON d.organization_id = o.id
+            WHERE d.id = :did"""), {"did": deal_id}).fetchone()
+        if not row:
+            raise HTTPException(404, "Deal not found")
+        return row_to_dict(row)
+
+
+@app.put("/api/deals/{deal_id}")
+def update_deal(deal_id: int, data: DealUpdate, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT * FROM deals WHERE id = :did"), {"did": deal_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Deal not found")
+        ALLOWED_COLUMNS = {"contact_id", "organization_id", "deal_name", "stage", "amount", "probability", "notes"}
+        updates = {k: v for k, v in data.dict(exclude_unset=True).items() if k in ALLOWED_COLUMNS}
+        if not updates:
+            return row_to_dict(existing)
+        updates["updated_at"] = datetime.now().isoformat()
+        set_clause = ", ".join(f"{k} = :val_{k}" for k in updates.keys())
+        params = {f"val_{k}": v for k, v in updates.items()}
+        params["did"] = deal_id
+        conn.execute(sqlalchemy.text(f"UPDATE deals SET {set_clause} WHERE id = :did"), params)
+        conn.commit()
+        return row_to_dict(conn.execute(sqlalchemy.text("SELECT * FROM deals WHERE id = :did"), {"did": deal_id}).fetchone())
+
+
+@app.delete("/api/deals/{deal_id}")
+def delete_deal(deal_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT id FROM deals WHERE id = :did"), {"did": deal_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Deal not found")
+        conn.execute(sqlalchemy.text("DELETE FROM deals WHERE id = :did"), {"did": deal_id})
+        conn.commit()
+        return {"deleted": deal_id}
+
+
 # ==================== PROGRAMS ====================
 
 @app.get("/api/programs")
-def list_programs(auth=Depends(require_auth)):
+def list_programs(status: Optional[str] = None, auth=Depends(require_auth)):
     with db() as conn:
-        return rows_to_list(conn.execute(sqlalchemy.text("""
+        query = """SELECT p.*, o.name as org_name,
+                   c.first_name || ' ' || COALESCE(c.last_name, '') as contact_name
+            FROM programs p
+            LEFT JOIN organizations o ON p.organization_id = o.id
+            LEFT JOIN contacts c ON p.primary_contact_id = c.id"""
+        params = {}
+        if status:
+            query += " WHERE p.status = :status"
+            params["status"] = status
+        query += " ORDER BY p.status, p.name"
+        return rows_to_list(conn.execute(sqlalchemy.text(query), params).fetchall())
+
+
+@app.post("/api/programs", status_code=201)
+def create_program(data: ProgramCreate, auth=Depends(require_auth)):
+    with db() as conn:
+        row = conn.execute(sqlalchemy.text(
+            """INSERT INTO programs (name,organization_id,status,start_date,end_date,value,primary_contact_id,notes)
+            VALUES (:name,:org_id,:status,:start,:end,:value,:contact_id,:notes) RETURNING id"""),
+            {"name":data.name,"org_id":data.organization_id,"status":data.status,
+             "start":data.start_date,"end":data.end_date,"value":data.value,
+             "contact_id":data.primary_contact_id,"notes":data.notes}).fetchone()
+        conn.commit()
+        return row_to_dict(conn.execute(sqlalchemy.text("SELECT * FROM programs WHERE id = :pid"), {"pid": row[0]}).fetchone())
+
+
+@app.get("/api/programs/{program_id}")
+def get_program(program_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        row = conn.execute(sqlalchemy.text("""
             SELECT p.*, o.name as org_name,
                    c.first_name || ' ' || COALESCE(c.last_name, '') as contact_name
             FROM programs p
             LEFT JOIN organizations o ON p.organization_id = o.id
             LEFT JOIN contacts c ON p.primary_contact_id = c.id
-            ORDER BY p.status, p.name
-        """)).fetchall())
+            WHERE p.id = :pid"""), {"pid": program_id}).fetchone()
+        if not row:
+            raise HTTPException(404, "Program not found")
+        return row_to_dict(row)
+
+
+@app.put("/api/programs/{program_id}")
+def update_program(program_id: int, data: ProgramUpdate, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT * FROM programs WHERE id = :pid"), {"pid": program_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Program not found")
+        ALLOWED_COLUMNS = {"name", "organization_id", "status", "start_date", "end_date", "value", "primary_contact_id", "notes"}
+        updates = {k: v for k, v in data.dict(exclude_unset=True).items() if k in ALLOWED_COLUMNS}
+        if not updates:
+            return row_to_dict(existing)
+        set_clause = ", ".join(f"{k} = :val_{k}" for k in updates.keys())
+        params = {f"val_{k}": v for k, v in updates.items()}
+        params["pid"] = program_id
+        conn.execute(sqlalchemy.text(f"UPDATE programs SET {set_clause} WHERE id = :pid"), params)
+        conn.commit()
+        return row_to_dict(conn.execute(sqlalchemy.text("SELECT * FROM programs WHERE id = :pid"), {"pid": program_id}).fetchone())
+
+
+@app.delete("/api/programs/{program_id}")
+def delete_program(program_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT id FROM programs WHERE id = :pid"), {"pid": program_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Program not found")
+        conn.execute(sqlalchemy.text("DELETE FROM programs WHERE id = :pid"), {"pid": program_id})
+        conn.commit()
+        return {"deleted": program_id}
+
+
+# ==================== TAGS ====================
+
+@app.get("/api/tags")
+def list_tags(auth=Depends(require_auth)):
+    with db() as conn:
+        return rows_to_list(conn.execute(sqlalchemy.text("SELECT * FROM tags ORDER BY name")).fetchall())
+
+
+@app.post("/api/tags", status_code=201)
+def create_tag(data: TagCreate, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT id FROM tags WHERE name = :name"), {"name": data.name}).fetchone()
+        if existing:
+            raise HTTPException(409, "Tag already exists")
+        row = conn.execute(sqlalchemy.text("INSERT INTO tags (name) VALUES (:name) RETURNING id"), {"name": data.name}).fetchone()
+        conn.commit()
+        return {"id": row[0], "name": data.name}
+
+
+@app.delete("/api/tags/{tag_id}")
+def delete_tag(tag_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        existing = conn.execute(sqlalchemy.text("SELECT id FROM tags WHERE id = :tid"), {"tid": tag_id}).fetchone()
+        if not existing:
+            raise HTTPException(404, "Tag not found")
+        conn.execute(sqlalchemy.text("DELETE FROM contact_tags WHERE tag_id = :tid"), {"tid": tag_id})
+        conn.execute(sqlalchemy.text("DELETE FROM tags WHERE id = :tid"), {"tid": tag_id})
+        conn.commit()
+        return {"deleted": tag_id}
+
+
+@app.get("/api/contacts/{contact_id}/tags")
+def get_contact_tags(contact_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        contact = conn.execute(sqlalchemy.text("SELECT id FROM contacts WHERE id = :cid"), {"cid": contact_id}).fetchone()
+        if not contact:
+            raise HTTPException(404, "Contact not found")
+        return rows_to_list(conn.execute(sqlalchemy.text(
+            "SELECT t.* FROM tags t JOIN contact_tags ct ON t.id = ct.tag_id WHERE ct.contact_id = :cid ORDER BY t.name"),
+            {"cid": contact_id}).fetchall())
+
+
+@app.post("/api/contacts/{contact_id}/tags/{tag_id}", status_code=201)
+def add_tag_to_contact(contact_id: int, tag_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        contact = conn.execute(sqlalchemy.text("SELECT id FROM contacts WHERE id = :cid"), {"cid": contact_id}).fetchone()
+        if not contact:
+            raise HTTPException(404, "Contact not found")
+        tag = conn.execute(sqlalchemy.text("SELECT id FROM tags WHERE id = :tid"), {"tid": tag_id}).fetchone()
+        if not tag:
+            raise HTTPException(404, "Tag not found")
+        existing = conn.execute(sqlalchemy.text(
+            "SELECT 1 FROM contact_tags WHERE contact_id = :cid AND tag_id = :tid"),
+            {"cid": contact_id, "tid": tag_id}).fetchone()
+        if existing:
+            return {"contact_id": contact_id, "tag_id": tag_id, "status": "already_assigned"}
+        conn.execute(sqlalchemy.text(
+            "INSERT INTO contact_tags (contact_id, tag_id) VALUES (:cid, :tid)"),
+            {"cid": contact_id, "tid": tag_id})
+        conn.commit()
+        return {"contact_id": contact_id, "tag_id": tag_id, "status": "assigned"}
+
+
+@app.delete("/api/contacts/{contact_id}/tags/{tag_id}")
+def remove_tag_from_contact(contact_id: int, tag_id: int, auth=Depends(require_auth)):
+    with db() as conn:
+        deleted = conn.execute(sqlalchemy.text(
+            "DELETE FROM contact_tags WHERE contact_id = :cid AND tag_id = :tid RETURNING contact_id"),
+            {"cid": contact_id, "tid": tag_id}).fetchone()
+        if not deleted:
+            raise HTTPException(404, "Tag not assigned to this contact")
+        conn.commit()
+        return {"contact_id": contact_id, "tag_id": tag_id, "status": "removed"}
+
+
+# ==================== BULK OPERATIONS ====================
+
+@app.put("/api/bulk/contacts")
+def bulk_update_contacts(data: BulkContactUpdate, auth=Depends(require_auth)):
+    if not data.contact_ids:
+        raise HTTPException(400, "contact_ids must not be empty")
+    updates = {}
+    if data.status is not None:
+        updates["status"] = data.status
+    if data.category is not None:
+        updates["category"] = data.category
+    if data.tier is not None:
+        updates["tier"] = data.tier
+    if not updates:
+        raise HTTPException(400, "No fields to update")
+    updates["updated_at"] = datetime.now().isoformat()
+    set_clause = ", ".join(f"{k} = :val_{k}" for k in updates.keys())
+    params = {f"val_{k}": v for k, v in updates.items()}
+    with db() as conn:
+        placeholders = ", ".join(f":id_{i}" for i in range(len(data.contact_ids)))
+        for i, cid in enumerate(data.contact_ids):
+            params[f"id_{i}"] = cid
+        result = conn.execute(sqlalchemy.text(
+            f"UPDATE contacts SET {set_clause} WHERE id IN ({placeholders})"), params)
+        conn.commit()
+        return {"updated": result.rowcount, "contact_ids": data.contact_ids}
 
 
 # ==================== STATS ====================

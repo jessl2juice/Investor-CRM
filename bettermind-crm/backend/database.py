@@ -131,11 +131,13 @@ def init_schema(conn):
             id SERIAL PRIMARY KEY,
             contact_id INTEGER NOT NULL REFERENCES contacts(id) ON DELETE CASCADE,
             type TEXT NOT NULL CHECK(type IN (
-                'email_sent','email_received','linkedin_dm','linkedin_connect',
-                'meeting','call','intro','follow_up','pitch','note'
+                'email_sent','email_received','email','linkedin_dm','linkedin_connect',
+                'meeting','meeting_scheduled','call','intro','follow_up','pitch',
+                'note','demo','webinar','event','referral','other'
             )),
             channel TEXT CHECK(channel IN (
-                'email','linkedin','phone','zoom','google_meet','in_person','slack','other'
+                'email','linkedin','phone','zoom','google_meet','in_person',
+                'slack','calendly','twitter','text','teams','other'
             )),
             subject TEXT,
             summary TEXT,
@@ -198,6 +200,22 @@ def init_schema(conn):
             role TEXT DEFAULT 'user',
             created_at TEXT DEFAULT (now()::text)
         )"""))
+        # Migrate existing CHECK constraints to expanded values
+        conn.execute(sqlalchemy.text("""
+            ALTER TABLE interactions DROP CONSTRAINT IF EXISTS interactions_type_check"""))
+        conn.execute(sqlalchemy.text("""
+            ALTER TABLE interactions ADD CONSTRAINT interactions_type_check CHECK(type IN (
+                'email_sent','email_received','email','linkedin_dm','linkedin_connect',
+                'meeting','meeting_scheduled','call','intro','follow_up','pitch',
+                'note','demo','webinar','event','referral','other'
+            ))"""))
+        conn.execute(sqlalchemy.text("""
+            ALTER TABLE interactions DROP CONSTRAINT IF EXISTS interactions_channel_check"""))
+        conn.execute(sqlalchemy.text("""
+            ALTER TABLE interactions ADD CONSTRAINT interactions_channel_check CHECK(channel IN (
+                'email','linkedin','phone','zoom','google_meet','in_person',
+                'slack','calendly','twitter','text','teams','other'
+            ))"""))
         conn.commit()
     else:
         conn.execute(sqlalchemy.text("""
@@ -240,8 +258,15 @@ def init_schema(conn):
         CREATE TABLE IF NOT EXISTS interactions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             contact_id INTEGER NOT NULL REFERENCES contacts(id) ON DELETE CASCADE,
-            type TEXT NOT NULL,
-            channel TEXT,
+            type TEXT NOT NULL CHECK(type IN (
+                'email_sent','email_received','email','linkedin_dm','linkedin_connect',
+                'meeting','meeting_scheduled','call','intro','follow_up','pitch',
+                'note','demo','webinar','event','referral','other'
+            )),
+            channel TEXT CHECK(channel IN (
+                'email','linkedin','phone','zoom','google_meet','in_person',
+                'slack','calendly','twitter','text','teams','other'
+            )),
             subject TEXT,
             summary TEXT,
             date TEXT NOT NULL,

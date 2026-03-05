@@ -192,26 +192,68 @@ All endpoints (except `/api/login`) require a Bearer token in the `Authorization
 |--------|--------------------------------|----------|---------------------------------|
 | GET    | `/api/organizations`           | User     | List all organizations          |
 | GET    | `/api/organizations/{id}`      | User     | Single org + its contacts       |
+| POST   | `/api/organizations`           | User     | Create organization             |
+| PUT    | `/api/organizations/{id}`      | User     | Update organization (partial)   |
+| DELETE | `/api/organizations/{id}`      | User     | Delete organization (nulls contact refs) |
+
+**Valid `type` values:** `vc_firm`, `cvc`, `accelerator`, `tech_company`, `university`, `hospital_system`, `consulting`, `startup`, `media`, `government`, `other`
 
 ### Interactions
 
 | Method | Endpoint                       | Auth     | Description                     |
 |--------|--------------------------------|----------|---------------------------------|
-| GET    | `/api/interactions`            | User     | List interactions (optional `?contact_id=`) |
+| GET    | `/api/interactions`            | User     | List interactions (`?contact_id=`, `?limit=`) |
+| GET    | `/api/interactions/{id}`       | User     | Single interaction              |
 | POST   | `/api/interactions`            | User     | Log new interaction (auto-updates contact's `last_contact_date`) |
+| PUT    | `/api/interactions/{id}`       | User     | Update interaction (partial)    |
+| DELETE | `/api/interactions/{id}`       | User     | Delete interaction              |
 
 ### Deals (Pipeline)
 
 | Method | Endpoint                       | Auth     | Description                     |
 |--------|--------------------------------|----------|---------------------------------|
-| GET    | `/api/deals`                   | User     | List all deals with contact/org names |
+| GET    | `/api/deals`                   | User     | List deals (`?stage=`, `?contact_id=`) |
+| GET    | `/api/deals/{id}`              | User     | Single deal with contact/org names |
 | POST   | `/api/deals`                   | User     | Create deal                     |
+| PUT    | `/api/deals/{id}`              | User     | Update deal (partial)           |
+| DELETE | `/api/deals/{id}`              | User     | Delete deal                     |
+
+**Valid `stage` values:** `identified`, `outreach`, `meeting`, `diligence`, `term_sheet`, `closed`, `passed`, `dead`
 
 ### Programs
 
 | Method | Endpoint                       | Auth     | Description                     |
 |--------|--------------------------------|----------|---------------------------------|
-| GET    | `/api/programs`                | User     | List programs/milestones        |
+| GET    | `/api/programs`                | User     | List programs (`?status=`)      |
+| GET    | `/api/programs/{id}`           | User     | Single program with org/contact names |
+| POST   | `/api/programs`                | User     | Create program                  |
+| PUT    | `/api/programs/{id}`           | User     | Update program (partial)        |
+| DELETE | `/api/programs/{id}`           | User     | Delete program                  |
+
+**Valid `status` values:** `active`, `applied`, `accepted`, `complete`, `planning`
+
+### Tags
+
+| Method | Endpoint                             | Auth     | Description                     |
+|--------|--------------------------------------|----------|---------------------------------|
+| GET    | `/api/tags`                          | User     | List all tags                   |
+| POST   | `/api/tags`                          | User     | Create tag (409 if duplicate)   |
+| DELETE | `/api/tags/{id}`                     | User     | Delete tag + remove from contacts |
+| GET    | `/api/contacts/{id}/tags`            | User     | List tags for a contact         |
+| POST   | `/api/contacts/{id}/tags/{tag_id}`   | User     | Assign tag to contact           |
+| DELETE | `/api/contacts/{id}/tags/{tag_id}`   | User     | Remove tag from contact         |
+
+### Bulk Operations
+
+| Method | Endpoint                       | Auth     | Description                     |
+|--------|--------------------------------|----------|---------------------------------|
+| PUT    | `/api/bulk/contacts`           | User     | Update multiple contacts at once |
+
+**Bulk update request:**
+```json
+{ "contact_ids": [1, 2, 3], "status": "follow_up", "category": "investor", "tier": 2 }
+```
+All fields except `contact_ids` are optional — include only the ones you want to change.
 
 ### Stats
 
@@ -249,7 +291,7 @@ Stateless HMAC-SHA256 tokens with the format: `{timestamp}.{base64_payload}.{sig
 ### CORS
 
 Origins are restricted to:
-- `https://bettermind-crm-679757168518.us-west1.run.app`
+- `https://bettermind-crm-340933752067.us-west1.run.app`
 - `https://bettermind.buzz`
 - `http://localhost:5173` (Vite dev server)
 - `http://localhost:8080` (backend direct)
@@ -267,7 +309,7 @@ Override with `ALLOWED_ORIGINS` env var (comma-separated).
 
 ### Cloud SQL (Production)
 
-- **Instance:** `number-one-ai:us-west1:bettermind-crm-db`
+- **Instance:** `bettermind-crm:us-west1:bettermind-crm-db`
 - **Engine:** PostgreSQL (via Cloud SQL Python Connector + pg8000)
 - **Connection pooling:** pool_size=5, max_overflow=2, pool_recycle=1800s
 
@@ -307,7 +349,7 @@ On first startup (empty database), the app seeds:
 
 ```bash
 chmod +x deploy.sh
-./deploy.sh number-one-ai us-west1
+./deploy.sh bettermind-crm us-west1
 ```
 
 This enables APIs, builds via Cloud Build, deploys to Cloud Run with Cloud SQL attached, and prints the live URL.
@@ -316,7 +358,7 @@ This enables APIs, builds via Cloud Build, deploys to Cloud Run with Cloud SQL a
 
 ```bash
 # 1. Set project
-gcloud config set project number-one-ai
+gcloud config set project bettermind-crm
 
 # 2. Enable APIs
 gcloud services enable run.googleapis.com cloudbuild.googleapis.com \
@@ -332,8 +374,8 @@ gcloud run deploy bettermind-crm \
   --min-instances 0 \
   --max-instances 3 \
   --port 8080 \
-  --add-cloudsql-instances number-one-ai:us-west1:bettermind-crm-db \
-  --set-env-vars "INSTANCE_CONNECTION_NAME=number-one-ai:us-west1:bettermind-crm-db,DB_USER=bettermind,DB_PASS=bettermind-crm-2026,DB_NAME=bettermind_crm,TOKEN_SECRET=<your-stable-hex-secret>"
+  --add-cloudsql-instances bettermind-crm:us-west1:bettermind-crm-db \
+  --set-env-vars "INSTANCE_CONNECTION_NAME=bettermind-crm:us-west1:bettermind-crm-db,DB_USER=bettermind,DB_PASS=bettermind-crm-2026,DB_NAME=bettermind_crm,TOKEN_SECRET=<your-stable-hex-secret>"
 
 # 4. Get URL
 gcloud run services describe bettermind-crm --region us-west1 --format='value(status.url)'
