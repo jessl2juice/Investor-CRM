@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - TOKEN_SECRET=local-dev-secret-do-not-use-in-production
+      - PORT=8080
+    # SQLite is used automatically when INSTANCE_CONNECTION_NAME is not set.
+    # No database setup required for local development.
+    volumes:
+      - app-data:/app/data
+
+volumes:
+  app-data:
