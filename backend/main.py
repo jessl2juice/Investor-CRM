@@ -5,7 +5,7 @@ Routes are organized into modules under routes/.
 """
 import logging
 import os
-from contextlib import asynccontextmanager, contextmanager
+from contextlib import asynccontextmanager
 
 import sqlalchemy
 
@@ -14,8 +14,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from database import get_engine, get_connection, init_schema, seed_data, seed_users, _hash_password, _verify_password
+from database import get_engine, init_schema, seed_data, seed_users
+from database import _hash_password as hash_password, _verify_password as verify_password
 from auth import make_token, require_auth, require_admin
+from deps import db, row_to_dict, rows_to_list
 from models import LoginRequest, UserCreate, PasswordUpdate
 
 from routes.contacts import router as contacts_router
@@ -29,8 +31,6 @@ logger = logging.getLogger(__name__)
 ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "").split(",")
 if not ALLOWED_ORIGINS or ALLOWED_ORIGINS == [""]:
     ALLOWED_ORIGINS = [
-        "https://bettermind-crm-340933752067.us-west1.run.app",
-        "https://bettermind.buzz",
         "http://localhost:5173",
         "http://localhost:8080",
     ]
@@ -63,35 +63,6 @@ app.add_middleware(
 )
 
 
-# ==================== DB HELPERS ====================
-
-@contextmanager
-def db():
-    """Database connection context manager with rollback on error."""
-    conn = get_engine().connect()
-    try:
-        yield conn
-    except HTTPException:
-        raise
-    except Exception:
-        conn.rollback()
-        raise
-    finally:
-        conn.close()
-
-
-def row_to_dict(row):
-    """Convert a SQLAlchemy row to a dict."""
-    if row is None:
-        return None
-    return dict(row._mapping)
-
-
-def rows_to_list(rows):
-    """Convert SQLAlchemy result rows to a list of dicts."""
-    return [dict(r._mapping) for r in rows]
-
-
 # ==================== AUTH ROUTES ====================
 
 @app.post("/api/login")
@@ -104,7 +75,7 @@ def login(data: LoginRequest):
         if not row:
             raise HTTPException(401, "Invalid credentials")
         user = dict(row._mapping)
-        if not _verify_password(data.password, user["password_hash"], user["password_salt"]):
+        if not verify_password(data.password, user["password_hash"], user["password_salt"]):
             raise HTTPException(401, "Invalid credentials")
         return {"token": make_token(user["email"], user["role"]), "email": user["email"], "name": user["name"], "role": user["role"]}
 
@@ -129,7 +100,7 @@ def list_users(auth=Depends(require_admin)):
 @app.post("/api/users", status_code=201)
 def create_user(data: UserCreate, auth=Depends(require_admin)):
     """Create a new user (admin only)."""
-    pw_hash, pw_salt = _hash_password(data.password)
+    pw_hash, pw_salt = hash_password(data.password)
     with db() as conn:
         existing = conn.execute(sqlalchemy.text("SELECT id FROM users WHERE email = :e"), {"e": data.email}).fetchone()
         if existing:
@@ -151,7 +122,7 @@ def update_password(user_id: int, data: PasswordUpdate, auth=Depends(require_aut
         user_dict = dict(user._mapping)
         if auth["role"] != "admin" and auth["email"] != user_dict["email"]:
             raise HTTPException(403, "Can only change your own password")
-        pw_hash, pw_salt = _hash_password(data.password)
+        pw_hash, pw_salt = hash_password(data.password)
         conn.execute(sqlalchemy.text(
             "UPDATE users SET password_hash = :h, password_salt = :s WHERE id = :uid"
         ), {"h": pw_hash, "s": pw_salt, "uid": user_id})
