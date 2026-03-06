@@ -16,7 +16,7 @@ export default function HelpModal({onClose}) {
   const renderMarkdown = (md) => {
     const lines = md.split("\n");
     const html = [];
-    let inCode = false, codeLang = "", codeLines = [];
+    let inCode = false, codeLines = [];
     let inTable = false, tableRows = [];
 
     const flush = () => {
@@ -52,7 +52,7 @@ export default function HelpModal({onClose}) {
 
     for (const line of lines) {
       if (line.startsWith("```")) {
-        if (inCode) { flush(); } else { flush(); inCode = true; codeLang = line.slice(3).trim(); }
+        if (inCode) { flush(); } else { flush(); inCode = true; }
         continue;
       }
       if (inCode) { codeLines.push(line); continue; }

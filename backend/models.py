@@ -3,7 +3,7 @@ BetterMind CRM - Pydantic Models
 Request/response models for all API endpoints.
 """
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 
 # ==================== AUTH ====================
@@ -13,6 +13,13 @@ class LoginRequest(BaseModel):
     email: str
     password: str
 
+    @field_validator("email")
+    @classmethod
+    def email_must_be_valid(cls, v):
+        if "@" not in v or "." not in v.split("@")[-1]:
+            raise ValueError("Invalid email format")
+        return v.strip().lower()
+
 
 class UserCreate(BaseModel):
     """New user registration (admin only)."""
@@ -21,10 +28,38 @@ class UserCreate(BaseModel):
     name: Optional[str] = None
     role: str = "user"
 
+    @field_validator("email")
+    @classmethod
+    def email_must_be_valid(cls, v):
+        if "@" not in v or "." not in v.split("@")[-1]:
+            raise ValueError("Invalid email format")
+        return v.strip().lower()
+
+    @field_validator("password")
+    @classmethod
+    def password_min_length(cls, v):
+        if len(v) < 8:
+            raise ValueError("Password must be at least 8 characters")
+        return v
+
+    @field_validator("role")
+    @classmethod
+    def role_must_be_valid(cls, v):
+        if v not in ("admin", "user"):
+            raise ValueError("Role must be 'admin' or 'user'")
+        return v
+
 
 class PasswordUpdate(BaseModel):
     """Password change request."""
     password: str
+
+    @field_validator("password")
+    @classmethod
+    def password_min_length(cls, v):
+        if len(v) < 8:
+            raise ValueError("Password must be at least 8 characters")
+        return v
 
 
 # ==================== CONTACTS ====================
@@ -197,3 +232,11 @@ class ProgramUpdate(BaseModel):
 class TagCreate(BaseModel):
     """Create a new tag."""
     name: str
+
+    @field_validator("name")
+    @classmethod
+    def name_must_be_valid(cls, v):
+        v = v.strip().lower().replace(" ", "-")
+        if not v:
+            raise ValueError("Tag name cannot be empty")
+        return v

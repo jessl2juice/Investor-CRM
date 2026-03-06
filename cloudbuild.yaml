@@ -1,8 +1,14 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/bettermind-crm', '.']
+    args:
+      - 'build'
+      - '-t'
+      - 'us-west1-docker.pkg.dev/$PROJECT_ID/bettermind-crm/app:$BUILD_ID'
+      - '.'
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/bettermind-crm']
+    args:
+      - 'push'
+      - 'us-west1-docker.pkg.dev/$PROJECT_ID/bettermind-crm/app:$BUILD_ID'
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
@@ -10,7 +16,7 @@ steps:
       - 'deploy'
       - 'bettermind-crm'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/bettermind-crm'
+      - 'us-west1-docker.pkg.dev/$PROJECT_ID/bettermind-crm/app:$BUILD_ID'
       - '--region'
       - 'us-west1'
       - '--allow-unauthenticated'
@@ -25,5 +31,5 @@ steps:
       - '--port'
       - '8080'
 images:
-  - 'gcr.io/$PROJECT_ID/bettermind-crm'
+  - 'us-west1-docker.pkg.dev/$PROJECT_ID/bettermind-crm/app:$BUILD_ID'
 timeout: '600s'

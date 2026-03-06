@@ -106,8 +106,8 @@ export default function App() {
         {tab === "pipeline" && (
           <div>
             <h3 style={{fontSize:18,fontWeight:700,margin:"0 0 10px"}}>💰 Fundraising Pipeline{deals.length>0?` — ${deals.length} Deal${deals.length!==1?"s":""}`:""}</h3>
-            {deals.map((d,i)=>(
-              <div key={i} onClick={()=>d.contact_id&&setSelectedId(d.contact_id)} style={{background:"#fff",borderRadius:10,border:"1px solid #e2e8f0",padding:"12px 16px",marginBottom:8,cursor:d.contact_id?"pointer":"default",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+            {deals.map(d=>(
+              <div key={d.id} onClick={()=>d.contact_id&&setSelectedId(d.contact_id)} style={{background:"#fff",borderRadius:10,border:"1px solid #e2e8f0",padding:"12px 16px",marginBottom:8,cursor:d.contact_id?"pointer":"default",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                 <div><div style={{fontWeight:700,fontSize:16}}>{d.deal_name}</div><div style={{fontSize:14,color:"#64748b"}}>{d.contact_name}{d.org_name?` · ${d.org_name}`:""}</div></div>
                 <div style={{display:"flex",gap:8,alignItems:"center"}}>
                   {d.amount&&<span style={{fontWeight:600,fontSize:15,color:"#059669"}}>{d.amount}</span>}
@@ -125,8 +125,8 @@ export default function App() {
         {tab === "programs" && (
           <div>
             <h3 style={{fontSize:18,fontWeight:700,margin:"0 0 10px"}}>🚀 Programs & Milestones</h3>
-            {programs.map((p,i)=>(
-              <div key={i} style={{background:"#fff",borderRadius:10,border:"1px solid #e2e8f0",padding:"12px 16px",marginBottom:8}}>
+            {programs.map(p=>(
+              <div key={p.id} style={{background:"#fff",borderRadius:10,border:"1px solid #e2e8f0",padding:"12px 16px",marginBottom:8}}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                   <div><div style={{fontWeight:700,fontSize:16}}>{p.name}</div><div style={{fontSize:14,color:"#64748b"}}>{p.value||""}{p.start_date?` · Since ${p.start_date}`:""}{p.contact_name?` · ${p.contact_name}`:""}</div>{p.notes&&<div style={{fontSize:14,color:"#475569",marginTop:3}}>{p.notes}</div>}</div>
                   <Badge s={p.status}/>

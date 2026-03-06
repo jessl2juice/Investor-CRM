@@ -22,7 +22,7 @@ export const Badge = ({s}) => {
 };
 
 export const Pill = ({children,active,onClick}) => (
-  <button onClick={onClick} style={{
+  <button type="button" onClick={onClick} style={{
     padding:"8px 16px",borderRadius:99,border:"1px solid",fontSize:14,fontWeight:600,transition:"all .15s",
     background:active?"#1e293b":"transparent",color:active?"#fff":"#64748b",borderColor:active?"#1e293b":"#e2e8f0",
   }}>{children}</button>

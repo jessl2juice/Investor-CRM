@@ -9,7 +9,7 @@ services:
     # SQLite is used automatically when INSTANCE_CONNECTION_NAME is not set.
     # No database setup required for local development.
     volumes:
-      - app-data:/app/data
+      - app-data:/app/backend
 
 volumes:
   app-data:

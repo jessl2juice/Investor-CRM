@@ -2,7 +2,7 @@
  * BetterMind CRM - Contact Detail Modal
  * Displays full contact info with edit mode, delete, interaction logging.
  */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { api } from "../api";
 import { Badge, CAT_ICONS, CopyBtn, InfoRow, ensureUrl, displayUrl, formatAddress } from "./ui";
 
@@ -14,23 +14,25 @@ export default function ContactDetail({id, onClose, onRefresh}) {
   const [editData, setEditData] = useState({});
   const [deleting, setDeleting] = useState(false);
 
-  const reload = () => api(`/contacts/${id}`).then(setC);
-  useEffect(() => { reload(); }, [id]);
+  const reload = useCallback(() => api(`/contacts/${id}`).then(setC).catch(console.error), [id]);
+  useEffect(() => { reload(); }, [reload]);
 
   const logInteraction = async () => {
     if (!newNote.trim()) return;
     setSaving(true);
-    await api("/interactions", {
-      method: "POST",
-      body: JSON.stringify({
-        contact_id: id, type: "note", channel: "other",
-        subject: "Manual note", summary: newNote,
-        date: new Date().toISOString().split("T")[0],
-      }),
-    });
-    setNewNote("");
-    await reload();
-    setSaving(false);
+    try {
+      await api("/interactions", {
+        method: "POST",
+        body: JSON.stringify({
+          contact_id: id, type: "note", channel: "other",
+          subject: "Manual note", summary: newNote,
+          date: new Date().toISOString().split("T")[0],
+        }),
+      });
+      setNewNote("");
+      await reload();
+    } catch (e) { console.error(e); }
+    finally { setSaving(false); }
   };
 
   const startEdit = () => {
@@ -46,20 +48,24 @@ export default function ContactDetail({id, onClose, onRefresh}) {
 
   const saveEdit = async () => {
     setSaving(true);
-    const payload = {};
-    Object.entries(editData).forEach(([k, v]) => { payload[k] = v.trim() || null; });
-    await api(`/contacts/${id}`, { method: "PUT", body: JSON.stringify(payload) });
-    await reload();
-    setEditing(false);
-    setSaving(false);
+    try {
+      const payload = {};
+      Object.entries(editData).forEach(([k, v]) => { payload[k] = v.trim() || null; });
+      await api(`/contacts/${id}`, { method: "PUT", body: JSON.stringify(payload) });
+      await reload();
+      setEditing(false);
+    } catch (e) { console.error(e); }
+    finally { setSaving(false); }
   };
 
   const handleDelete = async () => {
     if (!confirm(`Delete ${c.first_name} ${c.last_name || ""}? This cannot be undone.`)) return;
     setDeleting(true);
-    await api(`/contacts/${id}`, { method: "DELETE" });
-    onClose();
-    if (onRefresh) onRefresh();
+    try {
+      await api(`/contacts/${id}`, { method: "DELETE" });
+      onClose();
+      if (onRefresh) onRefresh();
+    } catch (e) { console.error(e); setDeleting(false); }
   };
 
   const ef = (field) => ({ value: editData[field], onChange: e => setEditData({...editData, [field]: e.target.value}) });

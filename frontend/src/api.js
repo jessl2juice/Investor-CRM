@@ -15,7 +15,7 @@ export async function api(path, opts = {}) {
     ...restOpts,
     headers: { "Content-Type": "application/json", ...customHeaders, ...(token ? { Authorization: `Bearer ${token}` } : {}) },
   });
-  if (r.status === 401) { setToken(null); window.location.reload(); throw new Error("Unauthorized"); }
+  if (r.status === 401) { if (token) { setToken(null); window.location.reload(); } throw new Error("Unauthorized"); }
   if (!r.ok) throw new Error(`API ${r.status}`);
   return r.json();
 }

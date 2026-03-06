@@ -2,9 +2,7 @@
  * BetterMind CRM - Login Screen
  */
 import { useState } from "react";
-import { setToken } from "../api";
-
-const API = "/api";
+import { api, setToken } from "../api";
 
 export default function LoginScreen({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -16,16 +14,17 @@ export default function LoginScreen({ onLogin }) {
     e.preventDefault();
     setError(""); setLoading(true);
     try {
-      const r = await fetch(`${API}/login`, {
-        method: "POST", headers: { "Content-Type": "application/json" },
+      const data = await api("/login", {
+        method: "POST",
         body: JSON.stringify({ email, password }),
       });
-      if (!r.ok) { setError("Invalid email or password"); setLoading(false); return; }
-      const data = await r.json();
       setToken(data.token);
       setLoading(false);
       onLogin(data.email, data.role);
-    } catch { setError("Connection error"); setLoading(false); }
+    } catch {
+      setError("Invalid email or password");
+      setLoading(false);
+    }
   };
 
   return (
