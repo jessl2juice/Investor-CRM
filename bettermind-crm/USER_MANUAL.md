@@ -1,6 +1,6 @@
 # BetterMind CRM — User Manual
 
-**Version:** 1.0 · **Last updated:** March 5, 2026
+**Version:** 1.1 · **Last updated:** March 6, 2026
 **Live URL:** [https://bettermind.buzz](https://bettermind.buzz)
 
 ---
@@ -86,7 +86,15 @@ On any contact tab (All, Investors, Google, Team, Advisors), you see a list of c
 - **Category icon** (💰 investor, 🔷 Google, 👤 team, 🧠 advisor, 🤝 partner, 🔧 vendor, 🎓 university, 📰 media, 📋 other)
 - **Name** and **tier badge** (T1, T2, T3, T4) if assigned
 - **Title** and **organization**
-- **Contact indicators** (✉️ has email, 📞 has phone)
+- **Contact completeness dot:**
+  - 🟢 Green = has both email and phone
+  - 🟡 Yellow = has email or phone (but not both)
+  - 🔴 Red = missing both email and phone
+- **Clickable contact icons:**
+  - ✉️ Email — click to open a new email (mailto: link)
+  - 📞 Phone — click to dial (tel: link)
+  - 🔗 LinkedIn — click to open profile in a new tab
+  - Clicking these icons does **not** open the contact detail panel
 - **Status badge** (color-coded: green = active, blue = outreach, purple = follow_up, etc.)
 - **Last contact date**
 
@@ -111,16 +119,50 @@ Below the search bar, **status pills** let you filter contacts by their current 
 
 ### Viewing a Contact
 
-Click any contact row to open the **Contact Detail** panel. This shows:
+Click any contact row to open the **Contact Detail** panel. The panel is organized into these sections:
 
+**Header:**
 - **Name**, **title**, and **organization**
-- **Status badge** and **tier**
-- **Contact info** — email, phone, LinkedIn (clickable link)
+- **Status badge**, **tier**, and **category label**
+- **Edit** button — enters edit mode for contact information (see below)
+- **Delete** button — permanently removes the contact after confirmation
+- **✕** button — closes the panel
+
+**Contact Information Card** (displayed prominently at the top):
+- **Email** and **Email (Secondary)** — clickable mailto: link + Copy button
+- **Phone** and **Phone (Secondary)** — clickable tel: link + Copy button
+- **LinkedIn** — clickable link that opens in a new tab
+- **Website** — clickable link that opens in a new tab
+- **Twitter/X** — clickable link that opens in a new tab
+- **Address** — clickable link that opens Google Maps
+- Empty fields are hidden automatically. If no contact info exists at all, a helpful message is shown
+- The **Copy** button changes to "✓ Copied" for 1.5 seconds after clicking
+
+**Pipeline & Actions:**
 - **Last contact date**
 - **Next action** — highlighted in blue if set, with optional date
-- **Notes** — free-text notes field
-- **Pipeline** — any deals associated with this contact, with deal name, amount, stage badge, and probability ring
-- **Activity Log** — chronological list of all interactions (emails, calls, meetings, notes) with date, type, subject, and summary
+
+**Notes** — free-text notes field
+
+**Deals** — any deals associated with this contact, with deal name, amount, stage badge, and probability
+
+**Activity Log** — chronological list of all interactions (emails, calls, meetings, notes) with date, type, subject, and summary
+
+### Editing Contact Information
+
+Click the **Edit** button in the contact detail header to enter edit mode on the Contact Information Card:
+
+1. All contact fields become editable input fields (email, phone, LinkedIn, website, Twitter/X)
+2. Address expands into individual fields: Address Line 1, Address Line 2, City, State, Zip, Country
+3. Click **Save** to persist changes, or **Cancel** to discard
+4. Edit mode only affects the Contact Information Card — other fields (name, status, notes, etc.) are not editable here
+
+### Deleting a Contact
+
+1. Open the contact detail panel
+2. Click the red **Delete** button in the header
+3. Confirm in the popup dialog
+4. The contact is permanently removed and the list refreshes
 
 ### Logging a Quick Note
 
@@ -132,7 +174,7 @@ At the bottom of the Contact Detail panel:
 
 ### Closing the Detail Panel
 
-Click the **✕** button in the top-right of the panel, or click the dark overlay behind it.
+Click the **✕** button in the top-right of the panel, or click the dark overlay behind it. The contact list automatically refreshes when you close the panel after edits.
 
 ---
 
@@ -437,7 +479,15 @@ All endpoints (except `/api/login`) require a Bearer token in the `Authorization
   "tier": 1,
   "next_action": "Send intro deck",
   "next_action_date": "2026-03-10",
-  "notes": "Met at TechCrunch Disrupt"
+  "notes": "Met at TechCrunch Disrupt",
+  "address_line1": "2800 Sand Hill Road",
+  "address_line2": "Suite 101",
+  "city": "Menlo Park",
+  "state": "CA",
+  "zip": "94025",
+  "country": "US",
+  "website": "https://sequoiacap.com",
+  "twitter_url": "https://twitter.com/sequoia"
 }
 ```
 
@@ -447,7 +497,10 @@ All endpoints (except `/api/login`) require a Bearer token in the `Authorization
 {
   "status": "meeting",
   "next_action": "Schedule follow-up call",
-  "next_action_date": "2026-03-15"
+  "next_action_date": "2026-03-15",
+  "website": "https://example.com",
+  "city": "San Francisco",
+  "state": "CA"
 }
 ```
 

@@ -26,6 +26,9 @@ COPY backend/ ./backend/
 # Copy built frontend from Stage 1
 COPY --from=frontend-build /app/frontend/dist ./frontend/dist
 
+# Copy user manual for in-app help
+COPY USER_MANUAL.md ./
+
 # Cloud Run sets PORT env var
 ENV PORT=8080
 

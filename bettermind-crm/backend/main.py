@@ -241,6 +241,14 @@ class ContactCreate(BaseModel):
     next_action: Optional[str] = None
     next_action_date: Optional[str] = None
     notes: Optional[str] = None
+    address_line1: Optional[str] = None
+    address_line2: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    zip: Optional[str] = None
+    country: Optional[str] = "US"
+    website: Optional[str] = None
+    twitter_url: Optional[str] = None
 
 
 class ContactUpdate(BaseModel):
@@ -261,6 +269,14 @@ class ContactUpdate(BaseModel):
     next_action: Optional[str] = None
     next_action_date: Optional[str] = None
     notes: Optional[str] = None
+    address_line1: Optional[str] = None
+    address_line2: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    zip: Optional[str] = None
+    country: Optional[str] = None
+    website: Optional[str] = None
+    twitter_url: Optional[str] = None
 
 
 class InteractionCreate(BaseModel):
@@ -424,13 +440,17 @@ def create_contact(data: ContactCreate, auth=Depends(require_auth)):
         row = conn.execute(sqlalchemy.text("""
             INSERT INTO contacts (first_name,last_name,email,email_secondary,phone,phone_secondary,
                 linkedin_url,organization_id,title,category,subcategory,status,tier,
-                last_contact_date,next_action,next_action_date,notes)
-            VALUES (:a,:b,:c,:d,:e,:f,:g,:h,:i,:j,:k,:l,:m,:n,:o,:p,:q)
+                last_contact_date,next_action,next_action_date,notes,
+                address_line1,address_line2,city,state,zip,country,website,twitter_url)
+            VALUES (:a,:b,:c,:d,:e,:f,:g,:h,:i,:j,:k,:l,:m,:n,:o,:p,:q,
+                :r,:s,:t,:u,:v,:w,:x,:y)
             RETURNING id
         """), {"a":data.first_name,"b":data.last_name,"c":data.email,"d":data.email_secondary,
               "e":data.phone,"f":data.phone_secondary,"g":data.linkedin_url,"h":data.organization_id,
               "i":data.title,"j":data.category,"k":data.subcategory,"l":data.status,"m":data.tier,
-              "n":data.last_contact_date,"o":data.next_action,"p":data.next_action_date,"q":data.notes}).fetchone()
+              "n":data.last_contact_date,"o":data.next_action,"p":data.next_action_date,"q":data.notes,
+              "r":data.address_line1,"s":data.address_line2,"t":data.city,"u":data.state,
+              "v":data.zip,"w":data.country,"x":data.website,"y":data.twitter_url}).fetchone()
         conn.commit()
         return {"id": row[0]}
 
@@ -446,6 +466,8 @@ def update_contact(contact_id: int, data: ContactUpdate, auth=Depends(require_au
             "phone", "phone_secondary", "linkedin_url",
             "organization_id", "title", "category", "subcategory", "status",
             "tier", "last_contact_date", "next_action", "next_action_date", "notes",
+            "address_line1", "address_line2", "city", "state", "zip",
+            "country", "website", "twitter_url",
         }
         updates = {k: v for k, v in data.dict(exclude_unset=True).items() if k in ALLOWED_COLUMNS}
         if not updates:
@@ -883,6 +905,17 @@ def get_stats(auth=Depends(require_auth)):
         stats["total_interactions"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM interactions")).fetchone()[0]
         stats["total_organizations"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM organizations")).fetchone()[0]
         return stats
+
+
+# ==================== HELP ====================
+
+@app.get("/api/help")
+def get_help():
+    manual_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "USER_MANUAL.md")
+    if not os.path.isfile(manual_path):
+        raise HTTPException(404, "User manual not found")
+    with open(manual_path, "r", encoding="utf-8") as f:
+        return {"content": f.read()}
 
 
 # ==================== STATIC FRONTEND ====================

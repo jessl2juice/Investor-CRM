@@ -178,6 +178,8 @@ All endpoints (except `/api/login`) require a Bearer token in the `Authorization
 | PUT    | `/api/contacts/{id}`           | User     | Update contact (partial)        |
 | DELETE | `/api/contacts/{id}`           | User     | Delete contact                  |
 
+**Contact fields:** `first_name`*, `last_name`, `email`, `email_secondary`, `phone`, `phone_secondary`, `linkedin_url`, `organization_id`, `title`, `category`*, `subcategory`, `status`*, `tier`, `last_contact_date`, `next_action`, `next_action_date`, `notes`, `address_line1`, `address_line2`, `city`, `state`, `zip`, `country` (default "US"), `website`, `twitter_url` (* = required on create)
+
 **Query parameters for GET `/api/contacts`:**
 - `category` — Filter: `investor`, `google`, `team`, `advisor`, `partner`, `vendor`, `university`, `media`, `other`
 - `status` — Filter: `active`, `diligence`, `outreach`, `follow_up`, `scheduled`, `passed`, `connected`, `recruiting`, `searching`, `contact`, `cold`
@@ -321,7 +323,7 @@ When `INSTANCE_CONNECTION_NAME` is not set, the backend automatically falls back
 
 | Table           | Description                                  |
 |-----------------|----------------------------------------------|
-| `contacts`      | People (investors, team, advisors, etc.)     |
+| `contacts`      | People (investors, team, advisors, etc.) — includes address, website, twitter fields |
 | `organizations` | Companies, firms, universities               |
 | `interactions`  | Activity log (emails, calls, meetings, notes)|
 | `deals`         | Fundraising pipeline stages                  |
@@ -423,3 +425,5 @@ Tests cover:
 - **Dual database support** — PostgreSQL in production via Cloud SQL Connector, SQLite locally. Detected at startup via `INSTANCE_CONNECTION_NAME`.
 - **Stateless auth** — HMAC tokens with embedded claims (email, role). No session store needed. 7-day TTL.
 - **PBKDF2 with legacy fallback** — new passwords use 600k-iteration PBKDF2. Old SHA-256 hashes still verify via `_verify_password()` fallback, enabling seamless migration without forcing password resets.
+- **Contact Info Card with edit mode** — the contact detail view prominently displays all contact methods (email, phone, LinkedIn, website, Twitter/X, address) with clickable actions (mailto, tel, external links, Google Maps). An inline edit mode allows updating contact info without a separate form.
+- **Migration-safe schema evolution** — new columns are added via `ALTER TABLE ADD COLUMN IF NOT EXISTS` (PostgreSQL) or `try/except` (SQLite), so existing databases are upgraded transparently on startup.

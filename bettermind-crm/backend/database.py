@@ -123,6 +123,14 @@ def init_schema(conn):
             next_action TEXT,
             next_action_date TEXT,
             notes TEXT,
+            address_line1 TEXT,
+            address_line2 TEXT,
+            city TEXT,
+            state TEXT,
+            zip TEXT,
+            country TEXT DEFAULT 'US',
+            website TEXT,
+            twitter_url TEXT,
             created_at TEXT DEFAULT (now()::text),
             updated_at TEXT DEFAULT (now()::text)
         )"""))
@@ -216,6 +224,14 @@ def init_schema(conn):
                 'email','linkedin','phone','zoom','google_meet','in_person',
                 'slack','calendly','twitter','text','teams','other'
             ))"""))
+        for col, default in [
+            ("address_line1", None), ("address_line2", None), ("city", None),
+            ("state", None), ("zip", None), ("country", "'US'"),
+            ("website", None), ("twitter_url", None),
+        ]:
+            default_clause = f" DEFAULT {default}" if default else ""
+            conn.execute(sqlalchemy.text(
+                f"ALTER TABLE contacts ADD COLUMN IF NOT EXISTS {col} TEXT{default_clause}"))
         conn.commit()
     else:
         conn.execute(sqlalchemy.text("""
@@ -251,6 +267,14 @@ def init_schema(conn):
             next_action TEXT,
             next_action_date TEXT,
             notes TEXT,
+            address_line1 TEXT,
+            address_line2 TEXT,
+            city TEXT,
+            state TEXT,
+            zip TEXT,
+            country TEXT DEFAULT 'US',
+            website TEXT,
+            twitter_url TEXT,
             created_at TEXT DEFAULT (datetime('now')),
             updated_at TEXT DEFAULT (datetime('now'))
         )"""))
@@ -325,6 +349,13 @@ def init_schema(conn):
             role TEXT DEFAULT 'user',
             created_at TEXT DEFAULT (datetime('now'))
         )"""))
+        for col in ["address_line1", "address_line2", "city", "state", "zip",
+                     "country", "website", "twitter_url"]:
+            try:
+                default = " DEFAULT 'US'" if col == "country" else ""
+                conn.execute(sqlalchemy.text(f"ALTER TABLE contacts ADD COLUMN {col} TEXT{default}"))
+            except Exception:
+                pass
         conn.commit()
 
 
