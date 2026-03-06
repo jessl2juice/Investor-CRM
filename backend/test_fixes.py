@@ -297,9 +297,9 @@ r = requests.get(f"{BASE}/contacts?status=active", headers=auth(token))
 test("Filter by status=active works", r.status_code == 200)
 test("All results are active", all(c["status"] == "active" for c in r.json()))
 
-r = requests.get(f"{BASE}/contacts?search=Niko", headers=auth(token))
-test("Search for 'Niko' works", r.status_code == 200)
-test("Search finds Niko", any("Niko" in c.get("first_name", "") for c in r.json()))
+r = requests.get(f"{BASE}/contacts?search=Marcus", headers=auth(token))
+test("Search for 'Marcus' works", r.status_code == 200)
+test("Search finds Marcus", any("Marcus" in c.get("first_name", "") for c in r.json()))
 
 
 # ============================================================
