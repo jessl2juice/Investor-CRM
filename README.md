@@ -76,12 +76,11 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the full deployment guide.
 
 ## Screenshots
 
-<!-- TODO: Add screenshots -->
-<!-- | Dashboard | Contact Detail | Pipeline |
-|-----------|---------------|----------|
-| ![](docs/screenshots/dashboard.png) | ![](docs/screenshots/contact-detail.png) | ![](docs/screenshots/pipeline.png) | -->
+| Login | Dashboard | Contact Detail | Help / User Manual |
+|-------|-----------|----------------|-------------------|
+| ![Login](docs/screenshots/CRM-login.PNG) | ![Dashboard](docs/screenshots/CRM-main.PNG) | ![Contact Detail](docs/screenshots/CRM-detail.PNG) | ![Help](docs/screenshots/CRM-help.PNG) |
 
-*Screenshots coming soon. In the meantime, check the [live demo](https://bettermind.buzz).*
+> **Live demo:** [bettermind.buzz](https://bettermind.buzz)
 
 ## Project Structure
 
