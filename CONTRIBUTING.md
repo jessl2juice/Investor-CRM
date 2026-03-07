@@ -4,7 +4,7 @@ Thanks for your interest in contributing! This project is open source and we wel
 
 ## Reporting Bugs
 
-Open a [GitHub Issue](https://github.com/jessl2juice/CRM/issues/new?template=bug_report.md) with:
+Open a [GitHub Issue](https://github.com/jessl2juice/bettermind-crm/issues/new?template=bug_report.md) with:
 
 - **Steps to reproduce** the problem
 - **Expected behavior** vs. what actually happened
@@ -13,7 +13,7 @@ Open a [GitHub Issue](https://github.com/jessl2juice/CRM/issues/new?template=bug
 
 ## Suggesting Features
 
-Open a [Feature Request](https://github.com/jessl2juice/CRM/issues/new?template=feature_request.md) with:
+Open a [Feature Request](https://github.com/jessl2juice/bettermind-crm/issues/new?template=feature_request.md) with:
 
 - **Problem** you're trying to solve
 - **Proposed solution** (even if rough)
@@ -94,4 +94,4 @@ This project follows the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.
 
 ## Questions?
 
-Open a [Discussion](https://github.com/jessl2juice/CRM/discussions) or file an issue. We're happy to help.
+Open a [Discussion](https://github.com/jessl2juice/bettermind-crm/discussions) or file an issue. We're happy to help.

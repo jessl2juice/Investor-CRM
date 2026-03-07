@@ -169,7 +169,7 @@ export default function ContactDetail({id, onClose, onRefresh}) {
         {c.interactions?.length > 0 && (
           <div style={{marginBottom:16}}>
             <div style={{fontSize:13,fontWeight:700,textTransform:"uppercase",color:"#64748b",marginBottom:6}}>Activity Log</div>
-            {c.interactions.map(ix=><div key={ix.id} style={{display:"flex",gap:10,marginBottom:6,paddingBottom:6,borderBottom:"1px solid #f1f5f9"}}><div style={{fontSize:13,color:"#94a3b8",whiteSpace:"nowrap",minWidth:72}}>{ix.date}</div><div><span style={{fontSize:13,color:"#3b82f6",fontWeight:600}}>{ix.type.replace(/_/g," ")}</span>{ix.subject&&<span style={{fontSize:13,color:"#94a3b8"}}> — {ix.subject}</span>}<div style={{fontSize:14,color:"#475569",marginTop:1}}>{ix.summary}</div></div></div>)}
+            {c.interactions.map(ix=><div key={ix.id} style={{display:"flex",gap:10,marginBottom:6,paddingBottom:6,borderBottom:"1px solid #f1f5f9"}}><div style={{fontSize:13,color:"#94a3b8",whiteSpace:"nowrap",minWidth:72}}>{ix.date}</div><div><span style={{fontSize:13,color:"#3b82f6",fontWeight:600}}>{ix.type.replace(/_/g," ")}</span>{ix.subject&&<span style={{fontSize:13,color:"#94a3b8"}}> - {ix.subject}</span>}<div style={{fontSize:14,color:"#475569",marginTop:1}}>{ix.summary}</div></div></div>)}
           </div>
         )}
 

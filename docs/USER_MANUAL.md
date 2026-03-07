@@ -1,4 +1,4 @@
-# BetterMind CRM — User Manual
+# BetterMind CRM - User Manual
 
 **Version:** 1.1 · **Last updated:** March 6, 2026
 **Live URL:** [https://bettermind.buzz](https://bettermind.buzz)
@@ -30,7 +30,7 @@
 2. Enter your **email** and **password**
 3. Click **Sign In**
 
-Your session lasts 7 days. After that you'll be prompted to sign in again.
+Your session lasts 24 hours. After that you'll be prompted to sign in again.
 
 ### First-Time Setup
 
@@ -51,11 +51,11 @@ After signing in, you'll see the main CRM interface with these elements:
 The dark header at the top shows:
 
 - **BetterMind CRM** branding with the tagline "Fundraising · Google · Team · Pipeline"
-- **Quick stats** — four key numbers at a glance:
-  - **Contacts** — total people in the CRM
-  - **Active** — investors with active status
-  - **Deals** — number of deals in the pipeline
-  - **Logs** — total interaction records
+- **Quick stats**  - four key numbers at a glance:
+  - **Contacts**  - total people in the CRM
+  - **Active**  - investors with active status
+  - **Deals**  - number of deals in the pipeline
+  - **Logs**  - total interaction records
 - **Sign Out** button
 
 ### Navigation Tabs
@@ -91,9 +91,9 @@ On any contact tab (All, Investors, Google, Team, Advisors), you see a list of c
   - 🟡 Yellow = has email or phone (but not both)
   - 🔴 Red = missing both email and phone
 - **Clickable contact icons:**
-  - ✉️ Email — click to open a new email (mailto: link)
-  - 📞 Phone — click to dial (tel: link)
-  - 🔗 LinkedIn — click to open profile in a new tab
+  - ✉️ Email  - click to open a new email (mailto: link)
+  - 📞 Phone  - click to dial (tel: link)
+  - 🔗 LinkedIn  - click to open profile in a new tab
   - Clicking these icons does **not** open the contact detail panel
 - **Status badge** (color-coded: green = active, blue = outreach, purple = follow_up, etc.)
 - **Last contact date**
@@ -108,7 +108,7 @@ Use the **search bar** at the top of the contact list. It searches across:
 - Subcategory
 - Organization name
 
-Just start typing — results filter in real time.
+Just start typing  - results filter in real time.
 
 ### Filtering by Status
 
@@ -124,29 +124,29 @@ Click any contact row to open the **Contact Detail** panel. The panel is organiz
 **Header:**
 - **Name**, **title**, and **organization**
 - **Status badge**, **tier**, and **category label**
-- **Edit** button — enters edit mode for contact information (see below)
-- **Delete** button — permanently removes the contact after confirmation
-- **✕** button — closes the panel
+- **Edit** button  - enters edit mode for contact information (see below)
+- **Delete** button  - permanently removes the contact after confirmation
+- **✕** button  - closes the panel
 
 **Contact Information Card** (displayed prominently at the top):
-- **Email** and **Email (Secondary)** — clickable mailto: link + Copy button
-- **Phone** and **Phone (Secondary)** — clickable tel: link + Copy button
-- **LinkedIn** — clickable link that opens in a new tab
-- **Website** — clickable link that opens in a new tab
-- **Twitter/X** — clickable link that opens in a new tab
-- **Address** — clickable link that opens Google Maps
+- **Email** and **Email (Secondary)**  - clickable mailto: link + Copy button
+- **Phone** and **Phone (Secondary)**  - clickable tel: link + Copy button
+- **LinkedIn**  - clickable link that opens in a new tab
+- **Website**  - clickable link that opens in a new tab
+- **Twitter/X**  - clickable link that opens in a new tab
+- **Address**  - clickable link that opens Google Maps
 - Empty fields are hidden automatically. If no contact info exists at all, a helpful message is shown
 - The **Copy** button changes to "✓ Copied" for 1.5 seconds after clicking
 
 **Pipeline & Actions:**
 - **Last contact date**
-- **Next action** — highlighted in blue if set, with optional date
+- **Next action**  - highlighted in blue if set, with optional date
 
-**Notes** — free-text notes field
+**Notes**  - free-text notes field
 
-**Deals** — any deals associated with this contact, with deal name, amount, stage badge, and probability
+**Deals**  - any deals associated with this contact, with deal name, amount, stage badge, and probability
 
-**Activity Log** — chronological list of all interactions (emails, calls, meetings, notes) with date, type, subject, and summary
+**Activity Log**  - chronological list of all interactions (emails, calls, meetings, notes) with date, type, subject, and summary
 
 ### Editing Contact Information
 
@@ -155,7 +155,7 @@ Click the **Edit** button in the contact detail header to enter edit mode on the
 1. All contact fields become editable input fields (email, phone, LinkedIn, website, Twitter/X)
 2. Address expands into individual fields: Address Line 1, Address Line 2, City, State, Zip, Country
 3. Click **Save** to persist changes, or **Cancel** to discard
-4. Edit mode only affects the Contact Information Card — other fields (name, status, notes, etc.) are not editable here
+4. Edit mode only affects the Contact Information Card  - other fields (name, status, notes, etc.) are not editable here
 
 ### Deleting a Contact
 
@@ -183,10 +183,10 @@ Click the **✕** button in the top-right of the panel, or click the dark overla
 Click the **Pipeline** tab (📊) to see the fundraising deal tracker.
 
 Each deal card shows:
-- **Deal name** (e.g., "Seed Round — Sequoia")
+- **Deal name** (e.g., "Seed Round  - Sequoia")
 - **Contact name** and **organization**
 - **Amount** (e.g., "$500K")
-- **Stage badge** — color-coded by stage:
+- **Stage badge**  - color-coded by stage:
   - `identified` → gray
   - `outreach` → blue
   - `meeting` → teal
@@ -195,7 +195,7 @@ Each deal card shows:
   - `closed` → bright green
   - `passed` → gray
   - `dead` → dark gray
-- **Probability ring** — visual indicator showing deal likelihood (0–100%)
+- **Probability ring**  - visual indicator showing deal likelihood (0–100%)
 
 Deals are sorted by probability (highest first).
 
@@ -214,8 +214,8 @@ Click the **Programs** tab (🚀) to see all programs and milestones.
 Each program card shows:
 - **Program name** (e.g., "Google for Startups Cloud Program")
 - **Value** (e.g., "$200K"), **start date**, and **primary contact**
-- **Notes** — additional context
-- **Status badge** — `active`, `applied`, `accepted`, `complete`, or `planning`
+- **Notes**  - additional context
+- **Status badge**  - `active`, `applied`, `accepted`, `complete`, or `planning`
 
 ### Managing Programs via API
 
@@ -225,7 +225,7 @@ Like deals, the web UI shows programs in read-only mode. To **create, update, or
 
 ## 6. Logging Interactions
 
-Interactions are the activity log — every email, call, meeting, LinkedIn message, or note.
+Interactions are the activity log  - every email, call, meeting, LinkedIn message, or note.
 
 ### From the Contact Detail Panel
 
@@ -341,7 +341,7 @@ See [Appendix A](#appendix-a-api-reference) for the full endpoint reference.
 
 1. Add new investor contacts via the API or future UI additions
 2. Set their status to `outreach`
-3. Log each interaction (emails, meetings) — the `last_contact_date` updates automatically
+3. Log each interaction (emails, meetings)  - the `last_contact_date` updates automatically
 4. Move status through `outreach` → `meeting` → `diligence` → `follow_up` as the relationship progresses
 5. Create a deal in the Pipeline when there's a concrete funding opportunity
 
@@ -491,7 +491,7 @@ All endpoints (except `/api/login`) require a Bearer token in the `Authorization
 }
 ```
 
-**Update contact request (partial — include only fields to change):**
+**Update contact request (partial  - include only fields to change):**
 
 ```json
 {
@@ -604,7 +604,7 @@ Creating an interaction automatically updates the contact's `last_contact_date`.
 {
   "contact_id": 5,
   "organization_id": 3,
-  "deal_name": "Seed Round — Sequoia",
+  "deal_name": "Seed Round  - Sequoia",
   "stage": "meeting",
   "amount": "$500K",
   "probability": 40,
@@ -761,7 +761,7 @@ All fields except `contact_ids` are optional. Include only the ones you want to 
 | 201 | Created (POST endpoints) |
 | 400 | Bad request (missing or invalid input) |
 | 401 | Unauthorized (missing or expired token) |
-| 403 | Forbidden (insufficient role — e.g., user trying admin endpoint) |
+| 403 | Forbidden (insufficient role  - e.g., user trying admin endpoint) |
 | 404 | Not found (resource doesn't exist) |
 | 409 | Conflict (e.g., duplicate tag name) |
 | 422 | Validation error (constraint violation, invalid enum value) |

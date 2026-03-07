@@ -20,7 +20,7 @@ def test(name, condition, detail=""):
         print(f"  ✅ {name}")
     else:
         FAIL += 1
-        print(f"  ❌ {name} — {detail}")
+        print(f"  ❌ {name}  - {detail}")
 
 
 def get_token(email=os.environ.get("TEST_EMAIL", "admin@example.com"), password=os.environ.get("TEST_PASSWORD", "changeme123!")):
@@ -120,7 +120,7 @@ r = requests.put(f"{BASE}/contacts/{contact_id}", headers=auth(token),
                  json={"status": "active"})
 test("Update allowed column (status) works", r.status_code == 200, f"status={r.status_code}")
 
-# Send empty update — should return existing
+# Send empty update  - should return existing
 r = requests.put(f"{BASE}/contacts/{contact_id}", headers=auth(token), json={})
 test("Empty update returns existing contact", r.status_code == 200 and r.json().get("id") == contact_id)
 
@@ -164,7 +164,7 @@ print("=" * 50)
 r = requests.post(f"{BASE}/interactions", headers=auth(token),
                   json={"contact_id": 99999, "type": "note", "channel": "other",
                         "subject": "test", "summary": "test", "date": "2026-02-25"})
-# SQLite may or may not enforce FK — just verify the server doesn't crash
+# SQLite may or may not enforce FK  - just verify the server doesn't crash
 test("Server handles bad FK gracefully (no crash)", r.status_code in [200, 201, 400, 404, 500],
      f"status={r.status_code}")
 

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # ============================================================
-# BetterMind CRM — Cloud Run Deploy Script
+# BetterMind CRM  - Cloud Run Deploy Script
 # ============================================================
 # Usage: ./deploy.sh [PROJECT_ID] [REGION]
 # Example: ./deploy.sh bettermind-prod us-west1
@@ -31,7 +31,7 @@ if [ -z "$PROJECT_ID" ]; then
 fi
 
 echo ""
-echo "🧠 BetterMind CRM — Deploying to Cloud Run"
+echo "🧠 BetterMind CRM  - Deploying to Cloud Run"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "  Project:  $PROJECT_ID"
 echo "  Region:   $REGION"
@@ -52,11 +52,11 @@ gcloud services enable \
 
 INSTANCE_CONN="${PROJECT_ID}:${REGION}:${CLOUD_SQL_INSTANCE}"
 
-# Deploy to Cloud Run (source-based deploy — no local Docker needed)
+# Deploy to Cloud Run (source-based deploy  - no local Docker needed)
 echo ""
 echo "🚀 Deploying to Cloud Run with Cloud SQL..."
 echo "   Instance: ${INSTANCE_CONN}"
-echo "   (This uses Cloud Build — no local Docker required)"
+echo "   (This uses Cloud Build  - no local Docker required)"
 echo ""
 
 gcloud run deploy "$SERVICE_NAME" \

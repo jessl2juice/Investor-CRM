@@ -4,13 +4,13 @@ BetterMind CRM exposes a REST API at `/api/*`. Interactive Swagger docs are avai
 
 ## Authentication
 
-All endpoints except `/api/login` and `/api/help` require a Bearer token.
+All endpoints except `/api/login` require a Bearer token.
 
 ```
 Authorization: Bearer <token>
 ```
 
-Get a token via `POST /api/login`. Tokens are valid for 7 days.
+Get a token via `POST /api/login`. Tokens are valid for 24 hours.
 
 ## Auth Endpoints
 

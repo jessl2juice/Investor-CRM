@@ -105,7 +105,7 @@ export default function App() {
         {/* Pipeline */}
         {tab === "pipeline" && (
           <div>
-            <h3 style={{fontSize:18,fontWeight:700,margin:"0 0 10px"}}>💰 Fundraising Pipeline{deals.length>0?` — ${deals.length} Deal${deals.length!==1?"s":""}`:""}</h3>
+            <h3 style={{fontSize:18,fontWeight:700,margin:"0 0 10px"}}>💰 Fundraising Pipeline{deals.length>0?` - ${deals.length} Deal${deals.length!==1?"s":""}`:""}</h3>
             {deals.map(d=>(
               <div key={d.id} onClick={()=>d.contact_id&&setSelectedId(d.contact_id)} style={{background:"#fff",borderRadius:10,border:"1px solid #e2e8f0",padding:"12px 16px",marginBottom:8,cursor:d.contact_id?"pointer":"default",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                 <div><div style={{fontWeight:700,fontSize:16}}>{d.deal_name}</div><div style={{fontSize:14,color:"#64748b"}}>{d.contact_name}{d.org_name?` · ${d.org_name}`:""}</div></div>

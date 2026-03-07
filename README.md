@@ -38,13 +38,13 @@ Fundraising is chaos. Spreadsheets break. Notion gets messy. Expensive CRMs are 
 ### Option 1: Docker (recommended)
 
 ```bash
-git clone https://github.com/jessl2juice/CRM.git
-cd CRM
+git clone https://github.com/jessl2juice/bettermind-crm.git
+cd bettermind-crm
 docker-compose up
 # Open http://localhost:8080
 ```
 
-Default login: `admin@bettermind.crm` / `admin123` (created automatically on first run with SQLite).
+Default login: `admin@example.com` / `changeme123!` (created automatically on first run with SQLite). Change this via `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD` env vars.
 
 ### Option 2: Manual Setup
 
@@ -86,27 +86,43 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the full deployment guide.
 ## Project Structure
 
 ```text
-CRM/
+bettermind-crm/
   Dockerfile              # Multi-stage build (Node + Python)
   docker-compose.yml      # Local dev with SQLite
   deploy.sh               # Cloud Run deploy script
   .env.example            # Environment variable template
   backend/
-    main.py               # FastAPI app: routes, auth, models
+    main.py               # FastAPI app entry point
     database.py            # Schema, migrations, seed data
-    requirements.txt       # Python dependencies
-    tests/                 # API and database tests
+    auth.py               # Token creation and verification
+    models.py             # Pydantic request/response models
+    deps.py               # Shared DB helpers
+    routes/               # API route modules
+      contacts.py
+      organizations.py
+      interactions.py
+      deals.py
+      programs.py
+    requirements.txt      # Python dependencies
+    test_fixes.py         # API test suite
   frontend/
     src/
-      App.jsx             # React SPA (single-file)
-      index.css            # Global styles
-      main.jsx             # Entry point
-    vite.config.js         # Vite config with API proxy
+      App.jsx             # Main React app
+      api.js              # API client with auth
+      components/         # UI components
+        ContactDetail.jsx
+        HelpModal.jsx
+        LoginScreen.jsx
+        UserManagement.jsx
+        ui.jsx
+      index.css           # Global styles
+      main.jsx            # Entry point
+    vite.config.js        # Vite config with API proxy
     package.json
   docs/
-    USER_MANUAL.md         # End-user documentation
-    API_REFERENCE.md       # Full API reference
-    DEPLOYMENT.md          # Cloud Run deployment guide
+    USER_MANUAL.md        # End-user documentation
+    API_REFERENCE.md      # Full API reference
+    DEPLOYMENT.md         # Cloud Run deployment guide
 ```
 
 ## Tech Stack
@@ -116,7 +132,7 @@ CRM/
 | **Backend** | Python 3.12, FastAPI, SQLAlchemy, Pydantic |
 | **Frontend** | React 18, Vite 6 |
 | **Database** | PostgreSQL 15 (prod), SQLite (local dev) |
-| **Auth** | HMAC token-based (stateless, 7-day TTL) |
+| **Auth** | HMAC token-based (stateless, 24-hour TTL) |
 | **Infrastructure** | Docker, Google Cloud Run, Cloud SQL |
 | **CI/CD** | Cloud Build (`cloudbuild.yaml`) |
 
@@ -183,7 +199,7 @@ See [.env.example](.env.example) for a template.
 - **Single-file frontend** (`App.jsx`): keeps the CRM simple and deployable without a complex build pipeline. All state is local React state with `useState`/`useMemo`.
 - **No ORM models**: raw SQL via `sqlalchemy.text()` for full control and transparency. Schema defined as DDL strings in `database.py`.
 - **Dual database support**: PostgreSQL in production via Cloud SQL Connector, SQLite locally. Detected at startup via `INSTANCE_CONNECTION_NAME`.
-- **Stateless auth**: HMAC tokens with embedded claims (email, role). No session store needed. 7-day TTL.
+- **Stateless auth**: HMAC tokens with embedded claims (email, role, password version). No session store needed. 24-hour TTL.
 - **Migration-safe schema evolution**: new columns added via `ALTER TABLE ADD COLUMN IF NOT EXISTS` (PostgreSQL) or `try/except` (SQLite), so existing databases upgrade transparently on startup.
 
 ## Contributing

@@ -54,7 +54,53 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Planned
 
-- Split `main.py` into route modules
-- Split `App.jsx` into React components
 - Expanded test coverage
 - GitHub Actions CI pipeline
+- Screenshot gallery in README
+
+## [1.1.1] - 2026-03-07
+
+### Security
+
+- Fix path traversal vulnerability in static file serving
+- Fix XSS in HelpModal markdown link href sanitization
+- Shorten token TTL from 7 days to 24 hours
+- Add password version claim to tokens for revocation on password change
+- Add authentication to `/api/help` endpoint
+- Add IP-based rate limiting to `/api/login` (10 attempts per 5 minutes)
+
+### Changed
+
+- Split `main.py` into modular route files (`routes/contacts.py`, `routes/organizations.py`, etc.)
+- Split `App.jsx` into React components (`ContactDetail.jsx`, `HelpModal.jsx`, `LoginScreen.jsx`, `UserManagement.jsx`, `ui.jsx`)
+- Extract shared database helpers into `deps.py`
+- Extract auth logic into `auth.py`
+- Extract Pydantic models into `models.py`
+- Harden SQL column allowlists with `frozenset` in all route files
+- Standardize INSERT parameter naming from positional to descriptive names
+- Add category and status validators to Contact models
+- Extract shared email validator function in models
+- Auto-commit in `db()` context manager on clean exit
+- Enable SQLite FK enforcement
+- Rename private hash/verify functions to public names
+- Fix `UserManagement` error messages always showing green
+- Fix array index keys in `ContactDetail` mapped lists
+- Wrap `UserManagement` loadUsers in `useCallback`
+- Use label as key for stats header in `App.jsx`
+- Add `cursor:pointer` to Pill component
+- Remove unreferenced Instrument Sans font
+- Set `package.json` `private: true`
+- Fix `cloudbuild.yaml` to pass env vars and Cloud SQL config
+- Fix `docker-compose` volume mount path
+- Add `requirements-dev.txt` for test dependencies
+- Remove all em dashes from copy
+- Update all repo URLs from `CRM` to `bettermind-crm`
+
+### Added
+
+- `DATABASE_URL` env var support for direct PostgreSQL connections (local Docker dev)
+- `.env.example` with placeholder credentials
+- `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`, `LICENSE` (MIT)
+- GitHub issue templates and PR template
+- `docs/API_REFERENCE.md` and `docs/DEPLOYMENT.md`
+- Professional README for open source / YC audience

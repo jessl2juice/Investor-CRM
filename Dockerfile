@@ -1,5 +1,5 @@
 # ============================================================
-# BetterMind CRM — Multi-stage Dockerfile
+# BetterMind CRM - Multi-stage Dockerfile
 # Stage 1: Build React frontend with Vite
 # Stage 2: Run FastAPI backend serving API + static frontend
 # ============================================================

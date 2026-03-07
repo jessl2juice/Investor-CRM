@@ -1,5 +1,5 @@
 """
-BetterMind CRM Database — Schema & Seed Data (PostgreSQL via Cloud SQL)
+BetterMind CRM Database - Schema & Seed Data (PostgreSQL via Cloud SQL)
 Run directly to initialize: python database.py
 """
 import hashlib
