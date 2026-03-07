@@ -38,8 +38,8 @@ Fundraising is chaos. Spreadsheets break. Notion gets messy. Expensive CRMs are 
 ### Option 1: Docker (recommended)
 
 ```bash
-git clone https://github.com/jessl2juice/bettermind-crm.git
-cd bettermind-crm
+git clone https://github.com/jessl2juice/Investor-CRM.git
+cd Investor-CRM
 docker-compose up
 # Open http://localhost:8080
 ```
@@ -86,7 +86,7 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the full deployment guide.
 ## Project Structure
 
 ```text
-bettermind-crm/
+Investor-CRM/
   Dockerfile              # Multi-stage build (Node + Python)
   docker-compose.yml      # Local dev with SQLite
   deploy.sh               # Cloud Run deploy script
