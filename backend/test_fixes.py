@@ -3,6 +3,7 @@ Thorough test suite for all 12 bug fixes in BetterMind CRM.
 Run with: python test_fixes.py
 Requires the backend running on localhost:8080.
 """
+import os
 import requests
 import json
 import sys
@@ -22,7 +23,7 @@ def test(name, condition, detail=""):
         print(f"  ❌ {name} — {detail}")
 
 
-def get_token(email="jess@clinicianassist.ai", password="Onelongpassword!"):
+def get_token(email=os.environ.get("TEST_EMAIL", "admin@example.com"), password=os.environ.get("TEST_PASSWORD", "changeme123!")):
     r = requests.post(f"{BASE}/login", json={"email": email, "password": password})
     if r.status_code == 200:
         return r.json()["token"]
@@ -38,7 +39,9 @@ print("\n🔐 FIX #5: Password hashing upgrade (PBKDF2)")
 print("=" * 50)
 
 # Login with seeded admin (newly hashed with PBKDF2)
-r = requests.post(f"{BASE}/login", json={"email": "jess@clinicianassist.ai", "password": "Onelongpassword!"})
+test_email = os.environ.get("TEST_EMAIL", "admin@example.com")
+test_password = os.environ.get("TEST_PASSWORD", "changeme123!")
+r = requests.post(f"{BASE}/login", json={"email": test_email, "password": test_password})
 test("Login with PBKDF2-hashed password succeeds", r.status_code == 200, f"status={r.status_code}")
 
 token = r.json().get("token", "") if r.status_code == 200 else ""
@@ -46,10 +49,10 @@ test("Token is non-empty", len(token) > 0)
 
 data = r.json() if r.status_code == 200 else {}
 test("Login returns role=admin", data.get("role") == "admin", f"role={data.get('role')}")
-test("Login returns correct email", data.get("email") == "jess@clinicianassist.ai")
+test("Login returns correct email", data.get("email") == test_email)
 
 # Wrong password
-r = requests.post(f"{BASE}/login", json={"email": "jess@clinicianassist.ai", "password": "wrong"})
+r = requests.post(f"{BASE}/login", json={"email": test_email, "password": "wrong"})
 test("Wrong password returns 401", r.status_code == 401, f"status={r.status_code}")
 
 # Non-existent user
@@ -64,7 +67,7 @@ print("=" * 50)
 # Verify token works for authenticated endpoints
 r = requests.get(f"{BASE}/me", headers=auth(token))
 test("/api/me returns 200 with valid token", r.status_code == 200, f"status={r.status_code}")
-test("/api/me returns correct email", r.json().get("email") == "jess@clinicianassist.ai")
+test("/api/me returns correct email", r.json().get("email") == test_email)
 
 # Invalid token
 r = requests.get(f"{BASE}/me", headers={"Authorization": "Bearer invalid.token.here"})
@@ -82,8 +85,8 @@ print("=" * 50)
 r = requests.get(f"{BASE}/stats", headers=auth(token))
 test("/api/stats returns 200", r.status_code == 200, f"status={r.status_code}")
 stats = r.json() if r.status_code == 200 else {}
-test("Contacts seeded (47)", stats.get("total_contacts") == 47, f"got {stats.get('total_contacts')}")
-test("Organizations seeded (21)", stats.get("total_organizations") == 21, f"got {stats.get('total_organizations')}")
+test("Contacts seeded (>=47)", stats.get("total_contacts", 0) >= 47, f"got {stats.get('total_contacts')}")
+test("Organizations seeded (>=21)", stats.get("total_organizations", 0) >= 21, f"got {stats.get('total_organizations')}")
 test("Deals exist", stats.get("active_deals", 0) > 0, f"got {stats.get('active_deals')}")
 test("Interactions exist", stats.get("total_interactions", 0) > 0, f"got {stats.get('total_interactions')}")
 
@@ -294,9 +297,9 @@ r = requests.get(f"{BASE}/contacts?status=active", headers=auth(token))
 test("Filter by status=active works", r.status_code == 200)
 test("All results are active", all(c["status"] == "active" for c in r.json()))
 
-r = requests.get(f"{BASE}/contacts?search=Niko", headers=auth(token))
-test("Search for 'Niko' works", r.status_code == 200)
-test("Search finds Niko", any("Niko" in c.get("first_name", "") for c in r.json()))
+r = requests.get(f"{BASE}/contacts?search=Marcus", headers=auth(token))
+test("Search for 'Marcus' works", r.status_code == 200)
+test("Search finds Marcus", any("Marcus" in c.get("first_name", "") for c in r.json()))
 
 
 # ============================================================

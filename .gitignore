@@ -3,8 +3,6 @@ node_modules/
 
 # Build output
 frontend/dist/
-bettermind-crm/frontend/dist/
-bettermind-crm/frontend/node_modules/
 
 # Python
 __pycache__/
@@ -20,6 +18,7 @@ venv/
 # IDE
 .vscode/
 .idea/
+.snapshots/
 
 # OS
 .DS_Store
@@ -35,3 +34,4 @@ Thumbs.db
 # Env files
 .env
 .env.local
+.env.production

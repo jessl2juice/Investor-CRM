@@ -11,10 +11,18 @@ set -euo pipefail
 PROJECT_ID="${1:-$(gcloud config get-value project 2>/dev/null)}"
 REGION="${2:-us-west1}"
 SERVICE_NAME="bettermind-crm"
-CLOUD_SQL_INSTANCE="bettermind-crm-db"
-DB_USER="bettermind"
-DB_PASS="bettermind-crm-2026"
-DB_NAME="bettermind_crm"
+CLOUD_SQL_INSTANCE="${CLOUD_SQL_INSTANCE:-bettermind-crm-db}"
+
+# Load .env file if present
+if [ -f .env ]; then
+  set -a; source .env; set +a
+fi
+
+# Database credentials (set these in .env or export before running)
+DB_USER="${DB_USER:?'DB_USER not set. Create a .env file or export DB_USER.'}"
+DB_PASS="${DB_PASS:?'DB_PASS not set. Create a .env file or export DB_PASS.'}"
+DB_NAME="${DB_NAME:?'DB_NAME not set. Create a .env file or export DB_NAME.'}"
+TOKEN_SECRET="${TOKEN_SECRET:?'TOKEN_SECRET not set. Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\"'}"
 
 if [ -z "$PROJECT_ID" ]; then
   echo "❌ No GCP project set. Usage: ./deploy.sh PROJECT_ID [REGION]"
@@ -61,7 +69,7 @@ gcloud run deploy "$SERVICE_NAME" \
   --max-instances 3 \
   --port 8080 \
   --add-cloudsql-instances "$INSTANCE_CONN" \
-  --set-env-vars "INSTANCE_CONNECTION_NAME=${INSTANCE_CONN},DB_USER=${DB_USER},DB_PASS=${DB_PASS},DB_NAME=${DB_NAME}" \
+  --set-env-vars "INSTANCE_CONNECTION_NAME=${INSTANCE_CONN},DB_USER=${DB_USER},DB_PASS=${DB_PASS},DB_NAME=${DB_NAME},TOKEN_SECRET=${TOKEN_SECRET}" \
   --quiet
 
 # Get the URL

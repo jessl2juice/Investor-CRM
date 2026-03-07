@@ -1,7 +1,14 @@
 {
   "name": "bettermind-crm-frontend",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "description": "React frontend for BetterMind CRM - investor pipeline and contact management for startups",
+  "author": "Clinician Assist Inc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jessl2juice/CRM.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
