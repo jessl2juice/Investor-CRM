@@ -30,6 +30,10 @@ steps:
       - '3'
       - '--port'
       - '8080'
+      - '--add-cloudsql-instances'
+      - '$PROJECT_ID:us-west1:$_CLOUD_SQL_INSTANCE'
+      - '--set-env-vars'
+      - 'INSTANCE_CONNECTION_NAME=$PROJECT_ID:us-west1:$_CLOUD_SQL_INSTANCE,DB_USER=$_DB_USER,DB_PASS=$_DB_PASS,DB_NAME=$_DB_NAME,TOKEN_SECRET=$_TOKEN_SECRET'
 images:
   - 'us-west1-docker.pkg.dev/$PROJECT_ID/bettermind-crm/app:$BUILD_ID'
 timeout: '600s'

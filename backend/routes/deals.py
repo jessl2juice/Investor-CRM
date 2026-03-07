@@ -14,7 +14,7 @@ from models import DealCreate, DealUpdate
 
 router = APIRouter(prefix="/api", tags=["deals"])
 
-DEAL_COLUMNS = {"contact_id", "organization_id", "deal_name", "stage", "amount", "probability", "notes"}
+DEAL_COLUMNS = frozenset({"contact_id", "organization_id", "deal_name", "stage", "amount", "probability", "notes"})
 
 
 @router.get("/deals")
@@ -45,9 +45,8 @@ def create_deal(data: DealCreate, auth=Depends(require_auth)):
     """Create a new deal in the pipeline."""
     with db() as conn:
         row = conn.execute(sqlalchemy.text("""INSERT INTO deals (contact_id,organization_id,deal_name,stage,amount,probability,notes)
-            VALUES (:a,:b,:c,:d,:e,:f,:g) RETURNING id"""),
-            {"a":data.contact_id,"b":data.organization_id,"c":data.deal_name,"d":data.stage,
-             "e":data.amount,"f":data.probability,"g":data.notes}).fetchone()
+            VALUES (:contact_id,:organization_id,:deal_name,:stage,:amount,:probability,:notes) RETURNING id"""),
+            data.model_dump()).fetchone()
         conn.commit()
         return {"id": row[0]}
 

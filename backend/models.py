@@ -6,6 +6,21 @@ from typing import Optional
 from pydantic import BaseModel, field_validator
 
 
+def _validate_email(v: str) -> str:
+    """Shared email validation: must contain @ and a dot in the domain."""
+    if "@" not in v or "." not in v.split("@")[-1]:
+        raise ValueError("Invalid email format")
+    return v.strip().lower()
+
+
+VALID_CATEGORIES = frozenset({"investor", "google", "team", "advisor", "partner", "vendor", "university", "media", "other"})
+VALID_STATUSES = frozenset({
+    "active", "diligence", "outreach", "follow_up", "scheduled", "passed",
+    "connected", "recruiting", "searching", "contact", "cold", "complete",
+    "applied", "planning", "identified", "meeting", "term_sheet", "closed", "dead",
+})
+
+
 # ==================== AUTH ====================
 
 class LoginRequest(BaseModel):
@@ -16,9 +31,7 @@ class LoginRequest(BaseModel):
     @field_validator("email")
     @classmethod
     def email_must_be_valid(cls, v):
-        if "@" not in v or "." not in v.split("@")[-1]:
-            raise ValueError("Invalid email format")
-        return v.strip().lower()
+        return _validate_email(v)
 
 
 class UserCreate(BaseModel):
@@ -31,9 +44,7 @@ class UserCreate(BaseModel):
     @field_validator("email")
     @classmethod
     def email_must_be_valid(cls, v):
-        if "@" not in v or "." not in v.split("@")[-1]:
-            raise ValueError("Invalid email format")
-        return v.strip().lower()
+        return _validate_email(v)
 
     @field_validator("password")
     @classmethod
@@ -92,6 +103,20 @@ class ContactCreate(BaseModel):
     website: Optional[str] = None
     twitter_url: Optional[str] = None
 
+    @field_validator("category")
+    @classmethod
+    def category_must_be_valid(cls, v):
+        if v not in VALID_CATEGORIES:
+            raise ValueError(f"Invalid category '{v}'. Must be one of: {', '.join(sorted(VALID_CATEGORIES))}")
+        return v
+
+    @field_validator("status")
+    @classmethod
+    def status_must_be_valid(cls, v):
+        if v not in VALID_STATUSES:
+            raise ValueError(f"Invalid status '{v}'. Must be one of: {', '.join(sorted(VALID_STATUSES))}")
+        return v
+
 
 class ContactUpdate(BaseModel):
     """Partial update for an existing contact. Include only fields to change."""
@@ -121,6 +146,20 @@ class ContactUpdate(BaseModel):
     website: Optional[str] = None
     twitter_url: Optional[str] = None
 
+    @field_validator("category")
+    @classmethod
+    def category_must_be_valid(cls, v):
+        if v is not None and v not in VALID_CATEGORIES:
+            raise ValueError(f"Invalid category '{v}'. Must be one of: {', '.join(sorted(VALID_CATEGORIES))}")
+        return v
+
+    @field_validator("status")
+    @classmethod
+    def status_must_be_valid(cls, v):
+        if v is not None and v not in VALID_STATUSES:
+            raise ValueError(f"Invalid status '{v}'. Must be one of: {', '.join(sorted(VALID_STATUSES))}")
+        return v
+
 
 class BulkContactUpdate(BaseModel):
     """Bulk update multiple contacts at once."""
@@ -128,6 +167,20 @@ class BulkContactUpdate(BaseModel):
     status: Optional[str] = None
     category: Optional[str] = None
     tier: Optional[int] = None
+
+    @field_validator("category")
+    @classmethod
+    def category_must_be_valid(cls, v):
+        if v is not None and v not in VALID_CATEGORIES:
+            raise ValueError(f"Invalid category '{v}'. Must be one of: {', '.join(sorted(VALID_CATEGORIES))}")
+        return v
+
+    @field_validator("status")
+    @classmethod
+    def status_must_be_valid(cls, v):
+        if v is not None and v not in VALID_STATUSES:
+            raise ValueError(f"Invalid status '{v}'. Must be one of: {', '.join(sorted(VALID_STATUSES))}")
+        return v
 
 
 # ==================== ORGANIZATIONS ====================

@@ -13,7 +13,7 @@ from models import ProgramCreate, ProgramUpdate
 
 router = APIRouter(prefix="/api", tags=["programs"])
 
-PROGRAM_COLUMNS = {"name", "organization_id", "status", "start_date", "end_date", "value", "primary_contact_id", "notes"}
+PROGRAM_COLUMNS = frozenset({"name", "organization_id", "status", "start_date", "end_date", "value", "primary_contact_id", "notes"})
 
 
 @router.get("/programs")

@@ -74,8 +74,8 @@ export default function App() {
             <p style={{margin:"2px 0 0",fontSize:13,color:"#94a3b8"}}>Fundraising · Google · Team · Pipeline</p>
           </div>
           <div style={{display:"flex",gap:16,alignItems:"center"}}>
-            {[["📋",stats.total_contacts,"Contacts"],["💰",stats.active_investors,"Active"],["📊",stats.active_deals,"Deals"],["🔗",stats.total_interactions,"Logs"]].map(([icon,val,label],i)=>(
-              <div key={i} style={{textAlign:"center"}}><div style={{fontSize:18,fontWeight:700,color:"#f8fafc"}}>{icon} {val}</div><div style={{fontSize:12,color:"#64748b"}}>{label}</div></div>
+            {[["📋",stats.total_contacts,"Contacts"],["💰",stats.active_investors,"Active"],["📊",stats.active_deals,"Deals"],["🔗",stats.total_interactions,"Logs"]].map(([icon,val,label])=>(
+              <div key={label} style={{textAlign:"center"}}><div style={{fontSize:18,fontWeight:700,color:"#f8fafc"}}>{icon} {val}</div><div style={{fontSize:12,color:"#64748b"}}>{label}</div></div>
             ))}
             <button onClick={()=>setShowHelp(true)} style={{marginLeft:8,padding:"4px 10px",borderRadius:6,border:"1px solid rgba(255,255,255,.2)",background:"transparent",color:"#94a3b8",fontSize:13,fontWeight:600,whiteSpace:"nowrap"}}>❓ Help</button>
             <button onClick={logout} style={{padding:"4px 10px",borderRadius:6,border:"1px solid rgba(255,255,255,.2)",background:"transparent",color:"#94a3b8",fontSize:13,fontWeight:600,whiteSpace:"nowrap"}}>Sign Out</button>

@@ -11,10 +11,10 @@ from models import OrganizationCreate, OrganizationUpdate
 
 router = APIRouter(prefix="/api", tags=["organizations"])
 
-ORG_COLUMNS = {
+ORG_COLUMNS = frozenset({
     "name", "type", "website", "phone", "city", "state",
     "focus_areas", "notes",
-}
+})
 
 
 @router.get("/organizations")

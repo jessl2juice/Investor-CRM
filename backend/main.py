@@ -3,30 +3,32 @@ BetterMind CRM - FastAPI Backend
 Serves REST API + static React frontend.
 Routes are organized into modules under routes/.
 """
-import logging
 import os
+import time
+from collections import defaultdict
 from contextlib import asynccontextmanager
 
 import sqlalchemy
 
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from database import get_engine, init_schema, seed_data, seed_users
-from database import _hash_password as hash_password, _verify_password as verify_password
+from database import get_engine, init_schema, seed_data, seed_users, USE_POSTGRES
+from database import hash_password, verify_password
 from auth import make_token, require_auth, require_admin
 from deps import db, row_to_dict, rows_to_list
 from models import LoginRequest, UserCreate, PasswordUpdate
-
 from routes.contacts import router as contacts_router
 from routes.organizations import router as organizations_router
 from routes.interactions import router as interactions_router
 from routes.deals import router as deals_router
 from routes.programs import router as programs_router
 
-logger = logging.getLogger(__name__)
+_login_attempts: dict[str, list[float]] = defaultdict(list)
+LOGIN_RATE_LIMIT = 10
+LOGIN_RATE_WINDOW = 300
 
 ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "").split(",")
 if not ALLOWED_ORIGINS or ALLOWED_ORIGINS == [""]:
@@ -66,8 +68,14 @@ app.add_middleware(
 # ==================== AUTH ROUTES ====================
 
 @app.post("/api/login")
-def login(data: LoginRequest):
+def login(data: LoginRequest, request: Request):
     """Authenticate with email/password and receive a token."""
+    client_ip = request.client.host if request.client else "unknown"
+    now = time.time()
+    _login_attempts[client_ip] = [t for t in _login_attempts[client_ip] if now - t < LOGIN_RATE_WINDOW]
+    if len(_login_attempts[client_ip]) >= LOGIN_RATE_LIMIT:
+        raise HTTPException(429, "Too many login attempts. Try again later.")
+    _login_attempts[client_ip].append(now)
     with db() as conn:
         row = conn.execute(sqlalchemy.text(
             "SELECT id, email, password_hash, password_salt, name, role FROM users WHERE email = :e"
@@ -160,21 +168,35 @@ def get_stats(auth=Depends(require_auth)):
     """Dashboard statistics: counts by category, status, pipeline, etc."""
     with db() as conn:
         stats = {}
-        stats["total_contacts"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM contacts")).fetchone()[0]
+        if USE_POSTGRES:
+            cs = conn.execute(sqlalchemy.text("""
+                SELECT
+                    COUNT(*) AS total,
+                    COUNT(*) FILTER (WHERE category = 'investor' AND status NOT IN ('passed','cold')) AS active_investors
+                FROM contacts
+            """)).fetchone()
+            stats["total_contacts"] = cs[0]
+            stats["active_investors"] = cs[1]
+        else:
+            stats["total_contacts"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM contacts")).fetchone()[0]
+            stats["active_investors"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM contacts WHERE category='investor' AND status NOT IN ('passed','cold')")).fetchone()[0]
         stats["by_category"] = {r[0]: r[1] for r in conn.execute(sqlalchemy.text("SELECT category, COUNT(*) FROM contacts GROUP BY category")).fetchall()}
         stats["by_status"] = {r[0]: r[1] for r in conn.execute(sqlalchemy.text("SELECT status, COUNT(*) FROM contacts GROUP BY status")).fetchall()}
-        stats["active_investors"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM contacts WHERE category='investor' AND status NOT IN ('passed','cold')")).fetchone()[0]
-        stats["pipeline_probability"] = conn.execute(sqlalchemy.text("SELECT SUM(probability) FROM deals")).fetchone()[0] or 0
-        stats["active_deals"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM deals WHERE stage NOT IN ('passed','dead','closed')")).fetchone()[0]
-        stats["total_interactions"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM interactions")).fetchone()[0]
-        stats["total_organizations"] = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM organizations")).fetchone()[0]
+        agg = conn.execute(sqlalchemy.text("""
+            SELECT
+                (SELECT COALESCE(SUM(probability),0) FROM deals) AS pipeline_probability,
+                (SELECT COUNT(*) FROM deals WHERE stage NOT IN ('passed','dead','closed')) AS active_deals,
+                (SELECT COUNT(*) FROM interactions) AS total_interactions,
+                (SELECT COUNT(*) FROM organizations) AS total_organizations
+        """)).fetchone()
+        stats.update(dict(agg._mapping))
         return stats
 
 
 # ==================== HELP ====================
 
 @app.get("/api/help")
-def get_help():
+def get_help(auth=Depends(require_auth)):
     """Return the user manual content for the in-app help viewer."""
     manual_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "docs", "USER_MANUAL.md")
     if not os.path.isfile(manual_path):
@@ -194,8 +216,11 @@ if os.path.isdir(FRONTEND_DIR):
     def serve_frontend(full_path: str):
         """Serve the React SPA. Serves static files if they exist, otherwise index.html."""
         file_path = os.path.join(FRONTEND_DIR, full_path)
-        if os.path.isfile(file_path):
-            return FileResponse(file_path)
+        resolved = os.path.realpath(file_path)
+        if not resolved.startswith(os.path.realpath(FRONTEND_DIR)):
+            return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+        if os.path.isfile(resolved):
+            return FileResponse(resolved)
         return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
 
 

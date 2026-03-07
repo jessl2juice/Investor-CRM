@@ -14,14 +14,14 @@ from models import ContactCreate, ContactUpdate, BulkContactUpdate, TagCreate
 
 router = APIRouter(prefix="/api", tags=["contacts"])
 
-CONTACT_COLUMNS = {
+CONTACT_COLUMNS = frozenset({
     "first_name", "last_name", "email", "email_secondary",
     "phone", "phone_secondary", "linkedin_url",
     "organization_id", "title", "category", "subcategory", "status",
     "tier", "last_contact_date", "next_action", "next_action_date", "notes",
     "address_line1", "address_line2", "city", "state", "zip",
     "country", "website", "twitter_url",
-}
+})
 
 
 @router.get("/contacts")
@@ -96,15 +96,12 @@ def create_contact(data: ContactCreate, auth=Depends(require_auth)):
                 linkedin_url,organization_id,title,category,subcategory,status,tier,
                 last_contact_date,next_action,next_action_date,notes,
                 address_line1,address_line2,city,state,zip,country,website,twitter_url)
-            VALUES (:a,:b,:c,:d,:e,:f,:g,:h,:i,:j,:k,:l,:m,:n,:o,:p,:q,
-                :r,:s,:t,:u,:v,:w,:x,:y)
+            VALUES (:first_name,:last_name,:email,:email_secondary,:phone,:phone_secondary,
+                :linkedin_url,:organization_id,:title,:category,:subcategory,:status,:tier,
+                :last_contact_date,:next_action,:next_action_date,:notes,
+                :address_line1,:address_line2,:city,:state,:zip,:country,:website,:twitter_url)
             RETURNING id
-        """), {"a":data.first_name,"b":data.last_name,"c":data.email,"d":data.email_secondary,
-              "e":data.phone,"f":data.phone_secondary,"g":data.linkedin_url,"h":data.organization_id,
-              "i":data.title,"j":data.category,"k":data.subcategory,"l":data.status,"m":data.tier,
-              "n":data.last_contact_date,"o":data.next_action,"p":data.next_action_date,"q":data.notes,
-              "r":data.address_line1,"s":data.address_line2,"t":data.city,"u":data.state,
-              "v":data.zip,"w":data.country,"x":data.website,"y":data.twitter_url}).fetchone()
+        """), data.model_dump()).fetchone()
         conn.commit()
         return {"id": row[0]}
 

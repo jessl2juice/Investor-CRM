@@ -15,11 +15,12 @@ INSTANCE_CONNECTION_NAME = os.environ.get("INSTANCE_CONNECTION_NAME", "")
 DB_USER = os.environ.get("DB_USER", "")
 DB_PASS = os.environ.get("DB_PASS", "")
 DB_NAME = os.environ.get("DB_NAME", "")
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
 
 # For local dev fallback to SQLite
-USE_POSTGRES = bool(INSTANCE_CONNECTION_NAME)
+USE_POSTGRES = bool(INSTANCE_CONNECTION_NAME) or bool(DATABASE_URL)
 
-if USE_POSTGRES:
+if INSTANCE_CONNECTION_NAME:
     from google.cloud.sql.connector import Connector
 
 _connector = None
@@ -69,8 +70,24 @@ def _get_sqlite_engine():
     return _engine
 
 
+def _get_direct_pg_engine():
+    global _engine
+    if _engine is not None:
+        return _engine
+    _engine = sqlalchemy.create_engine(
+        DATABASE_URL,
+        pool_size=5,
+        max_overflow=2,
+        pool_timeout=30,
+        pool_recycle=1800,
+    )
+    return _engine
+
+
 def get_engine():
-    if USE_POSTGRES:
+    if DATABASE_URL:
+        return _get_direct_pg_engine()
+    if INSTANCE_CONNECTION_NAME:
         return _get_pg_engine()
     return _get_sqlite_engine()
 
@@ -359,14 +376,14 @@ def init_schema(conn):
         conn.commit()
 
 
-def _hash_password(password, salt=None):
+def hash_password(password, salt=None):
     if salt is None:
         salt = secrets.token_hex(16)
     h = hashlib.pbkdf2_hmac("sha256", password.encode(), salt.encode(), iterations=600_000).hex()
     return h, salt
 
 
-def _verify_password(password, stored_hash, salt):
+def verify_password(password, stored_hash, salt):
     """Verify password against stored hash. Supports both legacy SHA-256 and new PBKDF2."""
     # Try new PBKDF2 format first
     pbkdf2_hash = hashlib.pbkdf2_hmac("sha256", password.encode(), salt.encode(), iterations=600_000).hex()
@@ -553,7 +570,7 @@ def seed_users(conn):
     default_pw = os.environ.get("SEED_ADMIN_PASSWORD", "changeme123!")
     seed_email = os.environ.get("SEED_ADMIN_EMAIL", "admin@example.com")
     seed_name = os.environ.get("SEED_ADMIN_NAME", "Admin User")
-    pw_hash, pw_salt = _hash_password(default_pw)
+    pw_hash, pw_salt = hash_password(default_pw)
     conn.execute(sqlalchemy.text(
         "INSERT INTO users (email, password_hash, password_salt, name, role) VALUES (:e, :h, :s, :n, :r)"
     ), {"e": seed_email, "h": pw_hash, "s": pw_salt, "n": seed_name, "r": "admin"})

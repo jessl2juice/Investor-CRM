@@ -11,11 +11,13 @@ from database import get_engine
 
 @contextmanager
 def db():
-    """Database connection context manager with rollback on error."""
+    """Database connection context manager with auto-commit and rollback on error."""
     conn = get_engine().connect()
     try:
         yield conn
+        conn.commit()
     except HTTPException:
+        conn.rollback()
         raise
     except Exception:
         conn.rollback()

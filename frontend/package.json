@@ -1,6 +1,6 @@
 {
   "name": "bettermind-crm-frontend",
-  "private": false,
+  "private": true,
   "version": "1.1.0",
   "description": "React frontend for BetterMind CRM - investor pipeline and contact management for startups",
   "author": "Clinician Assist Inc.",

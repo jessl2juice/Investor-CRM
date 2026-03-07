@@ -47,7 +47,10 @@ export default function HelpModal({onClose}) {
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.+?)\*/g, '<em>$1</em>')
         .replace(/`([^`]+)`/g, '<code style="background:#f1f5f9;padding:1px 5px;border-radius:4px;font-size:13px;color:#dc2626">$1</code>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:#2563eb">$1</a>');
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
+          const safeUrl = /^https?:\/\//i.test(url) ? url : '#';
+          return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb">${label}</a>`;
+        });
     };
 
     for (const line of lines) {
@@ -67,7 +70,7 @@ export default function HelpModal({onClose}) {
       else if (line.startsWith("## ")) { flush(); html.push(`<h2 style="font-size:20px;font-weight:700;margin:20px 0 6px;color:#0f172a">${inline(line.slice(3))}</h2>`); }
       else if (line.startsWith("### ")) { flush(); html.push(`<h3 style="font-size:17px;font-weight:700;margin:16px 0 4px;color:#1e293b">${inline(line.slice(4))}</h3>`); }
       else if (line.startsWith("---")) { html.push('<hr style="border:none;border-top:1px solid #e2e8f0;margin:16px 0"/>'); }
-      else if (line.match(/^\d+\.\s/)) { html.push(`<div style="margin:2px 0 2px 20px;font-size:15px;color:#334155">${inline(line.replace(/^\d+\.\s/, '<span style="color:#64748b;font-weight:600;margin-right:4px">$&</span>'))}</div>`); }
+      else if (line.match(/^\d+\.\s/)) { const num = line.match(/^(\d+\.)\s/)[1]; html.push(`<div style="margin:2px 0 2px 20px;font-size:15px;color:#334155"><span style="color:#64748b;font-weight:600;margin-right:4px">${num} </span>${inline(line.replace(/^\d+\.\s/, ''))}</div>`); }
       else if (line.match(/^\s*-\s/)) {
         const indent = line.match(/^(\s*)/)[1].length;
         html.push(`<div style="margin:2px 0 2px ${16 + indent * 8}px;font-size:15px;color:#334155">${"\u2022"} ${inline(line.replace(/^\s*-\s/, ''))}</div>`);

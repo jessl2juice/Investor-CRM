@@ -2,7 +2,7 @@
  * BetterMind CRM - User Management (Admin)
  * CRUD for user accounts, password changes.
  */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { api } from "../api";
 
 export default function UserManagement() {
@@ -15,11 +15,12 @@ export default function UserManagement() {
   const [changePw, setChangePw] = useState(null);
   const [changePwVal, setChangePwVal] = useState("");
   const [msg, setMsg] = useState("");
+  const [msgIsError, setMsgIsError] = useState(false);
 
-  const loadUsers = async () => {
+  const loadUsers = useCallback(async () => {
     try { setUsers(await api("/users")); } catch (e) { console.error(e); }
-  };
-  useEffect(() => { loadUsers(); }, []);
+  }, []);
+  useEffect(() => { loadUsers(); }, [loadUsers]);
 
   const addUser = async (e) => {
     e.preventDefault();
@@ -28,8 +29,8 @@ export default function UserManagement() {
       await api("/users", { method: "POST", body: JSON.stringify({ email: newEmail, password: newPassword, name: newName, role: newRole }) });
       setNewEmail(""); setNewName(""); setNewPassword(""); setNewRole("user"); setShowAdd(false);
       loadUsers();
-      setMsg("User added");
-    } catch (err) { setMsg(err.message || "Error adding user"); }
+      setMsg("User added"); setMsgIsError(false);
+    } catch (err) { setMsg(err.message || "Error adding user"); setMsgIsError(true); }
   };
 
   const updatePw = async (uid) => {
@@ -37,8 +38,8 @@ export default function UserManagement() {
     try {
       await api(`/users/${uid}/password`, { method: "PUT", body: JSON.stringify({ password: changePwVal }) });
       setChangePw(null); setChangePwVal("");
-      setMsg("Password updated");
-    } catch (err) { setMsg(err.message || "Error"); }
+      setMsg("Password updated"); setMsgIsError(false);
+    } catch (err) { setMsg(err.message || "Error"); setMsgIsError(true); }
   };
 
   const deleteUser = async (uid, email) => {
@@ -47,8 +48,8 @@ export default function UserManagement() {
     try {
       await api(`/users/${uid}`, { method: "DELETE" });
       loadUsers();
-      setMsg("User deleted");
-    } catch (err) { setMsg(err.message || "Error"); }
+      setMsg("User deleted"); setMsgIsError(false);
+    } catch (err) { setMsg(err.message || "Error"); setMsgIsError(true); }
   };
 
   return (
@@ -59,7 +60,7 @@ export default function UserManagement() {
           {showAdd ? "Cancel" : "+ Add User"}
         </button>
       </div>
-      {msg && <div style={{background:"#f0fdf4",color:"#166534",padding:"8px 14px",borderRadius:8,fontSize:14,marginBottom:12}}>{msg}</div>}
+      {msg && <div style={{background:msgIsError?"#fef2f2":"#f0fdf4",color:msgIsError?"#991b1b":"#166534",padding:"8px 14px",borderRadius:8,fontSize:14,marginBottom:12}}>{msg}</div>}
 
       {showAdd && (
         <form onSubmit={addUser} style={{background:"#f8fafc",borderRadius:10,padding:16,marginBottom:14,border:"1px solid #e2e8f0"}}>

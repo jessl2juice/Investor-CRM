@@ -21,13 +21,13 @@ if not _configured_secret:
     _configured_secret = secrets.token_hex(32)
 
 TOKEN_SECRET = _configured_secret
-TOKEN_TTL = 86400 * 7  # 7 days
+TOKEN_TTL = 86400  # 24 hours
 
 
-def make_token(email: str, role: str = "user") -> str:
+def make_token(email: str, role: str = "user", pw_version: int = 0) -> str:
     """Create a signed HMAC token with embedded claims."""
     ts = str(int(time.time()))
-    payload = base64.b64encode(json.dumps({"email": email, "role": role}).encode()).decode()
+    payload = base64.b64encode(json.dumps({"email": email, "role": role, "pw_version": pw_version}).encode()).decode()
     msg = f"{ts}.{payload}"
     sig = hmac.new(TOKEN_SECRET.encode(), msg.encode(), hashlib.sha256).hexdigest()
     return f"{ts}.{payload}.{sig}"

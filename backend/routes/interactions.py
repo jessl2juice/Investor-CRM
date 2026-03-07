@@ -14,7 +14,7 @@ from models import InteractionCreate, InteractionUpdate
 
 router = APIRouter(prefix="/api", tags=["interactions"])
 
-INTERACTION_COLUMNS = {"type", "channel", "subject", "summary", "date"}
+INTERACTION_COLUMNS = frozenset({"type", "channel", "subject", "summary", "date"})
 
 
 @router.get("/interactions")
@@ -41,8 +41,8 @@ def create_interaction(data: InteractionCreate, auth=Depends(require_auth)):
             raise HTTPException(404, f"Contact {data.contact_id} not found")
         try:
             row = conn.execute(sqlalchemy.text("""INSERT INTO interactions (contact_id,type,channel,subject,summary,date)
-                VALUES (:a,:b,:c,:d,:e,:f) RETURNING id"""),
-                {"a":data.contact_id,"b":data.type,"c":data.channel,"d":data.subject,"e":data.summary,"f":data.date}).fetchone()
+                VALUES (:contact_id,:type,:channel,:subject,:summary,:date) RETURNING id"""),
+                data.model_dump()).fetchone()
             conn.execute(sqlalchemy.text("UPDATE contacts SET last_contact_date = :dt, updated_at = :ua WHERE id = :cid"),
                          {"dt":data.date,"ua":datetime.now().isoformat(),"cid":data.contact_id})
             conn.commit()

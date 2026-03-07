@@ -161,7 +161,7 @@ export default function ContactDetail({id, onClose, onRefresh}) {
         {c.deals?.length > 0 && (
           <div style={{marginBottom:16}}>
             <div style={{fontSize:13,fontWeight:700,textTransform:"uppercase",color:"#64748b",marginBottom:6}}>Deals</div>
-            {c.deals.map((d,i)=><div key={i} style={{background:"#fefce8",borderRadius:8,padding:10,marginBottom:4,display:"flex",justifyContent:"space-between",alignItems:"center"}}><div><span style={{fontWeight:600,fontSize:15}}>{d.deal_name}</span>{d.amount&&<span style={{color:"#64748b",fontSize:14,marginLeft:8}}>{d.amount}</span>}</div><div style={{display:"flex",gap:6}}><Badge s={d.stage}/><span style={{fontSize:13,color:"#94a3b8"}}>{d.probability}%</span></div></div>)}
+            {c.deals.map(d=><div key={d.id} style={{background:"#fefce8",borderRadius:8,padding:10,marginBottom:4,display:"flex",justifyContent:"space-between",alignItems:"center"}}><div><span style={{fontWeight:600,fontSize:15}}>{d.deal_name}</span>{d.amount&&<span style={{color:"#64748b",fontSize:14,marginLeft:8}}>{d.amount}</span>}</div><div style={{display:"flex",gap:6}}><Badge s={d.stage}/><span style={{fontSize:13,color:"#94a3b8"}}>{d.probability}%</span></div></div>)}
           </div>
         )}
 
@@ -169,7 +169,7 @@ export default function ContactDetail({id, onClose, onRefresh}) {
         {c.interactions?.length > 0 && (
           <div style={{marginBottom:16}}>
             <div style={{fontSize:13,fontWeight:700,textTransform:"uppercase",color:"#64748b",marginBottom:6}}>Activity Log</div>
-            {c.interactions.map((int,i)=><div key={i} style={{display:"flex",gap:10,marginBottom:6,paddingBottom:6,borderBottom:"1px solid #f1f5f9"}}><div style={{fontSize:13,color:"#94a3b8",whiteSpace:"nowrap",minWidth:72}}>{int.date}</div><div><span style={{fontSize:13,color:"#3b82f6",fontWeight:600}}>{int.type.replace(/_/g," ")}</span>{int.subject&&<span style={{fontSize:13,color:"#94a3b8"}}> — {int.subject}</span>}<div style={{fontSize:14,color:"#475569",marginTop:1}}>{int.summary}</div></div></div>)}
+            {c.interactions.map(ix=><div key={ix.id} style={{display:"flex",gap:10,marginBottom:6,paddingBottom:6,borderBottom:"1px solid #f1f5f9"}}><div style={{fontSize:13,color:"#94a3b8",whiteSpace:"nowrap",minWidth:72}}>{ix.date}</div><div><span style={{fontSize:13,color:"#3b82f6",fontWeight:600}}>{ix.type.replace(/_/g," ")}</span>{ix.subject&&<span style={{fontSize:13,color:"#94a3b8"}}> — {ix.subject}</span>}<div style={{fontSize:14,color:"#475569",marginTop:1}}>{ix.summary}</div></div></div>)}
           </div>
         )}
 

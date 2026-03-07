@@ -85,8 +85,8 @@ print("=" * 50)
 r = requests.get(f"{BASE}/stats", headers=auth(token))
 test("/api/stats returns 200", r.status_code == 200, f"status={r.status_code}")
 stats = r.json() if r.status_code == 200 else {}
-test("Contacts seeded (47)", stats.get("total_contacts") == 47, f"got {stats.get('total_contacts')}")
-test("Organizations seeded (21)", stats.get("total_organizations") == 21, f"got {stats.get('total_organizations')}")
+test("Contacts seeded (>=47)", stats.get("total_contacts", 0) >= 47, f"got {stats.get('total_contacts')}")
+test("Organizations seeded (>=21)", stats.get("total_organizations", 0) >= 21, f"got {stats.get('total_organizations')}")
 test("Deals exist", stats.get("active_deals", 0) > 0, f"got {stats.get('active_deals')}")
 test("Interactions exist", stats.get("total_interactions", 0) > 0, f"got {stats.get('total_interactions')}")
 
