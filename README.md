@@ -168,11 +168,13 @@ Investor-CRM/
 +----------------------------------------------+
 ```
 
-**Key details:**
-- **Cloudflare Tunnel** runs as a Windows service (`cloudflared`), auto-starts on boot
-- **Docker containers** restart automatically (`restart: unless-stopped`)
-- **PostgreSQL data** persists in a Docker named volume (`pgdata`)
+**Survives a reboot — everything auto-starts:**
+
+- **Docker Desktop** starts on login (Settings → General → "Start Docker Desktop when you sign in")
+- **PostgreSQL + App containers** restart automatically (`restart: unless-stopped`)
+- **Cloudflare Tunnel** runs as a Windows service (`cloudflared`, StartType: Automatic)
 - **SSL certificates** are provisioned and renewed by Cloudflare automatically
+- **PostgreSQL data** persists in a Docker named volume (`pgdata`)
 - **Monthly cost: $0** — Cloudflare free tier + Docker Desktop
 
 ## API Documentation
