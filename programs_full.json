@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Google for Startups Cloud Program",
+    "organization_id": 12,
+    "status": "active",
+    "start_date": "2025-07-24",
+    "end_date": "2027-07-24",
+    "value": "$2,000 credits Year 1",
+    "primary_contact_id": 24,
+    "notes": "2-year program. Trillo consulting partner.",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 2,
+    "name": "Y Combinator Spring 2026",
+    "organization_id": null,
+    "status": "applied",
+    "start_date": "2026-01-01",
+    "end_date": null,
+    "value": null,
+    "primary_contact_id": null,
+    "notes": "Full-stack clinical service positioning.",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 3,
+    "name": "Seed Round ($2.5M)",
+    "organization_id": 15,
+    "status": "active",
+    "start_date": "2026-01-01",
+    "end_date": null,
+    "value": "$2.5M target",
+    "primary_contact_id": null,
+    "notes": "9 Tier 1 VCs week 1. SF trip Feb 17-21.",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 4,
+    "name": "CaiT Certification",
+    "organization_id": 15,
+    "status": "complete",
+    "start_date": "2025-01-01",
+    "end_date": "2025-12-31",
+    "value": "107K safety tests",
+    "primary_contact_id": null,
+    "notes": "APA ethics aligned.",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 5,
+    "name": "SCU Campus Pilot",
+    "organization_id": 16,
+    "status": "planning",
+    "start_date": null,
+    "end_date": null,
+    "value": null,
+    "primary_contact_id": null,
+    "notes": "First campus. Brush Your Brain.",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 6,
+    "name": "Stanford Campus Pilot",
+    "organization_id": 17,
+    "status": "planning",
+    "start_date": null,
+    "end_date": null,
+    "value": null,
+    "primary_contact_id": null,
+    "notes": null,
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 7,
+    "name": "Berkeley Campus Pilot",
+    "organization_id": 18,
+    "status": "planning",
+    "start_date": null,
+    "end_date": null,
+    "value": null,
+    "primary_contact_id": null,
+    "notes": "Chris Wang WDB partnership.",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  }
+]

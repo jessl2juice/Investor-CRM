@@ -1,15 +1,36 @@
 services:
+  db:
+    image: postgres:16-alpine
+    container_name: bettermind-db
+    environment:
+      POSTGRES_DB: bettermind_crm
+      POSTGRES_USER: bettermind
+      POSTGRES_PASSWORD: BM_local_2026_secure!
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bettermind -d bettermind_crm"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   app:
     build: .
+    container_name: bettermind-app
+    environment:
+      DATABASE_URL: postgresql+pg8000://bettermind:BM_local_2026_secure!@db:5432/bettermind_crm
+      TOKEN_SECRET: 7f3a9b2c1d4e5f6a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a
+      PORT: "8080"
+      ALLOWED_ORIGINS: "https://bettermind.buzz,https://crm.bettermind.buzz,http://localhost:8080,http://localhost:5173"
     ports:
       - "8080:8080"
-    environment:
-      - TOKEN_SECRET=local-dev-secret-do-not-use-in-production
-      - PORT=8080
-    # SQLite is used automatically when INSTANCE_CONNECTION_NAME is not set.
-    # No database setup required for local development.
-    volumes:
-      - app-data:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
 
 volumes:
-  app-data:
+  pgdata:

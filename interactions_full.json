@@ -1,0 +1,3922 @@
+[
+  {
+    "id": 1,
+    "contact_id": 1,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: BetterMind diligence",
+    "summary": "Niko asked: first hires? What breaks with analogies?",
+    "date": "2026-02-11",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 2,
+    "contact_id": 1,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: BetterMind diligence",
+    "summary": "Detailed response: 4 hires, analogy gaps, campus density",
+    "date": "2026-02-11",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 3,
+    "contact_id": 1,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: BetterMind diligence",
+    "summary": "\"Level up and form your team first\"",
+    "date": "2026-02-11",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 4,
+    "contact_id": 1,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: BetterMind diligence",
+    "summary": "Confirmed recruiting CCO, CFO, CTO, Ambassador. Asked for help.",
+    "date": "2026-02-12",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 5,
+    "contact_id": 2,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Diligence package",
+    "summary": "Full package: deck, exec summary, biz plan, fin model, launch bible",
+    "date": "2026-02-11",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 6,
+    "contact_id": 24,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "MedGemma follow-up",
+    "summary": "Maria following up on MedGemma. Eager to assist.",
+    "date": "2026-02-10",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 7,
+    "contact_id": 24,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "UPDATE L2 Juice became BetterMind",
+    "summary": "Full update: name change, pivot, Brush Your Brain, $2.5M seed, SF trip Feb 17-21.",
+    "date": "2026-02-12",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 8,
+    "contact_id": 46,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: DuploCloud",
+    "summary": "Ready to move forward. Investor urgency.",
+    "date": "2026-02-12",
+    "created_at": "2026-03-05 22:09:15.113713+00"
+  },
+  {
+    "id": 17,
+    "contact_id": 1,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind.Space diligence package",
+    "summary": "Team gate cleared message. Full roster: Tommy CSO, Brian CFO, Dan CPO, Thomas+PieCyfer engineering, DuploCloud infra, Andrea Linna legal, Adrian Aguilera Chief Clinician candidate, Yu Zhao FDA regulatory. Data room linked. Asked for reconnect call.",
+    "date": "2026-03-11",
+    "created_at": "2026-03-11 21:47:37.875586+00"
+  },
+  {
+    "id": 18,
+    "contact_id": 23,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Owe you an apology - and a reschedule",
+    "summary": "Re-engage after missed Feb 25 meeting. Apology for van breakdown. Mentioned team formed, data room open, Draper in process. Asked for 15-min call.",
+    "date": "2026-03-11",
+    "created_at": "2026-03-11 21:59:04.451325+00"
+  },
+  {
+    "id": 22,
+    "contact_id": 126,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Touch 1 corrected",
+    "summary": "Touch 1 to info@thekennedyforum.org (corrected from kennedyforum.org)",
+    "date": "2026-03-11",
+    "created_at": "2026-03-11 22:58:34.851551+00"
+  },
+  {
+    "id": 23,
+    "contact_id": 128,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Touch 1 corrected",
+    "summary": "Touch 1 to helene@journeyone.vc (corrected from angellist@journeyone.vc)",
+    "date": "2026-03-11",
+    "created_at": "2026-03-11 22:58:35.01161+00"
+  },
+  {
+    "id": 24,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Touch 1 corrected",
+    "summary": "Touch 1 to bshelton@tfxcap.com (corrected from brandon@tfxcapital.com). Veteran founder intro.",
+    "date": "2026-03-11",
+    "created_at": "2026-03-11 22:58:35.169104+00"
+  },
+  {
+    "id": 25,
+    "contact_id": 129,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Touch 1 corrected",
+    "summary": "Touch 1 to info@citylight.vc (corrected from linkedin@citylightcap.com). Impact framing.",
+    "date": "2026-03-11",
+    "created_at": "2026-03-11 22:58:35.314793+00"
+  },
+  {
+    "id": 26,
+    "contact_id": 108,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Brandon replied - asked for raise amount and deck",
+    "summary": "Brandon replied to Touch 1 same day: Thanks for reaching out. How much are you raising? Do you have a pitch deck? Quick and direct response, good sign.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 20:30:04.820267+00"
+  },
+  {
+    "id": 27,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Sent deck, video deck, data room link, asked for 20 min call",
+    "summary": "Replied with: raising $2.5M, Google Slides deck link, video deck link, data room link. Asked for 20 minutes to talk it over.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 20:30:05.046385+00"
+  },
+  {
+    "id": 28,
+    "contact_id": 108,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Brandon requested PDF deck (avoids links), evaluating thesis fit",
+    "summary": "Brandon: If you could send me the deck as a PDF (I avoid links), that would be great. Cannot tell if you fit our thesis or not so will use the materials to assess if a call makes sense.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 20:30:05.253064+00"
+  },
+  {
+    "id": 29,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Sent PDF deck, added PDF to data room",
+    "summary": "Sent investor deck as PDF attachment. Also added PDF version to data room for future use. Two emails sent: first with link to PDF in data room, second with direct PDF attachment after realizing Brandon avoids links.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 20:30:05.44682+00"
+  },
+  {
+    "id": 39,
+    "contact_id": 108,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Brandon follow-up: missing team slide + med device concern",
+    "summary": "Brandon reviewed deck, raised 2 points: (1) No team slide, who are the founders? (2) TFX tries to avoid anything with a med device element. Both are real objections to address.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 21:06:40.809205+00"
+  },
+  {
+    "id": 40,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Replied: team section PDF + SaMD rebuttal",
+    "summary": "Sent team section from business plan as PDF. Addressed med device concern: SaMD is software not hardware, couple months and minimal cost for approval, regulatory path wired, rare real software moat. Acknowledged deal breaker possibility but asked for flexibility. Noted new FDA posture.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 21:06:41.383664+00"
+  },
+  {
+    "id": 41,
+    "contact_id": 4,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Data room follow-up. Fund in diligence, new investors in pipeline. Data room link. Asked for 15 min call.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 22:50:46.566557+00"
+  },
+  {
+    "id": 42,
+    "contact_id": 5,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Data room follow-up. Fund in diligence, new investors in pipeline. Data room link. Asked for 15 min call.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 22:50:47.146858+00"
+  },
+  {
+    "id": 43,
+    "contact_id": 6,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Data room follow-up. Fund in diligence, new investors in pipeline. Data room link. Asked for 15 min call.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 22:50:47.377273+00"
+  },
+  {
+    "id": 216,
+    "contact_id": 400,
+    "type": "email_received",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection response",
+    "summary": "John responded to LinkedIn connection request within 6 minutes. Shared email Jgordon@claritascapital.com and said he would love to learn more.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-20 16:04:06.366732+00"
+  },
+  {
+    "id": 217,
+    "contact_id": 400,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- Brandon Shelton Introduction",
+    "summary": "Full warm-intro email sent to Jgordon@claritascapital.com. Model template: lived experience, Therapist in the Loop, two revenue streams, FDA testing, Brush Your Brain/Pepsodent/Mental Plague, vision beyond campus, stickiness/LTV 60:1-100:1+, $2.5M seed, data room + demo video. Soft ask 30 min call.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-20 16:04:06.862649+00"
+  },
+  {
+    "id": 218,
+    "contact_id": 398,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Introduction -- Jess Jessop / BetterMind.Space (via Brandon Shelton)",
+    "summary": "Standalone forwardable email sent to Brandon Shelton for forwarding to Mark Frank. Full model template w/ SonderMind partnership angle. Brandon instructed to forward.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-20 16:04:07.862096+00"
+  },
+  {
+    "id": 219,
+    "contact_id": 401,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Introduction -- Jess Jessop / BetterMind.Space (via Brandon Shelton)",
+    "summary": "Standalone forwardable email sent to Brandon Shelton for forwarding to Josh Carter. Full model template w/ DIU dual-use angle. Brandon instructed to forward.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-20 16:04:08.868315+00"
+  },
+  {
+    "id": 220,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Forwardable intro emails for Mark Frank and Josh Carter",
+    "summary": "Sent Brandon two standalone forwardable intro emails per his instructions: one for Mark Frank (SonderMind, partnership angle) and one for Josh Carter (DIU, dual-use angle). Brandon also confirmed John Gordon would reach out directly (he did, LinkedIn + email). Pat Regan on hold per Brandon. Chris Molaro direct LinkedIn outreach (no forward needed).",
+    "date": "2026-03-20",
+    "created_at": "2026-03-20 16:04:09.368526+00"
+  },
+  {
+    "id": 248,
+    "contact_id": 461,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Missing Infrastructure Layer in Behavioral Health",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:53:22.217621+00"
+  },
+  {
+    "id": 249,
+    "contact_id": 476,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "A Category That Does Not Exist Yet in Digital Mental Health",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 17:16:47.242988+00"
+  },
+  {
+    "id": 45,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Veteran founder, clinical AI for college mental health",
+    "summary": "Brandon replied asking for deck PDF (avoids links) and raise amount. Sent deck link, PDF, video, data room. He then asked about team (no team slide) and flagged FDA/med device concern. Sent full team section from V4 plan as PDF attachment + handled SaMD objection (software moat, not hardware, minimal cost/time). Active diligence conversation.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 22:50:48.10584+00"
+  },
+  {
+    "id": 48,
+    "contact_id": 20,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "Quick update (LinkedIn DM)",
+    "summary": "[LINKEDIN DM] Follow-up. Data room open, fund in diligence, new investors in pipeline. Data room link shared. Asked for 15 min call.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 22:51:31.876782+00"
+  },
+  {
+    "id": 49,
+    "contact_id": 80,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request",
+    "summary": "[LINKEDIN CONNECTION REQUEST] Personalized note referencing his Sober Sidekick and RehabPath portfolio, Berkeley backyard angle, DMHT billing, campus launches. Touch 1.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:19:45.921227+00"
+  },
+  {
+    "id": 50,
+    "contact_id": 117,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:00.646113+00"
+  },
+  {
+    "id": 51,
+    "contact_id": 111,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:01.453683+00"
+  },
+  {
+    "id": 52,
+    "contact_id": 112,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:01.617264+00"
+  },
+  {
+    "id": 53,
+    "contact_id": 114,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:02.05527+00"
+  },
+  {
+    "id": 54,
+    "contact_id": 115,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:02.592257+00"
+  },
+  {
+    "id": 55,
+    "contact_id": 110,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:02.754233+00"
+  },
+  {
+    "id": 56,
+    "contact_id": 79,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:02.92191+00"
+  },
+  {
+    "id": 57,
+    "contact_id": 81,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:03.107064+00"
+  },
+  {
+    "id": 58,
+    "contact_id": 82,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:03.276977+00"
+  },
+  {
+    "id": 59,
+    "contact_id": 83,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:03.448076+00"
+  },
+  {
+    "id": 60,
+    "contact_id": 65,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:03.628153+00"
+  },
+  {
+    "id": 61,
+    "contact_id": 60,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:03.806797+00"
+  },
+  {
+    "id": 62,
+    "contact_id": 72,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:03.972096+00"
+  },
+  {
+    "id": 63,
+    "contact_id": 74,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:04.140131+00"
+  },
+  {
+    "id": 64,
+    "contact_id": 76,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:04.316537+00"
+  },
+  {
+    "id": 65,
+    "contact_id": 126,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:04.49287+00"
+  },
+  {
+    "id": 66,
+    "contact_id": 128,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:04.658033+00"
+  },
+  {
+    "id": 67,
+    "contact_id": 129,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update",
+    "summary": "Touch 2 (Legitimacy). Data room open, two VCs in diligence, active conversations with new investors, more entering pipeline. Data room link included.",
+    "date": "2026-03-12",
+    "created_at": "2026-03-12 23:21:04.817976+00"
+  },
+  {
+    "id": 68,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Veteran founder, clinical AI for college mental health",
+    "summary": "Sent updated deck PDF with restored team slide. Reinforced SaMD as moat not risk: software only, no hardware, months not years, FDA streamlining digital health. DMHT codes drive 33.4% margin. Soft-asked for 20 min call.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 17:17:21.667978+00"
+  },
+  {
+    "id": 69,
+    "contact_id": 109,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Clinical AI for college mental health, $430/user/month DMHT billing",
+    "summary": "Remediated Touch 1 sent to info@flintcap.com (original dmitry@flintcap.com bounced). Standard outreach: 305K lines, 11 agents, 107K+ safety validations, DMHT billing, campus pilots, data room link.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 17:17:22.085286+00"
+  },
+  {
+    "id": 70,
+    "contact_id": 131,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Psych Hub co-investors: clinical AI scaling daily mental health care",
+    "summary": "Remediated Touch 1 sent to info@fcventures.com (original linkedin@fristcressey.com bounced, wrong domain). Psych Hub portfolio angle: clinical delivery layer turning engagement into billable care. Data room link included.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 17:17:22.672665+00"
+  },
+  {
+    "id": 71,
+    "contact_id": 61,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "AI mental health for college students, 300+ clinician LPs would get this",
+    "summary": "Remediated Touch 1 sent to hi@psymed.ventures (original angellist@psymedventures.com bounced, wrong domain). 300+ clinician LP angle, therapist burnout infrastructure, Kintsugi voice biomarkers, data room link.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 17:17:23.11363+00"
+  },
+  {
+    "id": 72,
+    "contact_id": 358,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Campus mental health infrastructure, not another wellness app",
+    "summary": "Touch 1 sent. Campus-embedded clinical service angle. Reach thesis on education+health intersection. Data room linked. $434/user/month, 33.4% margin, $2.5M seed.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 20:30:43.174469+00"
+  },
+  {
+    "id": 73,
+    "contact_id": 359,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Clinical Operating System for therapists, LiveOps parallel",
+    "summary": "Touch 1 sent. LiveOps parallel: scaled cloud distributed workforce to $100M, we do same for therapists. $85/hr W-2, 25-user caseloads, AI SOAP notes. Data room linked.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 20:30:44.240333+00"
+  },
+  {
+    "id": 74,
+    "contact_id": 360,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Digital health seed: AI mental health w/ clinician oversight, $434/user/month",
+    "summary": "Touch 1 sent. Digital health/wellness seed thesis alignment. 9 hrs care/month, 60% clinician time reduction. University endorsed Concierge Tier, 2% wellness dividend. FDA 510(k) active. Data room linked.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 20:30:44.58201+00"
+  },
+  {
+    "id": 75,
+    "contact_id": 361,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "$434/user/month AI mental health for college students",
+    "summary": "Touch 1 sent. 22M college student market, DMHT unlock, $8 CAC vs $200+ industry, university endorsement model. Data room linked.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 20:30:44.924381+00"
+  },
+  {
+    "id": 76,
+    "contact_id": 362,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Facebook campus playbook, applied to mental health",
+    "summary": "Touch 1 sent. Facebook campus-by-campus playbook angle (he was employee #7-10, first ad sales). Brush Your Brain as the new daily habit. PillPack/Ro thesis parallel: daily engagement -> clinical data -> insurance reimbursement. Data room linked.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-14 20:30:45.232542+00"
+  },
+  {
+    "id": 77,
+    "contact_id": 361,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: $434/user/month AI mental health for college students",
+    "summary": "Antonio responded: Not the best fit for us as we are not actively investing in the space. Clean pass.",
+    "date": "2026-03-14",
+    "created_at": "2026-03-16 15:26:02.070873+00"
+  },
+  {
+    "id": 78,
+    "contact_id": 361,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: $434/user/month AI mental health for college students",
+    "summary": "Thank-you for the honest response. Left door open for future and asked for referrals to anyone investing in digital mental health or clinical AI.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:26:02.295837+00"
+  },
+  {
+    "id": 79,
+    "contact_id": 368,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "New CaiT Application: Samuel Gelerman",
+    "summary": "CaiT application via clinicianassist.ai contact form. JD/MSW/ASW. Published on AI integration in social work. Building AI tools for clinical practice. Standout applicant.",
+    "date": "2026-03-15",
+    "created_at": "2026-03-16 15:26:03.277091+00"
+  },
+  {
+    "id": 80,
+    "contact_id": 368,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Your CaiT Application - BetterMind.Space",
+    "summary": "Enthusiastic HTML response highlighting his AI-in-social-work paper alignment with Therapist in the Loop. Described platform, AI tools, clinician experience vision. Set expectation: hiring begins end of April, intro interviews starting now. Offered 30min call Tue-Thu morning 3/17-3/19.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:26:03.476349+00"
+  },
+  {
+    "id": 81,
+    "contact_id": 369,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Investment Proposal - Potential Collaboration with Clinician Assist",
+    "summary": "Inbound via clinicianassist.ai contact form. Christopher Belanger, Financial Advisor at H&AH Venture Capital Ltd (London). Expressed interest in investing. Asked for a call.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:26:04.265158+00"
+  },
+  {
+    "id": 82,
+    "contact_id": 369,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Investment Proposal - Potential Collaboration with Clinician Assist",
+    "summary": "Qualifying reply. Asked about H&AH focus in digital health / behavioral health specifically. Shared data room link. Friendly but gating: only proceed if thesis fit demonstrated.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:26:04.470051+00"
+  },
+  {
+    "id": 83,
+    "contact_id": 118,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:22.022443+00"
+  },
+  {
+    "id": 84,
+    "contact_id": 116,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:22.68812+00"
+  },
+  {
+    "id": 85,
+    "contact_id": 143,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:23.036187+00"
+  },
+  {
+    "id": 86,
+    "contact_id": 142,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:23.491088+00"
+  },
+  {
+    "id": 88,
+    "contact_id": 132,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:24.438444+00"
+  },
+  {
+    "id": 89,
+    "contact_id": 124,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent via CC on Jordan Nof email. Round moving: funds in diligence, calls scheduled, therapist apps coming in.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:24.890121+00"
+  },
+  {
+    "id": 90,
+    "contact_id": 82,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:25.309153+00"
+  },
+  {
+    "id": 91,
+    "contact_id": 83,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:25.831151+00"
+  },
+  {
+    "id": 92,
+    "contact_id": 81,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:26.205279+00"
+  },
+  {
+    "id": 93,
+    "contact_id": 126,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:26.555824+00"
+  },
+  {
+    "id": 94,
+    "contact_id": 128,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:26.928033+00"
+  },
+  {
+    "id": 95,
+    "contact_id": 129,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:27.51216+00"
+  },
+  {
+    "id": 96,
+    "contact_id": 122,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:27.879305+00"
+  },
+  {
+    "id": 97,
+    "contact_id": 127,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:36:28.274467+00"
+  },
+  {
+    "id": 98,
+    "contact_id": 1,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Following up \u2014 BetterMind.Space diligence package",
+    "summary": "Momentum update in existing thread. Led with TFX Capital scheduling diligence call this week. Organic therapist applications (JD/MSW published on AI in social work). Positioned Niko as first investor who saw this clearly. Asked for 15 minutes. Short and punchy to match his communication style.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:56:53.11278+00"
+  },
+  {
+    "id": 99,
+    "contact_id": 49,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Draper - Clinician Assist Inc.: Jiatao <> Jess",
+    "summary": "Momentum update in existing thread. Led with organic supply-side pull (therapist JD/MSW/ASW applicant published on AI in social work found us). TFX Capital scheduling diligence call. Reframed differentiation: safety infrastructure first, AI second, business model third. DMHT codes as tailwind not pivot. Asked for next steps and offered to connect with other Draper team members. Gave him internal selling ammunition.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 15:56:53.70036+00"
+  },
+  {
+    "id": 100,
+    "contact_id": 1,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: Following up \u2014 BetterMind.Space diligence package",
+    "summary": "Niko replied: 'Thank you Jess! Not now for us - we are knee deep focusing on our first close (happening in 4 weeks) unfortunately.' NOT a pass. Verdict is closing Fund I. Will be available mid-April.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 16:14:46.935182+00"
+  },
+  {
+    "id": 101,
+    "contact_id": 370,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "New CaiT Application: Jackie Shelton-Espinosa",
+    "summary": "CaiT application via clinicianassist.ai. LCSW, 15+ years experience. Traditional clinical profile.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 16:14:47.761916+00"
+  },
+  {
+    "id": 102,
+    "contact_id": 370,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Your CaiT Application - BetterMind.Space",
+    "summary": "HTML response highlighting her 15 years LCSW experience. Described Therapist in the Loop model, burnout-preventing caseload, DMHT billing, AI tools. Set expectation: hiring end of April, intro interviews starting now. Offered 30min call Tue-Thu morning 3/17-3/19.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 16:14:47.927654+00"
+  },
+  {
+    "id": 103,
+    "contact_id": 118,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 resent after bounce. stephen@whatif.vc bounced. Remediated to s@whatif.vc (primary, ContactOut) with info@whatif.vc BCC (website). Same Touch 2 content with corrected active recruiting language.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 16:14:48.344421+00"
+  },
+  {
+    "id": 104,
+    "contact_id": 122,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "Touch 2 resent after bounce. rlungen@hc9.vc bounced. Remediated to richard@hc9.vc (Apollo shows r**@hc9.vc). Same Touch 2 content with corrected active recruiting language.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 16:14:48.746401+00"
+  },
+  {
+    "id": 105,
+    "contact_id": 1,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Following up \u2014 BetterMind.Space diligence package",
+    "summary": "Gracious thank-you reply. 'Completely understand. Good luck with the close. I will circle back in four weeks.' Zero pressure. Door open for mid-April re-engagement after Verdict Fund I close.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 16:40:05.605136+00"
+  },
+  {
+    "id": 106,
+    "contact_id": 371,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Founder to founder - clinical AI safety architecture",
+    "summary": "Touch 1 via email (scott@sgnl.ai). Founder-to-founder angle. Drew parallel between SGNL authorization architecture and CaiT clinical safety framework. Highlighted 305K lines of code, 107K safety validations, $430/user/month, $2.5M seed. Acknowledged healthcare is not his lane but pitched the engineering/architecture angle. First check target: small check, fast decision.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 16:45:38.82614+00"
+  },
+  {
+    "id": 107,
+    "contact_id": 122,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request (pending)",
+    "summary": "LinkedIn connection request already sent (prior to today). Both email addresses bounced (rlungen@hc9.vc and richard@hc9.vc). Awaiting acceptance to deliver Touch 2 via DM.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:18:44.373724+00"
+  },
+  {
+    "id": 108,
+    "contact_id": 371,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request",
+    "summary": "LinkedIn connection request sent using scottkriz@gmail.com as the lookup email. Dual channel now active (email to scott@sgnl.ai + LinkedIn). First check target.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:28:39.59732+00"
+  },
+  {
+    "id": 118,
+    "contact_id": 372,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn DM - Side pitch + Scott Kriz intro ask",
+    "summary": "LinkedIn DM sent to Britton Winterrose. Side-pitched BetterMind ($430/user/mo, DMHT codes, clinician oversight, $2.5M seed). Asked for warm intro to Scott Kriz at Spitfire Ventures (mutual 1st connection). Data room linked.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:53:32.054643+00"
+  },
+  {
+    "id": 119,
+    "contact_id": 373,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn DM - Side pitch + Scott Kriz intro ask",
+    "summary": "LinkedIn DM sent to Brandon Mills. Side-pitched BetterMind ($430/user/mo, DMHT codes, clinician oversight, $2.5M seed). Asked for warm intro to Scott Kriz at Spitfire Ventures (mutual 1st connection). Data room linked.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:53:32.781565+00"
+  },
+  {
+    "id": 120,
+    "contact_id": 374,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn DM - Side pitch + Scott Kriz intro ask",
+    "summary": "LinkedIn DM sent to Villi Iltchev. Side-pitched BetterMind ($430/user/mo, DMHT codes, clinician oversight, $2.5M seed). Asked for warm intro to Scott Kriz at Spitfire Ventures (mutual 1st connection). Data room linked.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:53:33.360184+00"
+  },
+  {
+    "id": 110,
+    "contact_id": 79,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:34.012231+00"
+  },
+  {
+    "id": 111,
+    "contact_id": 56,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:34.654735+00"
+  },
+  {
+    "id": 112,
+    "contact_id": 114,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:35.10832+00"
+  },
+  {
+    "id": 114,
+    "contact_id": 111,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:35.909732+00"
+  },
+  {
+    "id": 115,
+    "contact_id": 115,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:36.278947+00"
+  },
+  {
+    "id": 116,
+    "contact_id": 144,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:36.878963+00"
+  },
+  {
+    "id": 117,
+    "contact_id": 18,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:37.212189+00"
+  },
+  {
+    "id": 121,
+    "contact_id": 375,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn DM - Side pitch + Scott Kriz intro ask",
+    "summary": "LinkedIn DM sent to Jeff Kearl. Side-pitched BetterMind ($430/user/mo, DMHT codes, clinician oversight, $2.5M seed). Asked for warm intro to Scott Kriz at Spitfire Ventures (mutual 1st connection). Data room linked.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:53:33.739363+00"
+  },
+  {
+    "id": 122,
+    "contact_id": 108,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "RE: Veteran founder, clinical AI for college mental health",
+    "summary": "Brandon confirmed call: '3/19 at 1pm EST for 30 is great!' Calendar invite sent with Google Meet. Status upgraded to diligence.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:55:35.273059+00"
+  },
+  {
+    "id": 123,
+    "contact_id": 368,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Phone call - Samuel Gelerman",
+    "summary": "Samuel called in response to CaiT application reply. Very professional, expressed strong interest in what we are building. Scheduled to call back this afternoon after work for a longer conversation.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 18:07:00.061175+00"
+  },
+  {
+    "id": 109,
+    "contact_id": 117,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:33.4166+00"
+  },
+  {
+    "id": 113,
+    "contact_id": 112,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following up - BetterMind seed round",
+    "summary": "Touch 4 (Follow-up) SENT. Rewritten from original fake-urgency draft. Honest language: investor diligence call on the books this week, clinician recruiting underway with strong early response, asked for 15 minutes. No manufactured scarcity.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 17:32:35.542253+00"
+  },
+  {
+    "id": 124,
+    "contact_id": 108,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Accepted: Brandon Shelton (TFX Capital) - Investor Call",
+    "summary": "Brandon accepted the calendar invite for 3/19 10:00 AM PT. Requested: 'Please keep to 30min if okay.' Calendar updated back to 30 min. Google Meet confirmed.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 18:36:12.255966+00"
+  },
+  {
+    "id": 125,
+    "contact_id": 79,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn DM - Article reference + thesis alignment",
+    "summary": "LinkedIn connection accepted, DM sent same day. Referenced his Jan 2026 '2026 Healthcare Trends' article point by point: (1) distribution moat = campus GTM with sub-$15 CAC, (2) what should remain human = Therapist in the Loop, (3) regulation = built oversight before 8 states required it, DMHT codes designed for our model. Asked for 15 minutes. Dual channel with Touch 4 email.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-16 19:25:13.8356+00"
+  },
+  {
+    "id": 126,
+    "contact_id": 79,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind seed round",
+    "summary": "Austin declined. Conflicting investment in Tava Health. Wished us well.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-17 15:41:13.432195+00"
+  },
+  {
+    "id": 127,
+    "contact_id": 56,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind seed round",
+    "summary": "Danish passed for now. Wants more traction on channels and patient acquisition. Offered to revisit next year. Acknowledged impressive AI positioning.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-17 15:41:14.340089+00"
+  },
+  {
+    "id": 128,
+    "contact_id": 108,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "RE: Veteran founder, clinical AI for college mental health",
+    "summary": "Brandon confirmed 30min call Thu 3/19 at 10am PT (1pm ET). Accepted calendar invite. Key concern: wants to avoid FDA 510k cycles in current fund. Need to reframe SaMD as software-only, months not years.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-17 15:41:14.748855+00"
+  },
+  {
+    "id": 130,
+    "contact_id": 378,
+    "type": "email_received",
+    "channel": "linkedin",
+    "subject": "Inbound LinkedIn DM",
+    "summary": "Esteban initiated: Hey Jess, love what you are building! Are you planning to raise soon? Jess confirmed seed raise. Sent qualifying reply: investing yourself or connecting to network?",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 16:25:01.209023+00"
+  },
+  {
+    "id": 131,
+    "contact_id": 378,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn DM reply - qualifying",
+    "summary": "Confirmed $2.5M seed, voice-first AI mental health, CMS codes $430/user/mo. Asked: investing yourself or connecting to network? Offered data room.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 16:25:01.364347+00"
+  },
+  {
+    "id": 132,
+    "contact_id": 16,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "Touch 1 LinkedIn DM",
+    "summary": "Touch 1 (Awareness) LinkedIn DM sent 2/11. No reply received.",
+    "date": "2026-02-11",
+    "created_at": "2026-03-17 16:33:26.034278+00"
+  },
+  {
+    "id": 134,
+    "contact_id": 222,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request",
+    "summary": "LinkedIn connection request (personalized). Education focus hook + HuffPost article link (Brush Your Brain / reasons college students drop out). AI mental health for college students, BetterMind.Space, clinician oversight, GTM at SCU/Stanford/Berkeley, raising $2.5M seed. NOT the standard locked note.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 16:35:18.099639+00"
+  },
+  {
+    "id": 137,
+    "contact_id": 16,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "Re-engagement LinkedIn DM",
+    "summary": "Re-engagement DM (personalized). Education focus hook + HuffPost article on college dropout reasons. Woebot portfolio connection: Owl already bet on this space, BetterMind is clinician-supervised version new state laws require. GTM SCU/Stanford/Berkeley. Raising $2.5M seed.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:05:35.453448+00"
+  },
+  {
+    "id": 135,
+    "contact_id": 138,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request",
+    "summary": "LinkedIn connection request sent 3/10 w/ personalized note. Voice-first AI MH for college students, clinician oversight, campus GTM, data room link. Still pending as of 3/17.",
+    "date": "2026-03-10",
+    "created_at": "2026-03-17 16:35:18.864485+00"
+  },
+  {
+    "id": 138,
+    "contact_id": 138,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn Pro message - re-engagement",
+    "summary": "LinkedIn Pro InMail (not connection request). Article hook: reasons college students drop out + HuffPost link. Outcomes/efficacy angle tailored to her role. BetterMind.Space, clinician oversight, GTM SCU/Stanford/Berkeley, $2.5M seed. Direct CTA: Worth 20 minutes for walkthrough?",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:10:21.341203+00"
+  },
+  {
+    "id": 139,
+    "contact_id": 232,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "AI Mental Health Platform \u2014 Brain Health Investment Opportunity",
+    "summary": "Touch 1 email to info@cooperfamilyoffice.com. Attn: William Woods. Voice-first AI MH, clinician oversight, 305K lines code, 11 agents, 107K safety tests. DMHT codes $430/user/mo, 39.7% margins (pre-correction). 3 Bay Area campuses, $2.5M seed, data room link.",
+    "date": "2026-03-13",
+    "created_at": "2026-03-17 17:26:37.884544+00"
+  },
+  {
+    "id": 140,
+    "contact_id": 232,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: AI Mental Health Platform \u2014 Brain Health Investment Opportunity",
+    "summary": "Touch 2 email (reply in thread). Added HuffPost article link (college dropout reasons). Investors in diligence, calls this week. 41 therapist applications in first days. Redesigning ClinicianAssist.ai as therapist recruitment engine. Soft CTA: walk through clinical architecture.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:26:38.042425+00"
+  },
+  {
+    "id": 141,
+    "contact_id": 233,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Clinical Architecture Review \u2014 AI Mental Health Platform (Therapist in the Loop)",
+    "summary": "Touch 1 email to info@cooperfamilyoffice.com. Attn: Dr. Roxanna Namavar. Therapist in the Loop architecture, voice biomarker tech, 107K safety tests, 11 agents. DMHT codes $430/user/mo. 3 Bay Area pilots, $2.5M seed, data room link. Clinical rigor angle for DD lead.",
+    "date": "2026-03-13",
+    "created_at": "2026-03-17 17:26:38.76421+00"
+  },
+  {
+    "id": 142,
+    "contact_id": 233,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Clinical Architecture Review \u2014 AI Mental Health Platform (Therapist in the Loop)",
+    "summary": "Touch 2 email (reply in thread). Added HuffPost article link. Diligence calls this week, 41 therapist apps organically. Wilson Sonsini (Andrea Linna) confirmed Therapist in the Loop on right side of compliance. Invited rigorous DD review of safety framework and CaiT certification.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:26:39.515693+00"
+  },
+  {
+    "id": 143,
+    "contact_id": 138,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Voice-First AI Mental Health Platform \u2014 Owl Ventures Thesis Fit",
+    "summary": "Direct email to info@owlvc.com going around pending LinkedIn connection. Woebot portfolio thesis, outcomes/efficacy angle, 33.4% margins, DMHT codes, momentum signals (diligence call, 41 therapist apps), soft ask 15 min.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:26:39.94727+00"
+  },
+  {
+    "id": 144,
+    "contact_id": 149,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "Why Blackbird Health was right (and what comes next)",
+    "summary": "LinkedIn Premium InMail. Subject: Why Blackbird Health was right (and what comes next). Article hook (college dropout reasons), FCV portfolio connection (Blackbird Health + Psych Hub), Therapist in the Loop / state laws angle, GTM campuses, $2.5M seed, 20 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:42:00.251745+00"
+  },
+  {
+    "id": 145,
+    "contact_id": 150,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "From Ginger board to what regulators now require",
+    "summary": "LinkedIn Premium InMail. Subject: From Ginger board to what regulators now require. Article hook (college dropout reasons), Kaiser Ventures + Ginger/Headspace board angle, CMS DMHT codes $430/user/mo, clinician oversight, GTM campuses, $2.5M seed, 20 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:42:04.116785+00"
+  },
+  {
+    "id": 146,
+    "contact_id": 80,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "Your Berkeley office is in our launch zone",
+    "summary": "LinkedIn Premium InMail. Subject: Your Berkeley office is in our launch zone. Article hook (college dropouts), HealthX portfolio fit (Sober Sidekick, RehabPath), Therapist in the Loop, CMS DMHT codes, launching Berkeley/Stanford/SCU, office in launch zone, $2.5M seed, 20 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:47:04.194223+00"
+  },
+  {
+    "id": 147,
+    "contact_id": 3,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "5 states just banned unsupervised AI therapy",
+    "summary": "LinkedIn Premium InMail re-engagement. Subject: 5 states just banned unsupervised AI therapy. Article hook (college dropouts), state bans + our architecture is what laws require, investors in diligence, 41 therapist apps, GTM campuses, $2.5M seed, 15 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:50:48.996488+00"
+  },
+  {
+    "id": 148,
+    "contact_id": 51,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "305K lines of clinical AI, 107K safety tests",
+    "summary": "LinkedIn Premium InMail re-engagement. Subject: 305K lines of clinical AI, 107K safety tests. Article hook (college dropouts), deep tech angle (305K lines, 11 agents, 107K safety validations), CMS DMHT codes $430/user/mo 33.4% margin, investors in diligence, 41 therapist apps, GTM campuses, $2.5M seed, 20 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:55:59.506176+00"
+  },
+  {
+    "id": 149,
+    "contact_id": 15,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "The AI therapy regulatory wave is here",
+    "summary": "LinkedIn Premium InMail re-engagement. Subject: The AI therapy regulatory wave is here. Article hook (college dropouts), CMS DMHT codes $430/user/mo 33.4% margin, 5 state bans on unsupervised AI therapy, Therapist in the Loop architecture, GTM campuses, $2.5M seed, 20 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 17:59:39.063878+00"
+  },
+  {
+    "id": 150,
+    "contact_id": 122,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "Psych Hub was the start, here is the clinical OS",
+    "summary": "LinkedIn Premium InMail. Subject: Psych Hub was the start, here is the clinical OS. Article hook (college dropouts), HC9 portfolio fit (Psych Hub, Forge Health), Therapist in the Loop / state laws, CMS DMHT codes $430/user/mo 33.4% margin, GTM campuses, $2.5M seed, 20 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 18:02:22.473646+00"
+  },
+  {
+    "id": 151,
+    "contact_id": 147,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "Stanford mental health crisis has a business model now",
+    "summary": "LinkedIn Premium InMail. Subject: Stanford mental health crisis has a business model now. Article hook (college dropouts), Stanford alum angle, launching at Stanford/SCU/Berkeley, CMS DMHT codes $430/user/mo 33.4% margin, $2.5M seed, 20 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 18:05:20.878698+00"
+  },
+  {
+    "id": 152,
+    "contact_id": 148,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn Premium InMail. Subject: 60% of college students in crisis, now there is a billing code. Article hook (college dropouts), 60% crisis stat, counseling centers cap at 6 sessions, CMS codes $430/user/mo 33.4% margin, GTM campuses, $2.5M seed, 20 min CTA.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 18:08:28.763138+00"
+  },
+  {
+    "id": 153,
+    "contact_id": 50,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request",
+    "summary": "Direct LinkedIn connection request to Tim Draper (personalized, NOT locked note). Crisis-focused: article hook on college dropout reasons, AI mental health w/ clinician oversight, 5 state bans on unsupervised AI therapy, our architecture is what new laws require. No dollars or percentages. ~295 chars.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 18:20:48.235607+00"
+  },
+  {
+    "id": 154,
+    "contact_id": 221,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Woebot $90M Series B hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:23.528322+00"
+  },
+  {
+    "id": 155,
+    "contact_id": 226,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Founder-to-founder hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:24.399057+00"
+  },
+  {
+    "id": 156,
+    "contact_id": 354,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Flatiron Health hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:25.894223+00"
+  },
+  {
+    "id": 157,
+    "contact_id": 287,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Digital health infrastructure hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:26.712845+00"
+  },
+  {
+    "id": 159,
+    "contact_id": 355,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Health+consumer + Brush Your Brain hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:28.520208+00"
+  },
+  {
+    "id": 160,
+    "contact_id": 227,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Talkiatry largest psych employer hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:29.423817+00"
+  },
+  {
+    "id": 161,
+    "contact_id": 234,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Hood Foundation pediatric health hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:30.333923+00"
+  },
+  {
+    "id": 162,
+    "contact_id": 235,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Tao Capital healthcare+tech hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:31.280343+00"
+  },
+  {
+    "id": 163,
+    "contact_id": 238,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Article + campus GTM hook.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:32.233348+00"
+  },
+  {
+    "id": 164,
+    "contact_id": 347,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Pattern Breakers inflection point framework + only client-facing AI therapist hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:33.168608+00"
+  },
+  {
+    "id": 165,
+    "contact_id": 348,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Movements start w/ storytelling + Brush Your Brain hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:34.163902+00"
+  },
+  {
+    "id": 166,
+    "contact_id": 323,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. AI-first thesis + BetterMind pitch + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:35.03505+00"
+  },
+  {
+    "id": 167,
+    "contact_id": 220,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Spring Health seed round hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:35.803729+00"
+  },
+  {
+    "id": 168,
+    "contact_id": 236,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "Connected update sent 3/17. Voice biomarker + Kintsugi hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:36.713711+00"
+  },
+  {
+    "id": 169,
+    "contact_id": 310,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "60% of college students in crisis, now there is a billing code",
+    "summary": "LinkedIn connection request sent 3/17. Impact + education + health equity hook + article.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:06:37.654132+00"
+  },
+  {
+    "id": 170,
+    "contact_id": 219,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request - Top 50 Cold Outreach",
+    "summary": "LinkedIn connection request sent 3/17. Woebot Series A hook: 'We built what Woebot couldn't: daily AI therapy that bills insurance.' + Brush Your Brain article link.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:30:27.309725+00"
+  },
+  {
+    "id": 171,
+    "contact_id": 225,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request - Top 50 Cold Outreach",
+    "summary": "LinkedIn connection request sent 3/17. Founder-to-founder hook: 'From one AI mental health founder to another.' TIME100 AI. + Brush Your Brain article link.",
+    "date": "2026-03-17",
+    "created_at": "2026-03-17 21:30:28.776327+00"
+  },
+  {
+    "id": 172,
+    "contact_id": 49,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Thank you for your application for Draper",
+    "summary": "Draper Associates passed on investment. Jiatao sent form rejection email. They want to stay in touch and welcome re-application during future fundraises.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 14:35:50.776953+00"
+  },
+  {
+    "id": 173,
+    "contact_id": 107,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Disabled veteran founder building AI mental health platform",
+    "summary": "Touch 1 cold outreach. Veteran-to-veteran angle. Hivers and Strivers invests exclusively in veteran-founded companies.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 16:40:22.988361+00"
+  },
+  {
+    "id": 174,
+    "contact_id": 130,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Forge Health + Psych Hub adjacency - voice AI for campus mental health",
+    "summary": "Touch 1 cold outreach. HC9 Ventures healthcare-only fund. Referenced Forge Health, Psych Hub portfolio companies and Jon LifePod voice experience.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 16:40:24.301585+00"
+  },
+  {
+    "id": 175,
+    "contact_id": 376,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Health equity meets AI - campus mental health platform",
+    "summary": "Touch 1 cold outreach. Socium Ventures (Cox Enterprises CVC). Health equity angle.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 16:40:25.320088+00"
+  },
+  {
+    "id": 177,
+    "contact_id": 298,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Carrot Fertility adjacency - voice AI for college mental health",
+    "summary": "Touch 1 cold outreach. Referenced Uncork Carrot Fertility portfolio. Healthcare + AI at seed framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 16:40:26.313216+00"
+  },
+  {
+    "id": 178,
+    "contact_id": 393,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Jiff healthcare roots + campus network effects - voice AI for mental health",
+    "summary": "Touch 1 cold outreach. Referenced James Jiff healthcare co-founding background. Campus-density network effects framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 16:40:26.872003+00"
+  },
+  {
+    "id": 179,
+    "contact_id": 298,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: Carrot Fertility adjacency - voice AI for college mental health",
+    "summary": "PASSED. Jeff replied: Does not invest in the sector. Best of luck. Quick definitive pass.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:05.700503+00"
+  },
+  {
+    "id": 180,
+    "contact_id": 62,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:08.305767+00"
+  },
+  {
+    "id": 181,
+    "contact_id": 64,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:09.380574+00"
+  },
+  {
+    "id": 182,
+    "contact_id": 145,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:09.903208+00"
+  },
+  {
+    "id": 183,
+    "contact_id": 65,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:10.339954+00"
+  },
+  {
+    "id": 184,
+    "contact_id": 60,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:10.79866+00"
+  },
+  {
+    "id": 185,
+    "contact_id": 76,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:11.498862+00"
+  },
+  {
+    "id": 186,
+    "contact_id": 74,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:12.002577+00"
+  },
+  {
+    "id": 187,
+    "contact_id": 72,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:12.486353+00"
+  },
+  {
+    "id": 188,
+    "contact_id": 140,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:12.97425+00"
+  },
+  {
+    "id": 189,
+    "contact_id": 135,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:13.416763+00"
+  },
+  {
+    "id": 191,
+    "contact_id": 139,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:14.751753+00"
+  },
+  {
+    "id": 192,
+    "contact_id": 358,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:15.337633+00"
+  },
+  {
+    "id": 193,
+    "contact_id": 362,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:15.774635+00"
+  },
+  {
+    "id": 194,
+    "contact_id": 360,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:16.283821+00"
+  },
+  {
+    "id": 195,
+    "contact_id": 131,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:16.834136+00"
+  },
+  {
+    "id": 196,
+    "contact_id": 61,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:17.319993+00"
+  },
+  {
+    "id": 197,
+    "contact_id": 109,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:17.769201+00"
+  },
+  {
+    "id": 198,
+    "contact_id": 371,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-18 17:36:18.333601+00"
+  },
+  {
+    "id": 199,
+    "contact_id": 397,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "RE: Following up - BetterMind seed round",
+    "summary": "Cameron replied to Alyssa thread. Said hybrid model resonates w/ how 7wire thinks about delivering behavioral health care responsibly. Asked for available time windows and pre-read materials. Live call request.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 15:58:34.849328+00"
+  },
+  {
+    "id": 200,
+    "contact_id": 397,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "RE: Following up - BetterMind seed round",
+    "summary": "Sent availability (Fri 3/20, Mon 3/23, Tue 3/24) plus pre-read materials: updated deck (Google Slides), Casey demo video w/ voiceover, Therapist in the Loop article, open data room link.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 15:58:35.22317+00"
+  },
+  {
+    "id": 201,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Meeting prep - BetterMind.Space / TFX Capital call today",
+    "summary": "Sent ahead of 10am PT call. Attached updated deck PDF + Casey AI SaMD Blueprint PDF (3-page regulatory one-pager). Highlighted: SaMD software-only, no hardware, no clinical trials, testing complete, 17.8B verified assertions, 100% accuracy, FDA review 60-90 days. Full SSED submission report available.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 15:58:36.63906+00"
+  },
+  {
+    "id": 202,
+    "contact_id": 64,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update \u2014 BetterMind.Space momentum + regulatory moat widening",
+    "summary": "Touch 2 re-sent to corrected email lhahn@canaan.com (original seed@canaan.com bounced). Momentum framing: investors in active diligence, calls scheduled, 41+ therapist applicants, regulatory moat widening.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-19 15:58:37.412098+00"
+  },
+  {
+    "id": 203,
+    "contact_id": 62,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update \u2014 BetterMind.Space momentum + regulatory moat widening",
+    "summary": "Touch 2 re-sent to corrected email lynne@definevc.com (original hello@definevc.com bounced). Momentum framing: investors in active diligence, calls scheduled, 41+ therapist applicants, regulatory moat widening.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-19 15:58:38.224888+00"
+  },
+  {
+    "id": 204,
+    "contact_id": 394,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "NFX Digital Health Scout voice AI for campus mental health",
+    "summary": "Touch 1 cold outreach. NFX Signal reference, digital health seed angle, deck PDF attached.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-19 15:58:39.027176+00"
+  },
+  {
+    "id": 205,
+    "contact_id": 108,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Investor call completed + referrals received",
+    "summary": "30-min call 3/19. Got past SaMD/FDA concern but TFX passed: they do not invest in B2C or B2B2C models. Brandon said we \"have it dialed in\" and sent Connections email with 5 warm referrals: Mark Frank (SonderMind CEO), NeuroFlow link (Chris Molaro CEO), John Gordon (Claritas Capital), Josh Carter (DIU), Pat Regan (Regan Partners/Academy Investor Network). All veteran-connected contacts from his network.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 18:13:22.007427+00"
+  },
+  {
+    "id": 206,
+    "contact_id": 398,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request sent",
+    "summary": "LinkedIn connection request sent 3/19. Warm referral from Brandon Shelton/TFX Capital. Led w/ radical authenticity: Navy vet w/ PTSD and Depression in full recovery, deep respect for SonderMind, honored to be in touch. Mentioned BetterMind.Space by ClinicianAssist.ai. Did NOT pitch partnership or raise. Human connection first.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 19:05:21.308746+00"
+  },
+  {
+    "id": 207,
+    "contact_id": 399,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request sent",
+    "summary": "LinkedIn connection request sent 3/19 using chris@neuroflow.com (email required for his profile). Warm referral from Brandon Shelton/TFX Capital. Message matched Mark Frank approach: radical authenticity, Navy vet w/ PTSD and Depression in full recovery, deep respect for NeuroFlow, honored to be in touch, mentioned BetterMind.Space by ClinicianAssist.ai.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 19:21:16.83391+00"
+  },
+  {
+    "id": 208,
+    "contact_id": 399,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request sent",
+    "summary": "LinkedIn connection request sent 3/19 using chris@neuroflow.com (email-only connections enabled). Warm referral from Brandon Shelton/TFX Capital. Message mirrored Mark Frank approach: Brandon had great things to say, Navy vet w/ PTSD and Depression in full recovery, deeply respect what he built at NeuroFlow, honored to be in touch, building BetterMind.Space by ClinicianAssist.ai.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 19:22:56.82876+00"
+  },
+  {
+    "id": 209,
+    "contact_id": 400,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request sent",
+    "summary": "LinkedIn connection request sent 3/19. Warm referral from Brandon Shelton/TFX Capital. Message: Navy vet w/ PTSD and Depression in full recovery, built voice-first mental health platform, EHR GTM is college students, BetterMind.Space by ClinicianAssist.ai, seed round, honored to connect. Authentic voice, same template as Frank/Molaro outreach.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 19:31:41.039395+00"
+  },
+  {
+    "id": 210,
+    "contact_id": 401,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request sent",
+    "summary": "LinkedIn connection request sent 3/19. Warm referral from Brandon Shelton/TFX Capital. Message: Brandon had great things to say, Navy vet w/ PTSD and Depression in full recovery, fellow Oregon builder, built voice-first AI mental health platform GTM college students, BetterMind.Space by ClinicianAssist.ai, love your take and insights.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 19:37:12.274656+00"
+  },
+  {
+    "id": 211,
+    "contact_id": 402,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request sent",
+    "summary": "LinkedIn connection request sent 3/19. Warm referral from Brandon Shelton/TFX Capital. Message sent as drafted: Brandon had great things to say, Navy vet w/ PTSD and Depression in full recovery, quoted his own About section language (the bold idea that might change everything hit home), honored to be in touch, building BetterMind.Space by ClinicianAssist.ai. Navy-to-Navy connection.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 19:46:22.304888+00"
+  },
+  {
+    "id": 212,
+    "contact_id": 401,
+    "type": "email_received",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection accepted + meeting invite",
+    "summary": "Josh accepted LinkedIn connection same day (3/19). Reply: Brandon is an awesome human. Any friend of his is a friend of mine. Let me know if you have some time to connect. We can show you around the UpStart Collective. Fastest acceptance of all 5 Brandon referrals. Drafting reply to propose tomorrow afternoon visit.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 20:27:49.792235+00"
+  },
+  {
+    "id": 213,
+    "contact_id": 401,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn reply - proposed tomorrow afternoon visit",
+    "summary": "Replied to Josh on LinkedIn 3/19. Confirmed interest in visiting UpStart Collective. Proposed tomorrow (3/20) afternoon, driving up from Mapleton for the weekend. Referenced Big Pink move, congratulated UO/OSU expansion. Dropped Bob Mighell connection (worked together at Arcimoto, now in Canada but still connected to UO). Warm, authentic tone throughout.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 20:34:38.073243+00"
+  },
+  {
+    "id": 214,
+    "contact_id": 33,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn Post: Therapist in the Loop + Anthropic 81K Study + Dr. Max Major repost",
+    "summary": "Published LinkedIn post reposting Dr. Max Major (Unmind/Nova) on AI therapy dangers. Tied Anthropic 81K study findings (emotional support 6%, dependency 3x correlation, sycophancy 11%) to Therapist in the Loop architecture. Cited state legislation: IL, NV, UT passed; CA chatbot safety law; KY, MO, VT, WV, MI active 2026 bills; 78 chatbot bills in 27 states. Linked back to Therapist in the Loop LinkedIn article. Positioned Casey as built on this principle before first bill signed.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 23:10:36.185588+00"
+  },
+  {
+    "id": 215,
+    "contact_id": 33,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn Post: Therapist in the Loop + Anthropic 81K Study + Dr. Max Major repost",
+    "summary": "Published LinkedIn post reposting Dr. Max Major (Unmind/Nova) on AI therapy dangers. Tied Anthropic 81K study findings (emotional support 6%, dependency 3x correlation, sycophancy 11%) to Therapist in the Loop architecture. Cited state legislation: IL, NV, UT passed; CA chatbot safety law; KY, MO, VT, WV, MI active 2026 bills; 78 chatbot bills in 27 states. Linked back to Therapist in the Loop LinkedIn article. Positioned Casey as built on this principle before first bill signed.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-19 23:10:44.299234+00"
+  },
+  {
+    "id": 221,
+    "contact_id": 108,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Casey AI -- Long-Term Platform Vision Document",
+    "summary": "Sent Brandon the Casey Platform Vision doc (reordered for defense/cyber lead) as PDF, introducing Tommy Stiansen (CSO). Tommy CC'd. Doc maps Casey expansion into defense/warfighter, cybersecurity, hospital systems, automotive. Highlighted defense & warfighter resilience (before/during/after deployment, human-machine teaming) and cybersecurity (SOC analyst burnout as attack surface, agentic AI). Also mentioned Tommy's mobile nursing connection as near-term pilot opportunity. Asked for feedback on defense and cyber angles.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-20 17:03:28.629652+00"
+  },
+  {
+    "id": 222,
+    "contact_id": 399,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn connection request w/ Brandon Shelton referral",
+    "summary": "LinkedIn connection request sent using chris@neuroflowsolution.com. Connection note: Brandon Shelton referral, Navy vet w/ PTSD, voice-first AI mental health platform w/ clinician oversight, shared thesis alignment (NeuroFlow founding thesis = providers must be part of the solution, our model = Therapist in the Loop), BetterMind.Space raising $2.5M seed, campus GTM SCU/Stanford/Berkeley.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-20 17:16:21.526924+00"
+  },
+  {
+    "id": 223,
+    "contact_id": 399,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- Brandon Shelton Suggested I Reach Out",
+    "summary": "Full model warm-intro email sent to chris@neuroflowsolution.com. Brandon Shelton referral. Mirrored NeuroFlow founding thesis (providers must be in the solution) back to him as shared values w/ Therapist in the Loop. Two revenue streams, FDA testing, Brush Your Brain/Pepsodent/Mental Plague, vision beyond campus, complementary positioning (NeuroFlow = enterprise BH infrastructure, BetterMind = voice-first AI engagement layer), stickiness/LTV 60:1-100:1+, $2.5M seed, data room + demo video. Soft ask 30 min as veteran founders.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-20 17:21:57.486088+00"
+  },
+  {
+    "id": 224,
+    "contact_id": 478,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- AI Mental Health EHR, FDA-Ready",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:38:59.533453+00"
+  },
+  {
+    "id": 225,
+    "contact_id": 459,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- Voice-First AI Mental Health, FDA-Ready",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:01.311923+00"
+  },
+  {
+    "id": 226,
+    "contact_id": 457,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- Extending What Lyra Proved, with AI",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:02.063613+00"
+  },
+  {
+    "id": 227,
+    "contact_id": 465,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- What Comes After Headspace",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:02.814269+00"
+  },
+  {
+    "id": 228,
+    "contact_id": 451,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- DMHT Billing Moat in Behavioral Health",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:03.563291+00"
+  },
+  {
+    "id": 229,
+    "contact_id": 488,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- Builder to Builder, Same Problem",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:04.56044+00"
+  },
+  {
+    "id": 230,
+    "contact_id": 486,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- What Happens Between Sessions",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:05.300902+00"
+  },
+  {
+    "id": 231,
+    "contact_id": 479,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- Behavioral Health Infrastructure for the Between-Session Gap",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:06.054075+00"
+  },
+  {
+    "id": 232,
+    "contact_id": 458,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- The Between-Session Gap in Behavioral Health",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:07.06373+00"
+  },
+  {
+    "id": 233,
+    "contact_id": 407,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- Daily Mental Health Care, Not Just Crisis Response",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Personalized hook. Data room + demo links. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 15:39:07.803249+00"
+  },
+  {
+    "id": 234,
+    "contact_id": 464,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Between-Session Gap and a Billing Code That Closes It",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:03:26.065904+00"
+  },
+  {
+    "id": 235,
+    "contact_id": 460,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Clinical Infrastructure for the 167 Hours Between Sessions",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:03:26.829295+00"
+  },
+  {
+    "id": 236,
+    "contact_id": 442,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Behavioral Health Revenue with a Structural Moat",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:03:27.55269+00"
+  },
+  {
+    "id": 238,
+    "contact_id": 489,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Clinical-Grade AI Infrastructure for the Between-Session Gap",
+    "summary": "Touch 1 cold outreach. Story-first structural problem opener. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:03:29.014693+00"
+  },
+  {
+    "id": 239,
+    "contact_id": 480,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Deterministic Clinical AI with a Billing Code",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:33:11.523766+00"
+  },
+  {
+    "id": 240,
+    "contact_id": 437,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "UnHealthcare Applied to Behavioral Health",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:33:12.338644+00"
+  },
+  {
+    "id": 241,
+    "contact_id": 420,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Clinical Infrastructure for the Between-Session Gap",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:33:13.150547+00"
+  },
+  {
+    "id": 243,
+    "contact_id": 474,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "AI-Native Mental Health Infrastructure",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:33:14.697028+00"
+  },
+  {
+    "id": 244,
+    "contact_id": 230,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Consumer Mental Health with Clinical-Grade Infrastructure",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:53:19.500254+00"
+  },
+  {
+    "id": 245,
+    "contact_id": 455,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Following Up on the Note to Michael -- DMHT Billing in Behavioral Health",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:53:20.170419+00"
+  },
+  {
+    "id": 246,
+    "contact_id": 453,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "A New Category in Digital Mental Health",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:53:20.8101+00"
+  },
+  {
+    "id": 247,
+    "contact_id": 466,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Healthcare Infrastructure for the 167 Hours Between Sessions",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 16:53:21.475142+00"
+  },
+  {
+    "id": 250,
+    "contact_id": 449,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What Livongo Did for Diabetes, Applied to Mental Health",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 17:16:48.122459+00"
+  },
+  {
+    "id": 251,
+    "contact_id": 447,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Missing Category in Digital Mental Health",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 17:16:48.86631+00"
+  },
+  {
+    "id": 252,
+    "contact_id": 463,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Clinical-Grade AI for Behavioral Health, Built for the Scrutiny",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 17:16:49.594741+00"
+  },
+  {
+    "id": 253,
+    "contact_id": 483,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Deterministic AI in Behavioral Health, Built for Clinical Scrutiny",
+    "summary": "Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 17:16:50.253505+00"
+  },
+  {
+    "id": 255,
+    "contact_id": 490,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "What will it take",
+    "summary": "Inbound interest. Launching practice in Greensboro NC. Clinicians ready. University affiliations. College-age focus. Uses AI. Knows DMHT codes. Credentialed with major payers.",
+    "date": "2026-03-19",
+    "created_at": "2026-03-21 18:22:23.915537+00"
+  },
+  {
+    "id": 256,
+    "contact_id": 490,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: What will it take \u2014 Beta Pilot Proposal",
+    "summary": "Beta pilot proposal sent. Full Stack pivot explained. FDA 90-day timeline transparent. One-off beta partnership. Early access + potentially exclusive NC. Deck attached. Meeting ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-21 18:22:24.386186+00"
+  },
+  {
+    "id": 257,
+    "contact_id": 465,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist -- What Comes After Headspace",
+    "summary": "Touch 1 email BOUNCED. russell.glass@duke.edu returned 550 5.1.1 user unknown. Email never delivered. Need to resend via LinkedIn.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-22 15:02:28.567664+00"
+  },
+  {
+    "id": 258,
+    "contact_id": 489,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist investor outreach",
+    "summary": "Touch 1 email BOUNCED. justin_baker@harvard.edu returned 554 5.4.14 hop count exceeded (mail loop at Harvard Outlook). Email never delivered. Corrected email: jtbaker@mgb.org. Will resend.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-22 15:02:29.588682+00"
+  },
+  {
+    "id": 259,
+    "contact_id": 447,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "BetterMind.Space / Clinician Assist investor outreach",
+    "summary": "Touch 1 email BOUNCED. halle_tecco@harvard.edu returned 554 5.4.14 hop count exceeded (mail loop). Marked PASSED - contact page says not currently investing, does not respond to fundraising.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-22 15:02:30.59495+00"
+  },
+  {
+    "id": 260,
+    "contact_id": 116,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "NFX Signal - Connected with Faye Sahai (Vinaj Ventures)",
+    "summary": "Faye Sahai connected on NFX Signal. Added 50 new investor intro paths to VC network. Key connections: Lynne Chou OKeefe (Define Ventures, $750K-$6M sweet spot $4M) and Anne DeGheest (HealthTech Capital, $10K-$1.5M sweet spot $300K). Both healthcare-focused. Next: send thank-you, request intros.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-22 15:03:02.589692+00"
+  },
+  {
+    "id": 261,
+    "contact_id": 465,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn InMail - asking for help, what comes after Headspace",
+    "summary": "Paid LinkedIn InMail sent. Human-to-human ask: Navy vet who lived the gap between therapy sessions, built clinical AI infrastructure for it, asking for his perspective from Ginger/Headspace. No pitch, no numbers, no deck. Goal: get a conversation.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 15:48:44.106013+00"
+  },
+  {
+    "id": 262,
+    "contact_id": 425,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Things That Make Life Worth Living",
+    "summary": "Touch 1 sent. Spero wellbeing thesis opener. No deck attached (first send before pattern locked).",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 16:52:22.000501+00"
+  },
+  {
+    "id": 263,
+    "contact_id": 427,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What Talkiatry Started, We Finish",
+    "summary": "Touch 1 sent. Talkiatry/Calm portfolio opener. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 16:52:23.108547+00"
+  },
+  {
+    "id": 264,
+    "contact_id": 433,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Mental Health Moonshot, From Berkeley",
+    "summary": "Touch 1 sent. Apollo House/Khosla/Desai opener. Berkeley coffee ask. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 16:52:24.126307+00"
+  },
+  {
+    "id": 266,
+    "contact_id": 467,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Ioras Model, Rebuilt for Behavioral Health",
+    "summary": "Touch 1 sent. Iora hero story opener: health coach model, One Medical $2.1B, nobody did it for behavioral health. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 16:52:26.103164+00"
+  },
+  {
+    "id": 267,
+    "contact_id": 116,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Signal connection + Casey AI demo",
+    "summary": "Touch 3 email sent via Gmail. Thank-you for NFX Signal connection. Positioned BetterMind for college 18+. Soft ask: 20 minutes. No intro request (too early).",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 16:52:27.105267+00"
+  },
+  {
+    "id": 268,
+    "contact_id": 440,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Nobody Built For",
+    "summary": "Touch 1 sent. Story opener: student labeled non-adherent, health happens in the environment between appointments. Wellville thesis embedded without naming Wellville. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 17:55:43.148618+00"
+  },
+  {
+    "id": 269,
+    "contact_id": 435,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Student Who Got Better in the Session and Worse in the Dorm",
+    "summary": "Touch 1 sent. Story opener: Berkeley sophomore PHQ-9 19, safety plan in bag, CBT fades by Tuesday. System worked as designed. Health equity closer. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 17:55:44.45749+00"
+  },
+  {
+    "id": 270,
+    "contact_id": 438,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What Happens in the 167 Hours Between Therapy Sessions",
+    "summary": "Touch 1 sent. Story opener: student sits down for first time, roommate slams door, coping skills dissolve. I was that client for years. Founder-first angle. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 17:55:45.753206+00"
+  },
+  {
+    "id": 271,
+    "contact_id": 409,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Most Expensive Gap in Healthcare",
+    "summary": "Touch 1 sent. Story opener: therapist sees student 45 min, good session, 167 hours of nothing. $282B structural failure. Impact-returns alignment closer. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 17:55:46.737779+00"
+  },
+  {
+    "id": 272,
+    "contact_id": 441,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Pepsodent Moment for Mental Health",
+    "summary": "Touch 1 sent. Story opener: Pepsodent 1929, 7% to 65%, Claude Hopkins, film on your teeth. Mental health has no daily habit. Daily habit angle. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 17:55:47.808775+00"
+  },
+  {
+    "id": 273,
+    "contact_id": 425,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Things That Make Life Worth Living",
+    "summary": "Re-sent Touch 1 with corrected subject line (dropped BetterMind.Space / Clinician Assist prefix). Story opener: student gets courage to see therapist, walks out hopeful, 167 hours alone. Deck PDF attached this time.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 17:55:48.317865+00"
+  },
+  {
+    "id": 274,
+    "contact_id": 404,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Session Ends. Then What?",
+    "summary": "Touch 1. Story: student opens up, session ends, 167 hours alone. Empathy+technology closer. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 18:17:43.375009+00"
+  },
+  {
+    "id": 275,
+    "contact_id": 462,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Healthcare Solved the Ride. Not What Happens After.",
+    "summary": "Touch 1. Story: healthcare solved access but not what happens after appointment ends. Health assurance closer. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 18:17:44.048762+00"
+  },
+  {
+    "id": 276,
+    "contact_id": 406,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What Happens Between Sessions",
+    "summary": "Touch 1. Veteran story: VA clinic, hope in parking lot, 167 hours alone, coping skills dissolve. Fellow military connection (Paige is ex-Marine). Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 18:17:45.198622+00"
+  },
+  {
+    "id": 277,
+    "contact_id": 454,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Therapist Who Knows What Happens Next",
+    "summary": "Touch 1. Therapist POV story: finishes session, writes notes, knows client will be starting over next week. No infrastructure between sessions. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 18:17:45.80641+00"
+  },
+  {
+    "id": 321,
+    "contact_id": 431,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:21.384337+00"
+  },
+  {
+    "id": 322,
+    "contact_id": 436,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:22.037656+00"
+  },
+  {
+    "id": 278,
+    "contact_id": 382,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Infrastructure That Should Already Exist",
+    "summary": "Touch 1. Every university same scene: student gets slot, makes progress, walks into void, misses next appointment, slot goes to waitlist. Infrastructure problem. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 18:17:46.489573+00"
+  },
+  {
+    "id": 279,
+    "contact_id": 410,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Everyone Is Building AI for the Wrong 45 Minutes",
+    "summary": "Touch 1. Hook: hundreds of AI companies optimizing the session, session was never the problem for the client. 167 hours alone. Gender-neutral throughout. Updated sig CEO/CTO. Updated stickiness. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 19:07:37.686421+00"
+  },
+  {
+    "id": 280,
+    "contact_id": 450,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1. Rewritten from scratch after two drafts rejected. Final: student walks out hopeful, 167 hours no support, therapist starting over. Corrected stat: two-thirds never receive treatment (Healthy Minds). Gender-neutral. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 19:07:38.268949+00"
+  },
+  {
+    "id": 281,
+    "contact_id": 434,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "They Did Everything Right and Still Lost",
+    "summary": "Touch 1. Default opener (locked 3/22): someone struggling, 167 hours, skills dont survive, therapist starting over. Gender-neutral. Person not student. Closer: gap swallows progress. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 19:44:30.311192+00"
+  },
+  {
+    "id": 282,
+    "contact_id": 429,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1. Subject reused from Malay. Default opener (locked 3/22): someone struggling, 167 hours, skills dont survive. Rewrote from original Treatment Plan draft. Closer: I would love to hear your perspective. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 19:44:31.02471+00"
+  },
+  {
+    "id": 283,
+    "contact_id": 421,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1. Default opener (locked). Sent twice (first send, then correction with updated 167-hours phrasing: until their next appointment with no support). Closer: The intervention works. Deck PDF attached.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 19:54:07.046761+00"
+  },
+  {
+    "id": 284,
+    "contact_id": 451,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "RE: BetterMind.Space / Clinician Assist -- DMHT Billing Moat in Behavioral Health",
+    "summary": "Positive reply. Reviewing materials this week. Flagged portfolio overlap: BeMe, Oui Therapeutics, Valera, Author Health -- first three struggled with reimbursement. Will circle back with questions if a fit. Warm signal.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-22 20:14:17.406605+00"
+  },
+  {
+    "id": 285,
+    "contact_id": 81,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: Navy vet built what the VA cannot scale",
+    "summary": "The Veteran Fund replied to 3/20 outreach asking Jess to complete their startup intake form at veteran.fund/startup.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 23:48:37.579327+00"
+  },
+  {
+    "id": 286,
+    "contact_id": 81,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Navy vet built what the VA cannot scale",
+    "summary": "Completed The Veteran Fund startup intake form (veteran.fund/startup) with all fields and deck upload. Sent reply email confirming completion.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-22 23:48:38.06002+00"
+  },
+  {
+    "id": 287,
+    "contact_id": 502,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "A Clinical Tool With a Billing Code",
+    "summary": "Touch 1 cold outreach sent 3/22.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-23 00:35:39.628982+00"
+  },
+  {
+    "id": 297,
+    "contact_id": 440,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind seed round moving",
+    "summary": "[Merged from ID:125] Touch 2 (Legitimacy) sent. HTML formatted w/ branded sig. Round moving: funds in diligence, investor calls this week, therapist applications coming in organically.",
+    "date": "2026-03-16",
+    "created_at": "2026-03-23 00:58:22.410595+00"
+  },
+  {
+    "id": 298,
+    "contact_id": 433,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Quick update - BetterMind.Space round moving",
+    "summary": "[Merged from ID:134] Touch 2 (Legitimacy) sent. Round is moving framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-23 00:58:23.452749+00"
+  },
+  {
+    "id": 299,
+    "contact_id": 382,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Carrot Fertility adjacency - voice AI for college mental health",
+    "summary": "[Merged from ID:389] Touch 1 cold outreach. Referenced Carrot Fertility portfolio investment. Healthcare + consumer at seed framing.",
+    "date": "2026-03-18",
+    "created_at": "2026-03-23 00:58:24.44985+00"
+  },
+  {
+    "id": 300,
+    "contact_id": 429,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Voice-First Clinical AI for the Between-Session Gap",
+    "summary": "[Merged from ID:475] Touch 1 cold outreach. Story-first. Deck PDF attached. 30 min ask.",
+    "date": "2026-03-21",
+    "created_at": "2026-03-23 00:58:25.491045+00"
+  },
+  {
+    "id": 301,
+    "contact_id": 300,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 2026-03-22. Batch 5.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-23 16:19:10.776529+00"
+  },
+  {
+    "id": 302,
+    "contact_id": 363,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Gap Between Sessions",
+    "summary": "Touch 1 cold outreach sent 2026-03-22. Batch 5.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-23 16:19:11.376434+00"
+  },
+  {
+    "id": 303,
+    "contact_id": 346,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 2026-03-23. Batch 5.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:19:11.951857+00"
+  },
+  {
+    "id": 304,
+    "contact_id": 350,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 2026-03-23. Batch 5.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:19:12.901201+00"
+  },
+  {
+    "id": 305,
+    "contact_id": 424,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 2026-03-23. Batch 5.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:19:13.841679+00"
+  },
+  {
+    "id": 306,
+    "contact_id": 306,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 2026-03-23. Batch 5.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:19:14.338319+00"
+  },
+  {
+    "id": 307,
+    "contact_id": 272,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Building a Daily Mental Health Habit for 330 Million People",
+    "summary": "Touch 1 cold outreach sent 2026-03-23. Batch 5.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:19:14.877811+00"
+  },
+  {
+    "id": 308,
+    "contact_id": 301,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 2026-03-23. Batch 5.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:19:15.457321+00"
+  },
+  {
+    "id": 309,
+    "contact_id": 327,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 2026-03-23. Batch 5.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:19:15.936639+00"
+  },
+  {
+    "id": 310,
+    "contact_id": 297,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 2026-03-23. Batch 5.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:19:16.524362+00"
+  },
+  {
+    "id": 311,
+    "contact_id": 299,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:20.042439+00"
+  },
+  {
+    "id": 312,
+    "contact_id": 428,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:20.633488+00"
+  },
+  {
+    "id": 313,
+    "contact_id": 302,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:21.163921+00"
+  },
+  {
+    "id": 314,
+    "contact_id": 481,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:21.778066+00"
+  },
+  {
+    "id": 315,
+    "contact_id": 430,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:22.281391+00"
+  },
+  {
+    "id": 316,
+    "contact_id": 423,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:22.769574+00"
+  },
+  {
+    "id": 317,
+    "contact_id": 330,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:23.280212+00"
+  },
+  {
+    "id": 318,
+    "contact_id": 445,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:23.775541+00"
+  },
+  {
+    "id": 319,
+    "contact_id": 468,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:24.295532+00"
+  },
+  {
+    "id": 320,
+    "contact_id": 482,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 6.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 16:48:24.810027+00"
+  },
+  {
+    "id": 323,
+    "contact_id": 294,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:22.705241+00"
+  },
+  {
+    "id": 324,
+    "contact_id": 305,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:23.363192+00"
+  },
+  {
+    "id": 325,
+    "contact_id": 448,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:23.975672+00"
+  },
+  {
+    "id": 326,
+    "contact_id": 426,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:24.579766+00"
+  },
+  {
+    "id": 327,
+    "contact_id": 446,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:25.239658+00"
+  },
+  {
+    "id": 328,
+    "contact_id": 484,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:25.796839+00"
+  },
+  {
+    "id": 329,
+    "contact_id": 422,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:26.361423+00"
+  },
+  {
+    "id": 330,
+    "contact_id": 353,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 7.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 17:25:27.054457+00"
+  },
+  {
+    "id": 331,
+    "contact_id": 404,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: The Session Ends. Then What?",
+    "summary": "Armen replied positively. Former CTO/CPO of BetterUp, very interested in the space. Shared Calendly link.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:02:19.913783+00"
+  },
+  {
+    "id": 332,
+    "contact_id": 404,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: The Session Ends. Then What?",
+    "summary": "Confirmed call Thu 3/26 1:00 PM PT via Calendly.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:02:20.033329+00"
+  },
+  {
+    "id": 333,
+    "contact_id": 300,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Auto-reply from Dunky Bot directing to hustlefund.vc application portal. Standard intake process.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-23 18:02:20.679033+00"
+  },
+  {
+    "id": 334,
+    "contact_id": 446,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Please Read Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "OOO auto-reply. Traveling internationally. Founding Partner Emeritus (Retired). Directs investment proposals to active team via underscore.vc or assistant ali@underscore.vc.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:02:21.273221+00"
+  },
+  {
+    "id": 335,
+    "contact_id": 428,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Out Of The Office Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "OOO auto-reply. Out this week, back Mon 3/30. Directs founders to Chingona intake form.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:02:21.909038+00"
+  },
+  {
+    "id": 336,
+    "contact_id": 81,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: Navy vet built what the VA cannot scale",
+    "summary": "Acknowledged intake completion with \"Thanks, Jess.\" Ball in their court for next steps.",
+    "date": "2026-03-22",
+    "created_at": "2026-03-23 18:02:22.224211+00"
+  },
+  {
+    "id": 337,
+    "contact_id": 300,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Hustle Fund application submitted",
+    "summary": "Completed Hustle Fund intake application via hustlefund.vc portal. $10M post-money SAFE cap. Deck uploaded.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:39:11.149758+00"
+  },
+  {
+    "id": 338,
+    "contact_id": 428,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Chingona Ventures Typeform application submitted",
+    "summary": "Completed Chingona Ventures intake via Typeform. Referred by Samara OOO auto-reply. She returns 3/30.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:39:11.758966+00"
+  },
+  {
+    "id": 339,
+    "contact_id": 432,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:22.981755+00"
+  },
+  {
+    "id": 340,
+    "contact_id": 366,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:23.822754+00"
+  },
+  {
+    "id": 341,
+    "contact_id": 395,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:24.420842+00"
+  },
+  {
+    "id": 342,
+    "contact_id": 379,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:25.164247+00"
+  },
+  {
+    "id": 343,
+    "contact_id": 412,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:25.832661+00"
+  },
+  {
+    "id": 344,
+    "contact_id": 417,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:26.438743+00"
+  },
+  {
+    "id": 345,
+    "contact_id": 477,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:26.990985+00"
+  },
+  {
+    "id": 346,
+    "contact_id": 487,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:27.612992+00"
+  },
+  {
+    "id": 347,
+    "contact_id": 489,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:28.276535+00"
+  },
+  {
+    "id": 348,
+    "contact_id": 388,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 8.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 18:41:28.841404+00"
+  },
+  {
+    "id": 349,
+    "contact_id": 81,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "The Veteran Fund: Follow Up",
+    "summary": "PASSED. Thesis mismatch (critical technologies). CC Justin Nahama GP for updates. Shared Veteran Startup Accelerator and Veteran VC Coalition resources.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:47:36.556356+00"
+  },
+  {
+    "id": 350,
+    "contact_id": 366,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Automatic reply: The 167 Hours Where Recovery Goes to Die",
+    "summary": "OOO auto-reply. Traveling, back 3/26. Will respond when she returns.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:47:37.480205+00"
+  },
+  {
+    "id": 351,
+    "contact_id": 351,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:08.526166+00"
+  },
+  {
+    "id": 352,
+    "contact_id": 264,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:09.099359+00"
+  },
+  {
+    "id": 353,
+    "contact_id": 456,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:09.658475+00"
+  },
+  {
+    "id": 354,
+    "contact_id": 452,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:10.210413+00"
+  },
+  {
+    "id": 355,
+    "contact_id": 334,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:10.703911+00"
+  },
+  {
+    "id": 356,
+    "contact_id": 419,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:11.177028+00"
+  },
+  {
+    "id": 357,
+    "contact_id": 416,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:11.762537+00"
+  },
+  {
+    "id": 358,
+    "contact_id": 405,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:12.212733+00"
+  },
+  {
+    "id": 359,
+    "contact_id": 415,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9. Custom personalized email: person-to-person mental health shared experience, spokesperson ask.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:12.682333+00"
+  },
+  {
+    "id": 360,
+    "contact_id": 270,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Mental Health System Gives People One Meal a Week",
+    "summary": "Touch 1 cold outreach sent 3/23. Batch 9. Custom personalized email: daily practice philosophy mapped to Casey.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 19:49:13.165466+00"
+  },
+  {
+    "id": 361,
+    "contact_id": 414,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What Pi Was Missing",
+    "summary": "Touch 1 sent 3/23. Batch 10 (Final). Custom: Pi/Inflection connection.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 20:45:08.200004+00"
+  },
+  {
+    "id": 362,
+    "contact_id": 443,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 sent 3/23. Batch 10 (Final).",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 20:45:08.782404+00"
+  },
+  {
+    "id": 363,
+    "contact_id": 439,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 sent 3/23. Batch 10 (Final). Custom: 100 touchpoints, billing codes. CC Nini, David Weiden, Daisy Ding.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 20:45:09.643654+00"
+  },
+  {
+    "id": 364,
+    "contact_id": 408,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Systems Problem Grow Therapy Didn't Solve",
+    "summary": "Touch 1 sent 3/23. Batch 10 (Final). Custom: Grow Therapy Series A thesis, systems problem.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 20:45:10.148948+00"
+  },
+  {
+    "id": 365,
+    "contact_id": 411,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Daily Habit That Actually Protects Them",
+    "summary": "Touch 1 sent 3/23. Batch 10 (Final). Custom: Disney+/TikTok daily habit, spokesperson/viral ask.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 20:45:10.641341+00"
+  },
+  {
+    "id": 366,
+    "contact_id": 328,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 sent 3/23. Batch 10 (Final).",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 20:45:11.118224+00"
+  },
+  {
+    "id": 367,
+    "contact_id": 388,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "PASSED. Phil replied: \"not a fit for us.\" Quick pass, no further engagement.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 20:45:46.215753+00"
+  },
+  {
+    "id": 368,
+    "contact_id": 300,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Hustle Fund Deal Submission: Clinician Assist GTM BetterMind.Space",
+    "summary": "Application confirmed by deals@hustlefund.vc. Reviews on rolling basis every two weeks.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-23 20:45:46.985228+00"
+  },
+  {
+    "id": 371,
+    "contact_id": 512,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind seed round",
+    "summary": "Eric emailed separately from Cameron: Thanks for reaching out to our team. Would love to find time to learn more about what you are building at Clinician Assist. Asked for dates/times.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-24 14:15:38.155067+00"
+  },
+  {
+    "id": 372,
+    "contact_id": 397,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "RE: Following up - BetterMind seed round",
+    "summary": "Scheduling nudge to Cameron. Friday window passed, Monday and Tuesday still open.",
+    "date": "2026-03-20",
+    "created_at": "2026-03-24 14:15:38.693891+00"
+  },
+  {
+    "id": 373,
+    "contact_id": 397,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "RE: Following up - BetterMind seed round",
+    "summary": "Cameron confirmed call for Tuesday 3/24 at 12pm CT (10am PT). Said he would send calendar invite. Eric Shan cc-ed.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-24 14:15:39.149864+00"
+  },
+  {
+    "id": 374,
+    "contact_id": 397,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind seed round",
+    "summary": "Jess confirmed the call. Sounds great, thanks!",
+    "date": "2026-03-23",
+    "created_at": "2026-03-24 14:15:39.691567+00"
+  },
+  {
+    "id": 375,
+    "contact_id": 397,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Investor screening call - 7wire Ventures",
+    "summary": "30-min investor screening call via Zoom with Cameron Raglin (Senior Associate) and Eric Shan (Associate). Meeting went well. Cameron said thesis is aligned with 7wire. Key issue: 7wire is primarily Series A, not seed. Said he will get back to us by end of week. Sent Pepsodent Moment audio deep dive pre-call.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 17:33:37.788949+00"
+  },
+  {
+    "id": 376,
+    "contact_id": 512,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Investor screening call - 7wire Ventures",
+    "summary": "On the 3/24 screening call with Cameron Raglin. Meeting went well, thesis aligned, 7wire primarily Series A. Awaiting response by end of week.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 17:33:38.293992+00"
+  },
+  {
+    "id": 377,
+    "contact_id": 41,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Tuesday Update: 7wire Ventures Call, Emerson Collective Thursday, Pipeline Moving",
+    "summary": "Conspiracy group update. 7wire call completed, thesis aligned, primarily Series A, response by EOW. Noted new pitch approach: played video rather than talking through deck. Video link shared with Conspiracy and is in data room. Emerson Collective call Thursday. Pipeline moving from outreach to conversations.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 17:42:51.734886+00"
+  },
+  {
+    "id": 378,
+    "contact_id": 38,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Tuesday Update: 7wire Ventures Call, Emerson Collective Thursday, Pipeline Moving",
+    "summary": "Conspiracy group update. 7wire call completed, thesis aligned, primarily Series A, response by EOW. Noted new pitch approach: played video rather than talking through deck. Video link shared with Conspiracy and is in data room. Emerson Collective call Thursday. Pipeline moving from outreach to conversations.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 17:42:52.345052+00"
+  },
+  {
+    "id": 379,
+    "contact_id": 44,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Tuesday Update: 7wire Ventures Call, Emerson Collective Thursday, Pipeline Moving",
+    "summary": "Conspiracy group update. 7wire call completed, thesis aligned, primarily Series A, response by EOW. Noted new pitch approach: played video rather than talking through deck. Video link shared with Conspiracy and is in data room. Emerson Collective call Thursday. Pipeline moving from outreach to conversations.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 17:42:52.881133+00"
+  },
+  {
+    "id": 380,
+    "contact_id": 45,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Tuesday Update: 7wire Ventures Call, Emerson Collective Thursday, Pipeline Moving",
+    "summary": "Conspiracy group update. 7wire call completed, thesis aligned, primarily Series A, response by EOW. Noted new pitch approach: played video rather than talking through deck. Video link shared with Conspiracy and is in data room. Emerson Collective call Thursday. Pipeline moving from outreach to conversations.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 17:42:53.372283+00"
+  },
+  {
+    "id": 381,
+    "contact_id": 43,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Tuesday Update: 7wire Ventures Call, Emerson Collective Thursday, Pipeline Moving",
+    "summary": "Conspiracy group update. 7wire call completed, thesis aligned, primarily Series A, response by EOW. Noted new pitch approach: played video rather than talking through deck. Video link shared with Conspiracy and is in data room. Emerson Collective call Thursday. Pipeline moving from outreach to conversations.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 17:42:53.908932+00"
+  },
+  {
+    "id": 382,
+    "contact_id": 54,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Tuesday Update: 7wire Ventures Call, Emerson Collective Thursday, Pipeline Moving",
+    "summary": "Conspiracy group update. 7wire call completed, thesis aligned, primarily Series A, response by EOW. Noted new pitch approach: played video rather than talking through deck. Video link shared with Conspiracy and is in data room. Emerson Collective call Thursday. Pipeline moving from outreach to conversations.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 17:42:54.590453+00"
+  },
+  {
+    "id": 383,
+    "contact_id": 451,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "RE: BetterMind.Space / Clinician Assist -- DMHT Billing Moat in Behavioral Health",
+    "summary": "Follow-up reply to Michael's 3/21 note where he flagged BeMe, Oui Therapeutics, and Valera as portfolio comps that struggled with reimbursement. Acknowledged the candor, positioned DMHT codes as different starting point vs. his portfolio companies who built tech then searched for billing. Shared new LinkedIn article (When There Is No Therapist in the Loop) and full FDA Safety Review & Remediation report (CASEY-FDA-REM-001). Soft ask for a call, no pressure. Person-to-person tone.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 18:07:31.107899+00"
+  },
+  {
+    "id": 384,
+    "contact_id": 397,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind seed round",
+    "summary": "Post-call thank you email (cc Eric Shan). Acknowledged stage fit question, shared two new assets: LinkedIn article (When There Is No Therapist in the Loop) and full FDA Safety Review & Remediation report with deterministic safety layer explanation. No pressure close, told them no rush.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 18:29:17.262518+00"
+  },
+  {
+    "id": 385,
+    "contact_id": 512,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind seed round",
+    "summary": "CC on post-call thank you to Cameron. Included LinkedIn article and FDA report.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 18:29:17.753874+00"
+  },
+  {
+    "id": 386,
+    "contact_id": 297,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "Clean pass. Thanks for sending the deck and video. Unfortunately Casey/BetterMind.Space is not a fit for us. Best of luck.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 18:32:17.702433+00"
+  },
+  {
+    "id": 387,
+    "contact_id": 443,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "Clean pass from Josh Kopelman personally. Had a chance to review Clinician Assist. Not a fit. Appreciated the opportunity, wished well.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-24 18:32:18.651495+00"
+  },
+  {
+    "id": 388,
+    "contact_id": 388,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "Quick pass. Not a fit for us. Same day reply to Touch 1.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-24 18:32:19.660952+00"
+  },
+  {
+    "id": 389,
+    "contact_id": 81,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "The Veteran Fund: Follow Up",
+    "summary": "Formal pass. Applaud what you are building, passionate about veteran mental health, but not aligned with thesis (critical tech). GP Justin Nahama cc-ed wants updates. Shared Veteran Startup Accelerator (FI/JPMorganChase) and Veteran VC Coalition Office Hours resources.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-24 18:32:20.681779+00"
+  },
+  {
+    "id": 390,
+    "contact_id": 142,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Billing Code Exists. The Infrastructure Does Not.",
+    "summary": "Touch 3. Article (When There Is No Therapist in the Loop) + FDA Safety Review report. No resume recitation. Opened with policy-to-deployment gap. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 19:38:28.680151+00"
+  },
+  {
+    "id": 391,
+    "contact_id": 118,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Could This Have Helped You?",
+    "summary": "Touch 3. Shared lived experience opener (The Meadows, 167 hours). Article + FDA report. CC info@whatif.vc. Subject is his investment criteria. No deck attached (he uses s@whatif.vc, BCC info@).",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 19:38:29.701766+00"
+  },
+  {
+    "id": 392,
+    "contact_id": 124,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The First AI Mental Health Company That Can Pass the Safety Test",
+    "summary": "Touch 3. Jess added IEC 62304 reference to the regulatory bar language. Article + FDA report. Regulated market pattern opener without listing his deals. Closing expanded to scalably and sustainably. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 19:38:30.790004+00"
+  },
+  {
+    "id": 393,
+    "contact_id": 132,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "1.78 Million Tests. Zero Failures. FDA Ready.",
+    "summary": "Touch 3. Jess rewrote closing to be warmer: Love to get your take, feel free to ring me anytime or send a schedule invite. Removed two investor calls momentum signal. Article + FDA report. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 19:38:31.780449+00"
+  },
+  {
+    "id": 394,
+    "contact_id": 126,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Parity Made the Promise. This Is the Infrastructure.",
+    "summary": "Touch 3. Sent as-drafted. Parity promise framing, 167-hour gap, article + FDA report. No resume recitation. Closing: Parity made the promise, we are building the infrastructure. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 19:38:32.790429+00"
+  },
+  {
+    "id": 395,
+    "contact_id": 143,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "People Are Dying Because No One Built This",
+    "summary": "Touch 3. Jess rewrote closing to match Jordan style: Love to get your take, feel free to ring me anytime or send a schedule invite. Removed momentum signal. Bolded FDA review sentence. Article + FDA report. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 19:38:33.775543+00"
+  },
+  {
+    "id": 396,
+    "contact_id": 400,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What Happens When There Is No Therapist in the Loop",
+    "summary": "Follow-up nudge. Referenced Brandon Shelton intro. Added \"in my series\" to article reference. Used warmer closing: feel free to ring me anytime or send a schedule invite. Article + FDA report linked. Deck PDF attached. Tighter than my draft, removed 15-minute ask.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 19:58:11.625747+00"
+  },
+  {
+    "id": 397,
+    "contact_id": 513,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What NOCD Built for OCD. We Built for Everything Else.",
+    "summary": "Touch 1 affinity. NOCD portfolio + Cameron Raglin connection. Jess edits: paragraph breaks, pre-FDA, meeting invite, I would value. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 21:53:09.49623+00"
+  },
+  {
+    "id": 398,
+    "contact_id": 251,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Engineering Problem No One Solved in Mental Health.",
+    "summary": "Touch 1 affinity. Engineering Health thesis. Jess edits: pre-FDA, with added, meeting invite. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 21:53:09.867111+00"
+  },
+  {
+    "id": 399,
+    "contact_id": 469,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Pear Therapeutics Failed. The Infrastructure Did Not Have to.",
+    "summary": "Touch 1 affinity. Woebot+Headspace+Pear trifecta. Sent as-drafted. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 21:53:10.226996+00"
+  },
+  {
+    "id": 400,
+    "contact_id": 339,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Health Equity Is an Infrastructure Problem.",
+    "summary": "Touch 1 affinity. Health equity thesis. Jess edits: separate ask paragraph, pre-FDA, ready for 510k phrasing. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 21:53:10.595059+00"
+  },
+  {
+    "id": 401,
+    "contact_id": 380,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Billing Code No One Is Using Yet.",
+    "summary": "Touch 1 affinity. DMHT billing code. Jess edits: added SaMD before Casey, removed raise line. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 21:53:10.951543+00"
+  },
+  {
+    "id": 402,
+    "contact_id": 321,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What Happens Between Therapy Appointments Is a Billing Problem.",
+    "summary": "Touch 1 affinity. Payer CVC billing gap. Jess edits: pre-FDA applied. Deck PDF attached.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 21:53:11.308165+00"
+  },
+  {
+    "id": 403,
+    "contact_id": 380,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Automatic reply: The Billing Code No One Is Using Yet.",
+    "summary": "Auto-reply from urs@bdmifund.com: address no longer active. Redirected to urs@1745ventures.com. BDMI portfolio spun out to form 1745 Ventures. Bertelsmann is major LP. Need to resend Touch 1 to new address.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 23:14:51.032781+00"
+  },
+  {
+    "id": 404,
+    "contact_id": 380,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Automatic reply: The Billing Code No One Is Using Yet.",
+    "summary": "Auto-reply from urs@bdmifund.com: address no longer active. Redirected to urs@1745ventures.com. BDMI portfolio spun out to form 1745 Ventures. Bertelsmann is major LP. Need to resend Touch 1 to new address.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-24 23:14:58.921778+00"
+  },
+  {
+    "id": 405,
+    "contact_id": 423,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "PASS. David Hornik replied: market is not a fit for Lobby Capital. Clean pass.",
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 14:32:06.566644+00"
+  },
+  {
+    "id": 406,
+    "contact_id": 380,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Automatic reply: The Billing Code No One Is Using Yet.",
+    "summary": "Auto-reply: urs@bdmifund.com no longer active. Redirect to urs@1745ventures.com. BDMI portfolio spun out to 1745 Ventures, Bertelsmann major LP.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:32:07.574946+00"
+  },
+  {
+    "id": 407,
+    "contact_id": 400,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: What Happens When There Is No Therapist in the Loop",
+    "summary": "John replied positively. Congrats on both updates. On spring break ski trip. Wants to connect next week or following week. Jess replied warmly, ball in his court for scheduling.",
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 14:32:08.567523+00"
+  },
+  {
+    "id": 408,
+    "contact_id": 467,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: Iora's Model, Rebuilt for Behavioral Health",
+    "summary": "Rushika replied: happy to talk. Wants 30-min video call next week. Ball in our court to propose times.",
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 14:32:10.18069+00"
+  },
+  {
+    "id": 409,
+    "contact_id": 380,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Billing Code No One Is Using Yet.",
+    "summary": "Touch 1 RESENT to corrected email urs@1745ventures.com after bounce from bdmifund.com.",
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 14:44:46.952612+00"
+  },
+  {
+    "id": 410,
+    "contact_id": 297,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "PASS. Satya replied: Thanks for the deck and video, Casey/BetterMind.Space is not a fit. Clean pass.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:47.50921+00"
+  },
+  {
+    "id": 411,
+    "contact_id": 397,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind seed round",
+    "summary": "Pre-call email to Cameron and Eric ahead of 7wire screening call. Shared audio deep dive framing core thesis.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:48.023244+00"
+  },
+  {
+    "id": 412,
+    "contact_id": 397,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Following up - BetterMind seed round",
+    "summary": "Post-call follow-up. Shared When There Is No Therapist in the Loop article and FDA Safety Review report. Acknowledged stage fit question (7wire primarily Series A). Left door open.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:48.708501+00"
+  },
+  {
+    "id": 413,
+    "contact_id": 451,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "RE: BetterMind.Space / Clinician Assist -- DMHT Billing Moat in Behavioral Health",
+    "summary": "Follow-up to Michael Greeley. Addressed BeMe/Oui/Valera reimbursement concern. Shared When There Is No Therapist in the Loop article and FDA Safety Review report. Positioned DMHT billing moat as different starting point from failed competitors.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:49.220224+00"
+  },
+  {
+    "id": 414,
+    "contact_id": 54,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Tuesday Update: 7wire Ventures Call, Emerson Collective Thursday, Pipeline Moving",
+    "summary": "Conspiracy update: 7wire call recap (Cameron/Eric positive, stage fit constraint), Emerson Collective Armen Berjikly call Thursday 1pm PT, pipeline moving to real conversations.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:49.721436+00"
+  },
+  {
+    "id": 415,
+    "contact_id": 400,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "What Happens When There Is No Therapist in the Loop",
+    "summary": "Touch 2 follow-up to John Gordon (Brandon Shelton intro). Shared new article and FDA safety review report. Asked for call.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:50.224394+00"
+  },
+  {
+    "id": 416,
+    "contact_id": 467,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: Iora Model, Rebuilt for Behavioral Health",
+    "summary": "Replied to Rushika. Wide open next week. Offered phone number and meeting invite. Ball in her court.",
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 14:44:50.711173+00"
+  },
+  {
+    "id": 417,
+    "contact_id": 400,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: What Happens When There Is No Therapist in the Loop",
+    "summary": "Replied to John Gordon warm and personal. Ski conversation, connect next week. Ball in his court for scheduling.",
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 14:44:51.229099+00"
+  },
+  {
+    "id": 418,
+    "contact_id": 339,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Health Equity Is an Infrastructure Problem.",
+    "summary": "Touch 1 sent to jessica@theimpactengine.com. Impact investing / health equity angle.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:52.118499+00"
+  },
+  {
+    "id": 419,
+    "contact_id": 143,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "People Are Dying Because No One Built This",
+    "summary": "Touch 1 sent to pitch@healthy.vc. Healthcare difficulty = investability angle.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:52.548125+00"
+  },
+  {
+    "id": 420,
+    "contact_id": 126,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Parity Made the Promise. This Is the Infrastructure.",
+    "summary": "Touch 1 sent to info@thekennedyforum.org. Mental health parity infrastructure angle.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:52.942646+00"
+  },
+  {
+    "id": 421,
+    "contact_id": 132,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "1.78 Million Tests. Zero Failures. FDA Ready.",
+    "summary": "Touch 2 follow-up to Jordan Nof. FDA testing + When There Is No Therapist in the Loop article.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:53.322251+00"
+  },
+  {
+    "id": 422,
+    "contact_id": 124,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The First AI Mental Health Company That Can Pass the Safety Test",
+    "summary": "Touch 1 sent to info@tusk.vc. Regulatory thesis angle (ride-sharing, insurance, fantasy sports parallel).",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:53.710111+00"
+  },
+  {
+    "id": 423,
+    "contact_id": 118,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Could This Have Helped You?",
+    "summary": "Touch 1 sent to s@whatif.vc (cc info@whatif.vc). Deeply personal angle referencing Stephen's Meadows story + shared PTSD experience.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:54.112268+00"
+  },
+  {
+    "id": 424,
+    "contact_id": 142,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Billing Code Exists. The Infrastructure Does Not.",
+    "summary": "Touch 1 sent to ir@townhallventures.com. Billing code to clinical qualification gap angle.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:54.535943+00"
+  },
+  {
+    "id": 425,
+    "contact_id": 251,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The Space Between Therapy Sessions Is Where People Get Lost",
+    "summary": "Touch 1 sent to info@digitalisventures.com (general inbox). Parallel to Geoffrey Smith direct email.",
+    "date": "2026-03-24",
+    "created_at": "2026-03-25 14:44:54.933521+00"
+  },
+  {
+    "id": 426,
+    "contact_id": 404,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: The Session Ends. Then What?",
+    "summary": "Pre-call email ahead of 3/26 1pm PT Zoom. Shared audio deep dive (Mental Health's Pepsodent Moment) and When There Is No Therapist in the Loop article. Prioritized audio as best call setup. BetterUp CTO/CPO background makes the clinical oversight article especially relevant.",
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 14:58:26.293468+00"
+  },
+  {
+    "id": 427,
+    "contact_id": 368,
+    "type": "email_received",
+    "channel": null,
+    "subject": null,
+    "summary": null,
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 19:13:46.857413+00"
+  },
+  {
+    "id": 428,
+    "contact_id": 368,
+    "type": "email_sent",
+    "channel": null,
+    "subject": null,
+    "summary": null,
+    "date": "2026-03-25",
+    "created_at": "2026-03-25 19:13:47.388932+00"
+  },
+  {
+    "id": 429,
+    "contact_id": 438,
+    "type": "email_received",
+    "channel": null,
+    "subject": null,
+    "summary": null,
+    "date": "2026-03-10",
+    "created_at": "2026-03-25 19:13:48.472947+00"
+  },
+  {
+    "id": 446,
+    "contact_id": 60,
+    "type": "email",
+    "channel": "email",
+    "subject": "PASS - Re: Quick update",
+    "summary": "Rebecca Mitchell MD replied: 'Thanks Jess but we will not be pursuing.' No reason given. Marked passed.",
+    "date": "2026-03-26",
+    "created_at": "2026-03-26 14:30:37.693565+00"
+  },
+  {
+    "id": 447,
+    "contact_id": 404,
+    "type": "email",
+    "channel": "email",
+    "subject": "Re: The Session Ends. Then What? (morning of call)",
+    "summary": "Armen replied morning of call: skimmed audio, didn't get to article. Said 'Let's go over things live. I know the space well and can spin up fast.' Jess replied: 'No worries, looking forward to meeting you.'",
+    "date": "2026-03-26",
+    "created_at": "2026-03-26 14:31:00.817859+00"
+  },
+  {
+    "id": 448,
+    "contact_id": 551,
+    "type": "note",
+    "channel": "other",
+    "subject": "AI Mental Health Collective presentation observed",
+    "summary": "Winnie presented Aeli Health at AI Mental Health Collective 2026-03-26. Platform targets trauma-informed therapists with between-session tools: curated content library, client portal, mood journal. UX is form-based and burdens clients with self-reporting -- unlikely to drive sustained engagement. No voice, no billing integration, no FDA pathway. Early access stage. Competitive intelligence only -- not an outreach target.",
+    "date": "2026-03-26",
+    "created_at": "2026-03-26 15:20:33.155517+00"
+  },
+  {
+    "id": 449,
+    "contact_id": 404,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "30-min Zoom call - Seed pass, Series A candidate",
+    "summary": "Zoom call 3/26/26 1pm PT. Armen engaged deeply, asked right questions, no pushback on tech or business. Likes the direction. Passed for seed because Emerson already invested in mental health space. Said come back when we have it working. Offered to be a resource for questions. Series A candidate #3 with zero objections.",
+    "date": "2026-03-26",
+    "created_at": "2026-03-26 20:38:01.019602+00"
+  },
+  {
+    "id": 450,
+    "contact_id": 405,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "The 167 Hours Where Recovery Goes to Die",
+    "summary": "Touch 1 cold outreach with deck PDF. Veteran opener, 167-hr gap framing.",
+    "date": "2026-03-23",
+    "created_at": "2026-03-28 15:53:27.555247+00"
+  },
+  {
+    "id": 451,
+    "contact_id": 405,
+    "type": "email_received",
+    "channel": "email",
+    "subject": "Re: The 167 Hours Where Recovery Goes to Die",
+    "summary": "Pass. Fern: We are going to pass for now. Thank you for thinking of us. Brief, no objection stated.",
+    "date": "2026-03-27",
+    "created_at": "2026-03-28 15:53:27.807595+00"
+  },
+  {
+    "id": 452,
+    "contact_id": 552,
+    "type": "email_sent",
+    "channel": "linkedin",
+    "subject": "LinkedIn reconnection message",
+    "summary": "Warm reconnection. Referenced ICL days. Mentioned building MH company for college students. Asked to catch up. No pitch.",
+    "date": "2026-03-28",
+    "created_at": "2026-03-28 16:34:39.786223+00"
+  },
+  {
+    "id": 453,
+    "contact_id": 490,
+    "type": "email_sent",
+    "channel": "email",
+    "subject": "Re: What will it take - meeting booking",
+    "summary": "Meeting booking reply. Proposed Wed or Thu this week at 10am PT / 1pm ET. Agenda: Casey platform walkthrough, Beta pilot structure, university affiliations discussion.",
+    "date": "2026-03-28",
+    "created_at": "2026-03-28 16:34:40.76798+00"
+  }
+]

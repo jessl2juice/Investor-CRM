@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "email": "jess@clinicianassist.ai",
+    "password_hash": "437c4eec726b18e47dc3f4f2f8b2bf530817afe4046d8e7fef258bfeacd58559",
+    "password_salt": "cdc5cbda8b0934f455dbf34b83ceaf87",
+    "name": "Jess Jessop",
+    "role": "admin",
+    "created_at": "2026-03-05 22:09:15.483294+00"
+  },
+  {
+    "id": 2,
+    "email": "tommy@ctrl-drive.com",
+    "password_hash": "9d4ed3763ea1f4256e058443a2d0721467bedec7a52be517d2d91fb3648519c9",
+    "password_salt": "e4314a3d07983282d9a755781c6c6940",
+    "name": "Tommy Stiansen",
+    "role": "user",
+    "created_at": "2026-03-06 17:33:33.545748+00"
+  },
+  {
+    "id": 3,
+    "email": "chris@modularfeedback.com",
+    "password_hash": "77b8f49ef8ac6e8ba23fdb8b9d6f85487f469335443b9ba90377c447db917ec2",
+    "password_salt": "ab049767a53c476aba709f64fefeddd8",
+    "name": "Chris Hemphill",
+    "role": "user",
+    "created_at": "2026-03-06 17:33:34.079435+00"
+  },
+  {
+    "id": 4,
+    "email": "jeaninecmartin@gmail.com",
+    "password_hash": "c333649a2ed5967b3acbc237be36d089b4a9ab508dc1962b229bd1b00ccc55b8",
+    "password_salt": "a407ebbc2cd59cb408044a51dd23da95",
+    "name": "Jeanine Martin",
+    "role": "user",
+    "created_at": "2026-03-06 17:33:34.497083+00"
+  },
+  {
+    "id": 5,
+    "email": "kimmitchellpotter@gmail.com",
+    "password_hash": "9dddb2fd8eb18535f6e5e5e3c26d3975a9d6e3c4fbbcefa7767a9f8481b3b02e",
+    "password_salt": "af3c50f9fb3e5925f0d6fbbdf52b129e",
+    "name": "Kimberly Potter",
+    "role": "user",
+    "created_at": "2026-03-06 17:33:34.842152+00"
+  },
+  {
+    "id": 6,
+    "email": "brian@outrigger.group",
+    "password_hash": "1f6e9152e9fd767b020a9970df0aa9a86d2f00b7163fe5d0c6bad4982b8d0585",
+    "password_salt": "ea9560d68e88cc9fcc28db6825bfb77d",
+    "name": "Brian Peterson",
+    "role": "user",
+    "created_at": "2026-03-06 17:33:35.246915+00"
+  },
+  {
+    "id": 7,
+    "email": "dan@heyjoyful.com",
+    "password_hash": "75e4583882d97405f45a60cb8f38c3f02627a565b71c09ea19c80f7c23036eca",
+    "password_salt": "68129524c3701b7932b286e539a9b94a",
+    "name": "Dan Wu",
+    "role": "user",
+    "created_at": "2026-03-06 17:35:34.752105+00"
+  }
+]

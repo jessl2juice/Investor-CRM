@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "sf-trip-feb-17"
+  },
+  {
+    "id": 2,
+    "name": "medgemma"
+  },
+  {
+    "id": 3,
+    "name": "campus-pilot"
+  },
+  {
+    "id": 4,
+    "name": "hipaa"
+  },
+  {
+    "id": 5,
+    "name": "dmht-billing"
+  },
+  {
+    "id": 6,
+    "name": "brush-your-brain"
+  },
+  {
+    "id": 7,
+    "name": "voice-biomarker"
+  },
+  {
+    "id": 8,
+    "name": "team-building"
+  },
+  {
+    "id": 9,
+    "name": "warm-intro"
+  },
+  {
+    "id": 10,
+    "name": "cold-outreach"
+  },
+  {
+    "id": 11,
+    "name": "lemons2-era"
+  },
+  {
+    "id": 12,
+    "name": "high-priority"
+  },
+  {
+    "id": 13,
+    "name": "follow-up-needed"
+  }
+]

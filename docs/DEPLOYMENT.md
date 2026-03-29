@@ -1,6 +1,8 @@
-# Deployment Guide
+# Deployment Guide (Legacy — Google Cloud Run)
 
-BetterMind CRM is designed to deploy to Google Cloud Run with Cloud SQL (PostgreSQL). This guide covers the full deployment process.
+> **Note:** This guide is for the original Google Cloud Run deployment, which has been **deprecated** in favor of self-hosted Docker Desktop + Cloudflare Tunnel. See [SELF_HOSTED.md](SELF_HOSTED.md) for the current deployment guide. All GCP resources (Cloud SQL, Cloud Run, Artifact Registry) were deleted in March 2026.
+
+BetterMind CRM was originally designed to deploy to Google Cloud Run with Cloud SQL (PostgreSQL). This guide is preserved for reference.
 
 ## Prerequisites
 
