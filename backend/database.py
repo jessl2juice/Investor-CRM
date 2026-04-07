@@ -209,6 +209,28 @@ def init_schema(conn):
             tag_id INTEGER NOT NULL REFERENCES tags(id) ON DELETE CASCADE,
             PRIMARY KEY (contact_id, tag_id)
         )"""))
+        conn.execute(sqlalchemy.text("""
+        CREATE TABLE IF NOT EXISTS categories (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(50) UNIQUE NOT NULL,
+            display_name VARCHAR(100) NOT NULL,
+            icon VARCHAR(10) DEFAULT '📋',
+            sort_order INTEGER DEFAULT 0,
+            created_at TIMESTAMP DEFAULT NOW()
+        )"""))
+        conn.execute(sqlalchemy.text("""
+        CREATE TABLE IF NOT EXISTS subcategories (
+            id SERIAL PRIMARY KEY,
+            category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+            name VARCHAR(100) NOT NULL,
+            display_name VARCHAR(100) NOT NULL,
+            sort_order INTEGER DEFAULT 0,
+            created_at TIMESTAMP DEFAULT NOW(),
+            UNIQUE(category_id, name)
+        )"""))
+        # Drop hardcoded CHECK constraint on contacts.category so we can use DB-driven categories
+        conn.execute(sqlalchemy.text(
+            "ALTER TABLE contacts DROP CONSTRAINT IF EXISTS contacts_category_check"))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_contacts_category ON contacts(category)"))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_contacts_status ON contacts(status)"))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_contacts_org ON contacts(organization_id)"))
@@ -349,6 +371,25 @@ def init_schema(conn):
             contact_id INTEGER NOT NULL REFERENCES contacts(id) ON DELETE CASCADE,
             tag_id INTEGER NOT NULL REFERENCES tags(id) ON DELETE CASCADE,
             PRIMARY KEY (contact_id, tag_id)
+        )"""))
+        conn.execute(sqlalchemy.text("""
+        CREATE TABLE IF NOT EXISTS categories (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name VARCHAR(50) UNIQUE NOT NULL,
+            display_name VARCHAR(100) NOT NULL,
+            icon VARCHAR(10) DEFAULT '📋',
+            sort_order INTEGER DEFAULT 0,
+            created_at TEXT DEFAULT (datetime('now'))
+        )"""))
+        conn.execute(sqlalchemy.text("""
+        CREATE TABLE IF NOT EXISTS subcategories (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+            name VARCHAR(100) NOT NULL,
+            display_name VARCHAR(100) NOT NULL,
+            sort_order INTEGER DEFAULT 0,
+            created_at TEXT DEFAULT (datetime('now')),
+            UNIQUE(category_id, name)
         )"""))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_contacts_category ON contacts(category)"))
         conn.execute(sqlalchemy.text("CREATE INDEX IF NOT EXISTS idx_contacts_status ON contacts(status)"))
@@ -578,10 +619,96 @@ def seed_users(conn):
     print(f"  Admin user seeded: {seed_email}")
 
 
+def seed_categories(conn):
+    """Seed categories and subcategories. Idempotent — skips if categories already exist."""
+    result = conn.execute(sqlalchemy.text("SELECT COUNT(*) FROM categories"))
+    if result.fetchone()[0] > 0:
+        return
+
+    categories = [
+        ('advisor', 'Advisors', '🧠', 1),
+        ('google', 'Google', '🔷', 2),
+        ('investor', 'Investors', '💰', 3),
+        ('legislator', 'Legislators', '🏛️', 4),
+        ('media', 'Media', '📰', 5),
+        ('other', 'Other', '📋', 6),
+        ('partner', 'Partners', '🤝', 7),
+        ('team', 'Team', '👤', 8),
+        ('university', 'University', '🎓', 9),
+        ('vendor', 'Vendors', '🔧', 10),
+    ]
+    for name, display_name, icon, sort_order in categories:
+        conn.execute(sqlalchemy.text(
+            "INSERT INTO categories (name, display_name, icon, sort_order) VALUES (:n, :d, :i, :s)"
+        ), {"n": name, "d": display_name, "i": icon, "s": sort_order})
+
+    # Build category name -> id map
+    rows = conn.execute(sqlalchemy.text("SELECT id, name FROM categories")).fetchall()
+    cat_map = {name: cid for cid, name in rows}
+
+    subcategories = [
+        # investor subcategories
+        (cat_map['investor'], 'Angel - Personal Friend', 'Angel - Personal Friend', 1),
+        (cat_map['investor'], 'Angel / VC', 'Angel / VC', 2),
+        (cat_map['investor'], 'Angel Syndicate', 'Angel Syndicate', 3),
+        (cat_map['investor'], 'CVC', 'CVC', 4),
+        (cat_map['investor'], 'Clinician Angels', 'Clinician Angels', 5),
+        (cat_map['investor'], 'Consumer VC', 'Consumer VC', 6),
+        (cat_map['investor'], 'Deep Tech VC', 'Deep Tech VC', 7),
+        (cat_map['investor'], 'Digital Health VC', 'Digital Health VC', 8),
+        (cat_map['investor'], 'EdTech VC', 'EdTech VC', 9),
+        (cat_map['investor'], 'Family Office', 'Family Office', 10),
+        (cat_map['investor'], 'Healthcare VC', 'Healthcare VC', 11),
+        (cat_map['investor'], 'Mega VC', 'Mega VC', 12),
+        (cat_map['investor'], 'Mental Health VC', 'Mental Health VC', 13),
+        (cat_map['investor'], 'Mission-Driven VC', 'Mission-Driven VC', 14),
+        (cat_map['investor'], 'Multi-Stage VC', 'Multi-Stage VC', 15),
+        (cat_map['investor'], 'Neuro/Mental Health VC', 'Neuro/Mental Health VC', 16),
+        (cat_map['investor'], 'Seed VC', 'Seed VC', 17),
+        (cat_map['investor'], 'Series A VC', 'Series A VC', 18),
+        (cat_map['investor'], 'Tier 1 VC', 'Tier 1 VC', 19),
+        (cat_map['investor'], 'VC', 'VC', 20),
+        (cat_map['investor'], 'Veteran-focused seed fund', 'Veteran-focused seed fund', 21),
+        (cat_map['investor'], 'Health VC', 'Health VC', 22),
+        # team subcategories
+        (cat_map['team'], 'Co-Founder', 'Co-Founder', 1),
+        (cat_map['team'], 'Founder', 'Founder', 2),
+        (cat_map['team'], 'Hire', 'Hire', 3),
+        # advisor subcategories
+        (cat_map['advisor'], 'CSO & Advisor', 'CSO & Advisor', 1),
+        (cat_map['advisor'], 'CPO & Conspiracy Advisor', 'CPO & Conspiracy Advisor', 2),
+        (cat_map['advisor'], 'Conspiracy Advisor', 'Conspiracy Advisor', 3),
+        (cat_map['advisor'], 'Fractional CFO', 'Fractional CFO', 4),
+        (cat_map['advisor'], 'Legal Counsel', 'Legal Counsel', 5),
+        (cat_map['advisor'], 'Screening Contact', 'Screening Contact', 6),
+        (cat_map['advisor'], 'Decision Maker', 'Decision Maker', 7),
+        # google subcategories
+        (cat_map['google'], 'Cloud Program', 'Cloud Program', 1),
+        (cat_map['google'], 'Consulting Partner', 'Consulting Partner', 2),
+        (cat_map['google'], 'Cloud Employee', 'Cloud Employee', 3),
+        (cat_map['google'], 'Research Employee', 'Research Employee', 4),
+        # vendor subcategories
+        (cat_map['vendor'], 'DevOps', 'DevOps', 1),
+        # partner subcategories
+        (cat_map['partner'], 'Tech Partner', 'Tech Partner', 1),
+        # legislator subcategories (NEW)
+        (cat_map['legislator'], 'National', 'National (Federal)', 1),
+        (cat_map['legislator'], 'State', 'State Legislature', 2),
+    ]
+    for category_id, name, display_name, sort_order in subcategories:
+        conn.execute(sqlalchemy.text(
+            "INSERT INTO subcategories (category_id, name, display_name, sort_order) VALUES (:cid, :n, :d, :s)"
+        ), {"cid": category_id, "n": name, "d": display_name, "s": sort_order})
+
+    conn.commit()
+    print(f"  {len(categories)} categories and {len(subcategories)} subcategories seeded")
+
+
 if __name__ == "__main__":
     engine = get_engine()
     with engine.connect() as conn:
         init_schema(conn)
+        seed_categories(conn)
         seed_data(conn)
         seed_users(conn)
     print("Database initialized.")

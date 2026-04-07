@@ -105,8 +105,8 @@ Map a custom domain in the Cloud Run console:
 ## Architecture Notes
 
 - **Database detection is automatic.** When `INSTANCE_CONNECTION_NAME` is set, the app connects to Cloud SQL via the Cloud SQL Python Connector. When it is not set, the app uses SQLite for zero-config local development.
-- **Schema migrations run on startup.** New columns are added via `ALTER TABLE ADD COLUMN IF NOT EXISTS` (PostgreSQL) or `try/except` (SQLite). No manual migration steps needed.
-- **Seed data is idempotent.** The `seed_data` and `seed_users` functions check for existing records before inserting, so restarts are safe.
+- **Schema migrations run on startup.** New columns and tables (including `categories` and `subcategories`) are added via `CREATE TABLE IF NOT EXISTS` and `ALTER TABLE ADD COLUMN IF NOT EXISTS` (PostgreSQL) or `try/except` (SQLite). No manual migration steps needed.
+- **Seed data is idempotent.** The `seed_data`, `seed_users`, and `seed_categories` functions check for existing records before inserting, so restarts are safe.
 - **The frontend is built at Docker build time** and served as static files by the FastAPI backend. No separate frontend deployment needed.
 
 ## Troubleshooting

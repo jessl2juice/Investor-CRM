@@ -52,7 +52,7 @@ List contacts with optional filters.
 
 | Param | Type | Description |
 |-------|------|-------------|
-| category | string | Filter by category (investor, google, team, etc.) |
+| category | string | Filter by category name (dynamic, see `GET /api/categories`) |
 | status | string | Filter by status (active, outreach, passed, etc.) |
 | tier | int | Filter by tier number |
 | search | string | Full-text search across name, email, title, notes, org |
@@ -198,6 +198,76 @@ Assign a tag to a contact.
 ### DELETE /api/contacts/{contact_id}/tags/{tag_id}
 
 Remove a tag from a contact.
+
+## Category Endpoints
+
+### GET /api/categories
+
+List all categories with their subcategories. Each category includes `id`, `name`, `display_name`, `icon`, `sort_order`, and a nested `subcategories` array.
+
+### GET /api/categories/{id}
+
+Get a single category with its subcategories. Returns 404 if not found.
+
+### POST /api/categories
+
+Create a new category.
+
+```json
+{
+  "name": "legislator",
+  "display_name": "Legislators",
+  "icon": "\ud83c\udfdb\ufe0f",
+  "sort_order": 4
+}
+```
+
+**Required:** `name`
+
+**Optional:** `display_name` (defaults to title-cased name), `icon` (default: clipboard), `sort_order` (default: 0)
+
+Returns 409 if a category with that name already exists.
+
+### PUT /api/categories/{id}
+
+Partial update. Include only the fields you want to change (`name`, `display_name`, `icon`, `sort_order`).
+
+### DELETE /api/categories/{id}
+
+Delete a category. Returns 409 if any contacts still reference this category.
+
+## Subcategory Endpoints
+
+### GET /api/subcategories
+
+List all subcategories. Optional `category_id` query parameter to filter by parent category.
+
+### POST /api/subcategories
+
+Create a new subcategory.
+
+```json
+{
+  "category_id": 4,
+  "name": "National",
+  "display_name": "National (Federal)",
+  "sort_order": 1
+}
+```
+
+**Required:** `category_id`, `name`
+
+**Optional:** `display_name` (defaults to name), `sort_order` (default: 0)
+
+Returns 404 if the parent category does not exist. Returns 409 if the subcategory name already exists within that category.
+
+### PUT /api/subcategories/{id}
+
+Partial update. Include only the fields you want to change (`name`, `display_name`, `sort_order`, `category_id`).
+
+### DELETE /api/subcategories/{id}
+
+Delete a subcategory. Returns 409 if any contacts still reference this subcategory.
 
 ## Bulk Operations
 

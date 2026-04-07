@@ -15,7 +15,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from database import get_engine, init_schema, seed_data, seed_users, USE_POSTGRES
+from database import get_engine, init_schema, seed_data, seed_users, seed_categories, USE_POSTGRES
 from database import hash_password, verify_password
 from auth import make_token, require_auth, require_admin
 from deps import db, row_to_dict, rows_to_list
@@ -25,6 +25,7 @@ from routes.organizations import router as organizations_router
 from routes.interactions import router as interactions_router
 from routes.deals import router as deals_router
 from routes.programs import router as programs_router
+from routes.categories import router as categories_router
 
 _login_attempts: dict[str, list[float]] = defaultdict(list)
 LOGIN_RATE_LIMIT = 10
@@ -44,6 +45,7 @@ async def lifespan(app):
     engine = get_engine()
     with engine.connect() as conn:
         init_schema(conn)
+        seed_categories(conn)
         seed_data(conn)
         seed_users(conn)
     yield
@@ -52,7 +54,7 @@ async def lifespan(app):
 app = FastAPI(
     title="BetterMind CRM API",
     description="Contact management, investor pipeline, and program tracking for startups.",
-    version="1.1.0",
+    version="1.2.0",
     lifespan=lifespan,
 )
 
@@ -159,6 +161,7 @@ app.include_router(organizations_router)
 app.include_router(interactions_router)
 app.include_router(deals_router)
 app.include_router(programs_router)
+app.include_router(categories_router)
 
 
 # ==================== STATS ====================

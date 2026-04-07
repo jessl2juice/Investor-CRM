@@ -13,7 +13,6 @@ def _validate_email(v: str) -> str:
     return v.strip().lower()
 
 
-VALID_CATEGORIES = frozenset({"investor", "google", "team", "advisor", "partner", "vendor", "university", "media", "other"})
 VALID_STATUSES = frozenset({
     "active", "diligence", "outreach", "follow_up", "scheduled", "passed",
     "connected", "recruiting", "searching", "contact", "cold", "complete",
@@ -103,13 +102,6 @@ class ContactCreate(BaseModel):
     website: Optional[str] = None
     twitter_url: Optional[str] = None
 
-    @field_validator("category")
-    @classmethod
-    def category_must_be_valid(cls, v):
-        if v not in VALID_CATEGORIES:
-            raise ValueError(f"Invalid category '{v}'. Must be one of: {', '.join(sorted(VALID_CATEGORIES))}")
-        return v
-
     @field_validator("status")
     @classmethod
     def status_must_be_valid(cls, v):
@@ -146,13 +138,6 @@ class ContactUpdate(BaseModel):
     website: Optional[str] = None
     twitter_url: Optional[str] = None
 
-    @field_validator("category")
-    @classmethod
-    def category_must_be_valid(cls, v):
-        if v is not None and v not in VALID_CATEGORIES:
-            raise ValueError(f"Invalid category '{v}'. Must be one of: {', '.join(sorted(VALID_CATEGORIES))}")
-        return v
-
     @field_validator("status")
     @classmethod
     def status_must_be_valid(cls, v):
@@ -167,13 +152,6 @@ class BulkContactUpdate(BaseModel):
     status: Optional[str] = None
     category: Optional[str] = None
     tier: Optional[int] = None
-
-    @field_validator("category")
-    @classmethod
-    def category_must_be_valid(cls, v):
-        if v is not None and v not in VALID_CATEGORIES:
-            raise ValueError(f"Invalid category '{v}'. Must be one of: {', '.join(sorted(VALID_CATEGORIES))}")
-        return v
 
     @field_validator("status")
     @classmethod

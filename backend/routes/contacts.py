@@ -14,6 +14,41 @@ from models import ContactCreate, ContactUpdate, BulkContactUpdate, TagCreate
 
 router = APIRouter(prefix="/api", tags=["contacts"])
 
+
+def _validate_category_subcategory(conn, category, subcategory=None):
+    """Validate category/subcategory against the categories and subcategories tables."""
+    if category is not None:
+        cat_row = conn.execute(sqlalchemy.text(
+            "SELECT id, name FROM categories WHERE name = :n"
+        ), {"n": category}).fetchone()
+        if not cat_row:
+            valid = [r[0] for r in conn.execute(sqlalchemy.text(
+                "SELECT name FROM categories ORDER BY sort_order"
+            )).fetchall()]
+            raise HTTPException(
+                422, f"Invalid category '{category}'. Valid categories: {', '.join(valid)}"
+            )
+        if subcategory is not None:
+            cat_id = cat_row[0]
+            sub_row = conn.execute(sqlalchemy.text(
+                "SELECT id FROM subcategories WHERE category_id = :cid AND name = :n"
+            ), {"cid": cat_id, "n": subcategory}).fetchone()
+            if not sub_row:
+                valid_subs = [r[0] for r in conn.execute(sqlalchemy.text(
+                    "SELECT name FROM subcategories WHERE category_id = :cid ORDER BY sort_order"
+                ), {"cid": cat_id}).fetchall()]
+                if valid_subs:
+                    raise HTTPException(
+                        422, f"Invalid subcategory '{subcategory}' for category '{category}'. "
+                             f"Valid subcategories: {', '.join(valid_subs)}"
+                    )
+                else:
+                    raise HTTPException(
+                        422, f"Invalid subcategory '{subcategory}' for category '{category}'. "
+                             f"This category has no defined subcategories."
+                    )
+
+
 CONTACT_COLUMNS = frozenset({
     "first_name", "last_name", "email", "email_secondary",
     "phone", "phone_secondary", "linkedin_url",
@@ -91,6 +126,7 @@ def get_contact(contact_id: int, auth=Depends(require_auth)):
 def create_contact(data: ContactCreate, auth=Depends(require_auth)):
     """Create a new contact."""
     with db() as conn:
+        _validate_category_subcategory(conn, data.category, data.subcategory)
         row = conn.execute(sqlalchemy.text("""
             INSERT INTO contacts (first_name,last_name,email,email_secondary,phone,phone_secondary,
                 linkedin_url,organization_id,title,category,subcategory,status,tier,
@@ -113,7 +149,13 @@ def update_contact(contact_id: int, data: ContactUpdate, auth=Depends(require_au
         existing = conn.execute(sqlalchemy.text("SELECT * FROM contacts WHERE id = :cid"), {"cid": contact_id}).fetchone()
         if not existing:
             raise HTTPException(404, "Contact not found")
-        updates = {k: v for k, v in data.model_dump(exclude_unset=True).items() if k in CONTACT_COLUMNS}
+        dump = data.model_dump(exclude_unset=True)
+        # Validate category/subcategory if either is being updated
+        cat = dump.get("category", dict(existing._mapping).get("category"))
+        sub = dump.get("subcategory", dict(existing._mapping).get("subcategory"))
+        if "category" in dump or "subcategory" in dump:
+            _validate_category_subcategory(conn, cat, sub)
+        updates = {k: v for k, v in dump.items() if k in CONTACT_COLUMNS}
         if not updates:
             return row_to_dict(existing)
         updates["updated_at"] = datetime.now().isoformat()
@@ -157,6 +199,8 @@ def bulk_update_contacts(data: BulkContactUpdate, auth=Depends(require_auth)):
     set_clause = ", ".join(f"{k} = :val_{k}" for k in updates.keys())
     params = {f"val_{k}": v for k, v in updates.items()}
     with db() as conn:
+        if data.category is not None:
+            _validate_category_subcategory(conn, data.category)
         placeholders = ", ".join(f":id_{i}" for i in range(len(data.contact_ids)))
         for i, cid in enumerate(data.contact_ids):
             params[f"id_{i}"] = cid

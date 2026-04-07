@@ -58,6 +58,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - GitHub Actions CI pipeline
 - Screenshot gallery in README
 
+## [1.2.0] - 2026-04-07
+
+### Added
+
+- **Dynamic category and subcategory management** — categories and subcategories are now stored in PostgreSQL tables instead of hardcoded enums
+- New `categories` and `subcategories` database tables with icons, display names, and sort order
+- **Category CRUD API** — `GET/POST/PUT/DELETE /api/categories` and `/api/subcategories`
+- **Legislator category** with National (Federal) and State Legislature subcategories
+- **Category/subcategory validation** against the database on contact create, update, and bulk update, with clear error messages listing valid values
+- **Delete protection** — categories and subcategories cannot be deleted while contacts reference them
+- Dynamic category/subcategory dropdowns in the Contact Detail edit mode
+- Dynamic navigation tabs fetched from the categories API (including new Legislators tab)
+- `seed_categories()` function for idempotent seeding of all categories and subcategories on startup
+- `test_categories.ps1` — comprehensive non-destructive test suite (80+ assertions)
+
+### Changed
+
+- Removed hardcoded `VALID_CATEGORIES` from Pydantic models — validation now queries the database
+- Dropped `contacts_category_check` PostgreSQL CHECK constraint in favor of database-driven validation
+- Category icons in the frontend are now fetched from the API instead of a static `CAT_ICONS` map
+- Navigation tabs are dynamically generated from the categories API response
+- Bulk update endpoint (`PUT /api/bulk/contacts`) now validates category against the database
+
 ## [1.1.1] - 2026-03-07
 
 ### Security

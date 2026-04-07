@@ -4,17 +4,20 @@
  */
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { api, getToken, setToken } from "./api";
-import { Badge, Pill, CAT_ICONS, ensureUrl } from "./components/ui";
+import { Badge, Pill, CAT_ICONS, buildCatIcons, ensureUrl } from "./components/ui";
 import LoginScreen from "./components/LoginScreen";
 import ContactDetail from "./components/ContactDetail";
 import UserManagement from "./components/UserManagement";
 import HelpModal from "./components/HelpModal";
 
-const TABS = [
-  {key:"all",label:"All",icon:"📋"},{key:"investor",label:"Investors",icon:"💰"},
-  {key:"google",label:"Google",icon:"🔷"},{key:"team",label:"Team",icon:"👤"},
-  {key:"advisor",label:"Advisors",icon:"🧠"},{key:"pipeline",label:"Pipeline",icon:"📊"},
-  {key:"programs",label:"Programs",icon:"🚀"},{key:"settings",label:"Settings",icon:"⚙️",adminOnly:true},
+const STATIC_TABS_BEFORE = [
+  {key:"all",label:"All",icon:"📋"},
+];
+const CATEGORY_TAB_KEYS = ["investor","legislator","google","team","advisor"];
+const STATIC_TABS_AFTER = [
+  {key:"pipeline",label:"Pipeline",icon:"📊"},
+  {key:"programs",label:"Programs",icon:"🚀"},
+  {key:"settings",label:"Settings",icon:"⚙️",adminOnly:true},
 ];
 
 export default function App() {
@@ -30,15 +33,19 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showHelp, setShowHelp] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [catIcons, setCatIcons] = useState(CAT_ICONS);
 
   const logout = () => { setToken(null); localStorage.removeItem("bm_role"); setAuthed(false); };
 
   const load = useCallback(async () => {
     try {
-      const [c, d, p, s] = await Promise.all([
-        api("/contacts"), api("/deals"), api("/programs"), api("/stats")
+      const [c, d, p, s, cats] = await Promise.all([
+        api("/contacts"), api("/deals"), api("/programs"), api("/stats"), api("/categories")
       ]);
       setContacts(c); setDeals(d); setPrograms(p); setStats(s);
+      setCategories(cats);
+      setCatIcons(buildCatIcons(cats));
     } catch (e) { console.error(e); }
     setLoading(false);
   }, []);
@@ -71,7 +78,7 @@ export default function App() {
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,maxWidth:960,margin:"0 auto 14px"}}>
           <div>
             <h1 style={{margin:0,fontSize:24,fontWeight:700,color:"#f8fafc",letterSpacing:-.3}}>🧠 BetterMind CRM</h1>
-            <p style={{margin:"2px 0 0",fontSize:13,color:"#94a3b8"}}>Fundraising · Google · Team · Pipeline</p>
+            <p style={{margin:"2px 0 0",fontSize:13,color:"#94a3b8"}}>Fundraising · Legislators · Google · Team · Pipeline</p>
           </div>
           <div style={{display:"flex",gap:16,alignItems:"center"}}>
             {[["📋",stats.total_contacts,"Contacts"],["💰",stats.active_investors,"Active"],["📊",stats.active_deals,"Deals"],["🔗",stats.total_interactions,"Logs"]].map(([icon,val,label])=>(
@@ -82,7 +89,13 @@ export default function App() {
           </div>
         </div>
         <div style={{display:"flex",gap:4,overflowX:"auto",maxWidth:960,margin:"0 auto"}}>
-          {TABS.filter(t=>!t.adminOnly||userRole==="admin").map(t=>(
+          {[...STATIC_TABS_BEFORE,
+            ...CATEGORY_TAB_KEYS.map(key => {
+              const cat = categories.find(c => c.name === key);
+              return cat ? {key: cat.name, label: cat.display_name, icon: cat.icon} : {key, label: key.charAt(0).toUpperCase()+key.slice(1), icon: catIcons[key]||"📋"};
+            }),
+            ...STATIC_TABS_AFTER,
+          ].filter(t=>!t.adminOnly||userRole==="admin").map(t=>(
             <button key={t.key} onClick={()=>{setTab(t.key);setStatusFilter("all");}} style={{
               padding:"8px 14px",borderRadius:8,border:"none",fontSize:14,fontWeight:600,whiteSpace:"nowrap",transition:"all .15s",
               background:tab===t.key?"rgba(255,255,255,.15)":"transparent",color:tab===t.key?"#fff":"#94a3b8",
@@ -150,7 +163,7 @@ export default function App() {
               }} onMouseOver={e=>e.currentTarget.style.borderColor="#cbd5e1"} onMouseOut={e=>e.currentTarget.style.borderColor="#e2e8f0"}>
                 <div style={{minWidth:0,flex:1}}>
                   <div style={{display:"flex",alignItems:"center",gap:5}}>
-                    <span style={{fontSize:15}}>{CAT_ICONS[c.category]||""}</span>
+                    <span style={{fontSize:15}}>{catIcons[c.category]||"📋"}</span>
                     <span style={{fontWeight:600,fontSize:15}}>{c.first_name} {c.last_name||""}</span>
                     {c.tier&&<span style={{fontSize:12,color:"#92400e",background:"#fef3c7",padding:"2px 7px",borderRadius:99,fontWeight:700}}>T{c.tier}</span>}
                   </div>

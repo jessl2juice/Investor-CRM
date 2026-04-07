@@ -14,7 +14,13 @@ export const STATUS_COLORS = {
   closed:{bg:"#16a34a",t:"#fff"},dead:{bg:"#374151",t:"#fff"},
 };
 
-export const CAT_ICONS = {investor:"💰",google:"🔷",team:"👤",advisor:"🧠",partner:"🤝",vendor:"🔧",university:"🎓",media:"📰",other:"📋"};
+export const CAT_ICONS = {investor:"💰",google:"🔷",team:"👤",advisor:"🧠",partner:"🤝",vendor:"🔧",university:"🎓",media:"📰",other:"📋",legislator:"🏛️"};
+
+export const buildCatIcons = (categories) => {
+  const icons = {...CAT_ICONS};
+  if (categories) categories.forEach(c => { icons[c.name] = c.icon || "📋"; });
+  return icons;
+};
 
 export const Badge = ({s}) => {
   const c = STATUS_COLORS[s]||{bg:"#374151",t:"#fff"};

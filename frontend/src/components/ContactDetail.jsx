@@ -4,7 +4,7 @@
  */
 import { useState, useEffect, useCallback } from "react";
 import { api } from "../api";
-import { Badge, CAT_ICONS, CopyBtn, InfoRow, ensureUrl, displayUrl, formatAddress } from "./ui";
+import { Badge, CAT_ICONS, buildCatIcons, CopyBtn, InfoRow, ensureUrl, displayUrl, formatAddress } from "./ui";
 
 export default function ContactDetail({id, onClose, onRefresh}) {
   const [c, setC] = useState(null);
@@ -13,9 +13,12 @@ export default function ContactDetail({id, onClose, onRefresh}) {
   const [editing, setEditing] = useState(false);
   const [editData, setEditData] = useState({});
   const [deleting, setDeleting] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [catIcons, setCatIcons] = useState(CAT_ICONS);
 
   const reload = useCallback(() => api(`/contacts/${id}`).then(setC).catch(console.error), [id]);
   useEffect(() => { reload(); }, [reload]);
+  useEffect(() => { api("/categories").then(cats => { setCategories(cats); setCatIcons(buildCatIcons(cats)); }).catch(console.error); }, []);
 
   const logInteraction = async () => {
     if (!newNote.trim()) return;
@@ -42,9 +45,13 @@ export default function ContactDetail({id, onClose, onRefresh}) {
       linkedin_url: c.linkedin_url || "", website: c.website || "", twitter_url: c.twitter_url || "",
       address_line1: c.address_line1 || "", address_line2: c.address_line2 || "",
       city: c.city || "", state: c.state || "", zip: c.zip || "", country: c.country || "US",
+      category: c.category || "", subcategory: c.subcategory || "",
     });
     setEditing(true);
   };
+
+  const selectedCat = categories.find(cat => cat.name === (editData.category || c?.category));
+  const subcategories = selectedCat?.subcategories || [];
 
   const saveEdit = async () => {
     setSaving(true);
@@ -83,7 +90,7 @@ export default function ContactDetail({id, onClose, onRefresh}) {
         {/* HEADER */}
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:20}}>
           <div>
-            <h2 style={{margin:0,fontSize:24,fontWeight:700,color:"#0f172a"}}>{CAT_ICONS[c.category]} {c.first_name} {c.last_name||""}</h2>
+            <h2 style={{margin:0,fontSize:24,fontWeight:700,color:"#0f172a"}}>{catIcons[c.category]||"📋"} {c.first_name} {c.last_name||""}</h2>
             <p style={{margin:"4px 0 0",color:"#64748b",fontSize:16}}>{c.title}{c.organization_name?` at ${c.organization_name}`:""}</p>
           </div>
           <div style={{display:"flex",gap:6,alignItems:"center",flexShrink:0}}>
@@ -102,6 +109,8 @@ export default function ContactDetail({id, onClose, onRefresh}) {
           {editing ? (
             <div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:10}}>
+                <div><label style={{fontSize:12,fontWeight:600,color:"#374151"}}>Category</label><select value={editData.category||""} onChange={e=>{setEditData({...editData, category: e.target.value, subcategory: ""});}} style={inputStyle}><option value="">Select category...</option>{categories.map(cat=><option key={cat.name} value={cat.name}>{cat.icon} {cat.display_name}</option>)}</select></div>
+                <div><label style={{fontSize:12,fontWeight:600,color:"#374151"}}>Subcategory</label><select value={editData.subcategory||""} onChange={e=>setEditData({...editData, subcategory: e.target.value})} style={inputStyle}><option value="">None</option>{subcategories.map(s=><option key={s.name} value={s.name}>{s.display_name}</option>)}</select></div>
                 <div><label style={{fontSize:12,fontWeight:600,color:"#374151"}}>Email</label><input type="email" {...ef("email")} placeholder="email@example.com" style={inputStyle}/></div>
                 <div><label style={{fontSize:12,fontWeight:600,color:"#374151"}}>Email (Secondary)</label><input type="email" {...ef("email_secondary")} placeholder="secondary@example.com" style={inputStyle}/></div>
                 <div><label style={{fontSize:12,fontWeight:600,color:"#374151"}}>Phone</label><input type="tel" {...ef("phone")} placeholder="(555) 555-5555" style={inputStyle}/></div>

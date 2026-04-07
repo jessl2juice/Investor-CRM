@@ -20,7 +20,8 @@ Fundraising is chaos. Spreadsheets break. Notion gets messy. Expensive CRMs are 
 ## Features
 
 - **Investor pipeline tracking** with customizable stages and probability tracking
-- **Contact management** with full address, website, social links, and completeness indicators
+- **Dynamic categories and subcategories** managed via API with icons, display names, and sort order
+- **Contact management** with dynamic categories (investor, Google, team, advisor, legislator, partner, vendor, university, media, other)
 - **Organization directory** linking contacts to companies and firms
 - **Interaction logging** for emails, calls, meetings, and notes
 - **Multi-user support** with role-based access (admin / user)
@@ -101,6 +102,7 @@ Investor-CRM/
       interactions.py
       deals.py
       programs.py
+      categories.py       # Category & subcategory CRUD
     requirements.txt      # Python dependencies
     test_fixes.py         # API test suite
   frontend/
@@ -117,6 +119,7 @@ Investor-CRM/
       main.jsx            # Entry point
     vite.config.js        # Vite config with API proxy
     package.json
+  test_categories.ps1     # Non-destructive category/subcategory test suite
   docs/
     SELF_HOSTED.md        # Self-hosted deployment guide (Docker + Cloudflare)
     DEPLOYMENT.md         # Legacy Cloud Run deployment guide
@@ -193,6 +196,9 @@ Full reference: [docs/API_REFERENCE.md](docs/API_REFERENCE.md)
 | GET | `/api/contacts/{id}` | Get contact with interactions and deals |
 | PUT | `/api/contacts/{id}` | Update contact (partial) |
 | DELETE | `/api/contacts/{id}` | Delete contact |
+| GET | `/api/categories` | List categories with subcategories |
+| POST | `/api/categories` | Create a category |
+| GET | `/api/subcategories` | List subcategories (filterable by category) |
 | GET | `/api/organizations` | List organizations |
 | GET | `/api/deals` | List deals (pipeline) |
 | GET | `/api/programs` | List programs |
@@ -275,6 +281,7 @@ The `export_from_cloud.py` script was used to migrate data from the original Goo
 
 - **Single-file frontend** (`App.jsx`): keeps the CRM simple and deployable without a complex build pipeline. All state is local React state with `useState`/`useMemo`.
 - **No ORM models**: raw SQL via `sqlalchemy.text()` for full control and transparency. Schema defined as DDL strings in `database.py`.
+- **Dynamic category management**: categories and subcategories are stored in database tables (not hardcoded enums), with CRUD endpoints and runtime validation. Seeded idempotently on startup.
 - **Dual database support**: PostgreSQL via `DATABASE_URL` or Cloud SQL Connector, with SQLite fallback. Detected at startup.
 - **Stateless auth**: HMAC tokens with embedded claims (email, role, password version). No session store needed. 24-hour TTL.
 - **Migration-safe schema evolution**: new columns added via `ALTER TABLE ADD COLUMN IF NOT EXISTS` (PostgreSQL) or `try/except` (SQLite), so existing databases upgrade transparently on startup.

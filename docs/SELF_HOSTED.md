@@ -234,7 +234,7 @@ Compared to the previous Google Cloud deployment at **~$150/month**.
 - **HTTPS** is enforced by Cloudflare with auto-renewed certificates
 - **Database** is only accessible from the Docker network (port 5433 is exposed locally for admin access but not to the internet)
 - **Auth tokens** expire after 24 hours
-- **Passwords** are hashed with SHA-256 + random salt
+- **Passwords** are hashed with PBKDF2 (SHA-256, random salt)
 
 ## Reference: Key Configuration Files
 

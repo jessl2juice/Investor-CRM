@@ -1,6 +1,6 @@
 # BetterMind CRM - User Manual
 
-**Version:** 1.1 · **Last updated:** March 6, 2026
+**Version:** 1.2 · **Last updated:** April 7, 2026
 **Live URL:** [https://bettermind.buzz](https://bettermind.buzz)
 
 ---
@@ -50,7 +50,7 @@ After signing in, you'll see the main CRM interface with these elements:
 
 The dark header at the top shows:
 
-- **BetterMind CRM** branding with the tagline "Fundraising · Google · Team · Pipeline"
+- **BetterMind CRM** branding with the tagline "Fundraising · Legislators · Google · Team · Pipeline"
 - **Quick stats**  - four key numbers at a glance:
   - **Contacts**  - total people in the CRM
   - **Active**  - investors with active status
@@ -66,12 +66,15 @@ Below the header, tabs let you switch between views:
 |-----|------|---------------|
 | **All** | 📋 | Every contact across all categories |
 | **Investors** | 💰 | Only contacts categorized as `investor` |
+| **Legislators** | 🏛️ | Only contacts categorized as `legislator` |
 | **Google** | 🔷 | Only contacts categorized as `google` |
 | **Team** | 👤 | Only contacts categorized as `team` |
 | **Advisors** | 🧠 | Only contacts categorized as `advisor` |
 | **Pipeline** | 📊 | Fundraising deals view (not contacts) |
 | **Programs** | 🚀 | Programs & milestones view |
 | **Settings** | ⚙️ | User management (admin only) |
+
+Navigation tabs are dynamically loaded from the categories API. If new categories are added, they will appear as tabs automatically.
 
 The **Settings** tab only appears if you have the **admin** role.
 
@@ -81,9 +84,9 @@ The **Settings** tab only appears if you have the **admin** role.
 
 ### Browsing Contacts
 
-On any contact tab (All, Investors, Google, Team, Advisors), you see a list of contacts. Each row shows:
+On any contact tab (All, Investors, Legislators, Google, Team, Advisors), you see a list of contacts. Each row shows:
 
-- **Category icon** (💰 investor, 🔷 Google, 👤 team, 🧠 advisor, 🤝 partner, 🔧 vendor, 🎓 university, 📰 media, 📋 other)
+- **Category icon** (💰 investor, 🏛️ legislator, 🔷 Google, 👤 team, 🧠 advisor, 🤝 partner, 🔧 vendor, 🎓 university, 📰 media, 📋 other)
 - **Name** and **tier badge** (T1, T2, T3, T4) if assigned
 - **Title** and **organization**
 - **Contact completeness dot:**
@@ -152,10 +155,11 @@ Click any contact row to open the **Contact Detail** panel. The panel is organiz
 
 Click the **Edit** button in the contact detail header to enter edit mode on the Contact Information Card:
 
-1. All contact fields become editable input fields (email, phone, LinkedIn, website, Twitter/X)
-2. Address expands into individual fields: Address Line 1, Address Line 2, City, State, Zip, Country
-3. Click **Save** to persist changes, or **Cancel** to discard
-4. Edit mode only affects the Contact Information Card  - other fields (name, status, notes, etc.) are not editable here
+1. **Category** and **Subcategory** dropdowns appear at the top, populated dynamically from the database. Changing the category resets the subcategory. Subcategories are filtered to show only those belonging to the selected category
+2. All contact fields become editable input fields (email, phone, LinkedIn, website, Twitter/X)
+3. Address expands into individual fields: Address Line 1, Address Line 2, City, State, Zip, Country
+4. Click **Save** to persist changes, or **Cancel** to discard
+5. Edit mode only affects the Contact Information Card  - other fields (name, status, notes, etc.) are not editable here
 
 ### Deleting a Contact
 
@@ -298,6 +302,7 @@ BetterMind CRM has a full REST API that can be used by external tools (Claude, s
 - **Create, update, or delete deals** (web UI is read-only)
 - **Create, update, or delete programs** (web UI is read-only)
 - **Manage tags** (create tags, assign/remove tags on contacts)
+- **Manage categories and subcategories** (create, update, delete via `/api/categories` and `/api/subcategories`)
 - **Bulk update contacts** (change status/category/tier for many contacts at once)
 - **Filter deals by stage** or **programs by status**
 
@@ -384,7 +389,7 @@ curl -X POST https://bettermind.buzz/api/contacts/5/tags/14 \
 
 ### Session expired / redirected to login
 
-- Sessions last 7 days. After that, you'll need to sign in again
+- Sessions last 24 hours. After that, you'll need to sign in again
 - If the app was redeployed without a stable `TOKEN_SECRET`, all sessions are invalidated
 
 ### Page is blank or not loading
@@ -395,7 +400,7 @@ curl -X POST https://bettermind.buzz/api/contacts/5/tags/14 \
 
 ### API returns 401 Unauthorized
 
-- Your token has expired (7-day TTL). Get a new one via `/api/login`
+- Your token has expired (24-hour TTL). Get a new one via `/api/login`
 - Make sure the `Authorization: Bearer <token>` header is included
 
 ### API returns 422 Invalid data
@@ -453,7 +458,7 @@ All endpoints (except `/api/login`) require a Bearer token in the `Authorization
 
 | Param | Description |
 |-------|-------------|
-| `category` | `investor`, `google`, `team`, `advisor`, `partner`, `vendor`, `university`, `media`, `other` |
+| `category` | Dynamic. Use `GET /api/categories` for current list. Default categories: `investor`, `legislator`, `google`, `team`, `advisor`, `partner`, `vendor`, `university`, `media`, `other` |
 | `status` | `active`, `diligence`, `outreach`, `follow_up`, `scheduled`, `passed`, `connected`, `recruiting`, `searching`, `contact`, `cold` |
 | `tier` | `1`, `2`, `3`, `4` |
 | `search` | Full-text search across name, email, title, notes, org name |
