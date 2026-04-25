@@ -1,7 +1,7 @@
 # BetterMind CRM - User Manual
 
-**Version:** 1.2 · **Last updated:** April 7, 2026
-**Live URL:** [https://bettermind.buzz](https://bettermind.buzz)
+**Version:** 1.3 · **Last updated:** April 25, 2026
+**Live URL:** [https://bettermind.buzz](https://bettermind.buzz) (Cloudflare Pages + Fly.io + Neon)
 
 ---
 

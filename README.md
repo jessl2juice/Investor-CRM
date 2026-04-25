@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Backend: FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg)](https://fastapi.tiangolo.com)
 [![Frontend: React](https://img.shields.io/badge/Frontend-React-61DAFB.svg)](https://react.dev)
-[![Deploy: Docker + Cloudflare](https://img.shields.io/badge/Deploy-Docker%20%2B%20Cloudflare-F38020.svg)](docs/SELF_HOSTED.md)
+[![Deploy: Cloudflare + Fly.io](https://img.shields.io/badge/Deploy-Cloudflare%20Pages%20%2B%20Fly.io-F38020.svg)](docs/CLOUD_DEPLOYMENT.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 > Open source investor pipeline and contact management for startups. Built by founders, for founders.
@@ -30,26 +30,30 @@ Fundraising is chaos. Spreadsheets break. Notion gets messy. Expensive CRMs are 
 - **Inline edit mode** for updating contact details without leaving the detail view
 - **In-app help** with a built-in user manual viewer
 - **Full REST API** with interactive docs (FastAPI / Swagger at `/docs`)
-- **Self-hosted** on Docker Desktop with Cloudflare Tunnel ($0/month)
+- **Cloud-hosted** on Cloudflare Pages + Fly.io + Neon PostgreSQL (~$3-5/month)
 - **Mobile-responsive** React frontend
-- **PostgreSQL 16** database with automated backups
+- **PostgreSQL** database (Neon serverless) with automated backups and point-in-time restore
 
 ## Quick Start
 
-### Option 1: Docker with PostgreSQL (production — recommended)
+### Option 1: Cloud Deployment (production — recommended)
 
-```bash
-git clone https://github.com/jessl2juice/Investor-CRM.git
-cd Investor-CRM
-docker-compose up -d
-# Open http://localhost:8080
+The CRM runs on **Cloudflare Pages** (frontend) + **Fly.io** (backend) + **Neon PostgreSQL** (database).
+
+See [docs/CLOUD_DEPLOYMENT.md](docs/CLOUD_DEPLOYMENT.md) for the full deployment guide.
+
+**Deploy commands (after initial setup):**
+
+```powershell
+# Backend
+fly deploy -a bettermind-crm-api
+
+# Frontend
+$env:CLOUDFLARE_API_TOKEN = "your-token"
+.\deploy-cf-frontend.ps1
 ```
 
-This starts **PostgreSQL 16** and the **FastAPI + React** app. The database schema is created automatically on first run with demo seed data.
-
-Default login: `admin@example.com` / `changeme123!` (created on first run). Change via `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD` env vars.
-
-### Option 2: Manual Setup (development)
+### Option 2: Local Development
 
 ```bash
 # Backend
@@ -67,9 +71,18 @@ npm run dev
 # Dev server at http://localhost:5173 (proxies API to :8080)
 ```
 
-### Option 3: Self-Hosted with Cloudflare Tunnel (internet-accessible, $0/month)
+### Option 3: Docker with PostgreSQL (local full stack)
 
-See [docs/SELF_HOSTED.md](docs/SELF_HOSTED.md) for the complete guide to running the CRM on your own machine with HTTPS access from anywhere.
+```bash
+git clone https://github.com/jessl2juice/Investor-CRM.git
+cd Investor-CRM
+docker-compose up -d
+# Open http://localhost:8080
+```
+
+This starts **PostgreSQL 16** and the **FastAPI + React** app. The database schema is created automatically on first run with demo seed data.
+
+Default login: `admin@example.com` / `changeme123!` (created on first run). Change via `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD` env vars.
 
 ## Screenshots
 
@@ -84,11 +97,14 @@ See [docs/SELF_HOSTED.md](docs/SELF_HOSTED.md) for the complete guide to running
 ```text
 Investor-CRM/
   Dockerfile              # Multi-stage build (Node frontend + Python backend)
-  docker-compose.yml      # PostgreSQL 16 + FastAPI app stack
+  Dockerfile.fly          # Fly.io backend-only Dockerfile
+  docker-compose.yml      # PostgreSQL 16 + FastAPI app stack (local dev)
+  fly.toml                # Fly.io deployment config
+  deploy-fly-backend.ps1  # One-command backend deploy to Fly.io
+  deploy-cf-frontend.ps1  # One-command frontend deploy to Cloudflare Pages
   backup-crm.ps1          # Weekly PostgreSQL backup script (Windows)
   import_data.py          # Import data from JSON backups into PostgreSQL
   export_from_cloud.py    # Export data from Cloud SQL (migration tool)
-  deploy.sh               # Cloud Run deploy script (legacy)
   .env.example            # Environment variable template
   backend/
     main.py               # FastAPI app entry point
@@ -121,7 +137,8 @@ Investor-CRM/
     package.json
   test_categories.ps1     # Non-destructive category/subcategory test suite
   docs/
-    SELF_HOSTED.md        # Self-hosted deployment guide (Docker + Cloudflare)
+    CLOUD_DEPLOYMENT.md   # Cloud deployment guide (Cloudflare Pages + Fly.io + Neon)
+    SELF_HOSTED.md        # Legacy self-hosted guide (Docker + Cloudflare Tunnel)
     DEPLOYMENT.md         # Legacy Cloud Run deployment guide
     USER_MANUAL.md        # End-user documentation
     API_REFERENCE.md      # Full API reference
@@ -133,52 +150,47 @@ Investor-CRM/
 |-------|-----------|
 | **Backend** | Python 3.12, FastAPI, SQLAlchemy, Pydantic |
 | **Frontend** | React 18, Vite 6 |
-| **Database** | PostgreSQL 16 (Docker), SQLite (dev fallback) |
+| **Database** | Neon PostgreSQL (cloud), PostgreSQL 16 (local Docker), SQLite (dev fallback) |
 | **Auth** | HMAC token-based (stateless, 24-hour TTL) |
-| **Infrastructure** | Docker Desktop, Cloudflare Tunnel |
+| **Infrastructure** | Cloudflare Pages (frontend) + Fly.io (backend) + Neon (database) |
 | **DNS/SSL** | Cloudflare (free tier — auto-provisioned HTTPS) |
-| **Backups** | `pg_dump` via `backup-crm.ps1` (Windows Task Scheduler) |
+| **Backups** | Neon auto-backup with point-in-time restore and branching |
 
 ## Architecture
 
 ```text
                     Internet
                        |
-              +--------+--------+
-              | Cloudflare CDN  |
-              |  SSL/TLS + DNS  |
-              |  bettermind.buzz|
-              +--------+--------+
-                       |
-              +--------+--------+
-              | Cloudflare      |
-              | Tunnel (local)  |
-              | cloudflared svc |
-              +--------+--------+
-                       |
-               localhost:8080
-                       |
-+----------------------------------------------+
-|              Docker Desktop                  |
-|                                              |
-|  +--------------------+  +--------------+    |
-|  |  bettermind-app    |  | bettermind-db|    |
-|  |  FastAPI + React   |--| PostgreSQL 16|    |
-|  |  Port 8080         |  | Port 5432    |    |
-|  +--------------------+  +--------------+    |
-|                              |               |
-|                          pgdata volume       |
-+----------------------------------------------+
+         +-------------+-------------+
+         |      Cloudflare Pages     |
+         |   bettermind.buzz (CDN)   |
+         |   React/Vite static SPA   |
+         +-------------+-------------+
+                       | HTTPS (API calls)
+                       v
+         +-------------+-------------+
+         |          Fly.io           |
+         |  bettermind-crm-api       |
+         |  FastAPI (Python 3.12)    |
+         |  256MB, shared CPU        |
+         +-------------+-------------+
+                       | postgresql+pg8000 (SSL)
+                       v
+         +-------------+-------------+
+         |    Neon PostgreSQL        |
+         |    bettermind_crm db      |
+         |    Serverless, free tier  |
+         +---------------------------+
 ```
 
-**Survives a reboot — everything auto-starts:**
+**Always-on cloud infrastructure:**
 
-- **Docker Desktop** starts on login (Settings → General → "Start Docker Desktop when you sign in")
-- **PostgreSQL + App containers** restart automatically (`restart: unless-stopped`)
-- **Cloudflare Tunnel** runs as a Windows service (`cloudflared`, StartType: Automatic)
-- **SSL certificates** are provisioned and renewed by Cloudflare automatically
-- **PostgreSQL data** persists in a Docker named volume (`pgdata`)
-- **Monthly cost: $0** — Cloudflare free tier + Docker Desktop
+- **Frontend** served globally via Cloudflare CDN — instant page loads
+- **Backend** on Fly.io with `min_machines_running = 1` — no cold starts
+- **Database** on Neon with auto-backup and point-in-time restore
+- **SSL certificates** provisioned and renewed automatically by Cloudflare and Fly.io
+- **Monthly cost: ~$3-5** — Cloudflare free tier + Fly.io hobby + Neon free tier
+- **No PC required** — runs 24/7 in the cloud
 
 ## API Documentation
 
@@ -213,69 +225,32 @@ Full reference: [docs/API_REFERENCE.md](docs/API_REFERENCE.md)
 | `TOKEN_SECRET` | Yes | Secret for signing auth tokens. Generate: `python -c "import secrets; print(secrets.token_hex(32))"` |
 | `PORT` | No | Server port (default: `8080`) |
 | `ALLOWED_ORIGINS` | No | Comma-separated list of allowed CORS origins |
-| `INSTANCE_CONNECTION_NAME` | Cloud SQL only | Cloud SQL connection string (legacy) |
-| `DB_USER` | Cloud SQL only | Database username (legacy) |
-| `DB_PASS` | Cloud SQL only | Database password (legacy) |
-| `DB_NAME` | Cloud SQL only | Database name (legacy) |
+| `VITE_API_BASE_URL` | Build-time | Frontend API base URL (e.g., `https://bettermind-crm-api.fly.dev`). Defaults to relative `/api` |
 
-When `DATABASE_URL` is set, the app connects to PostgreSQL via pg8000. When `INSTANCE_CONNECTION_NAME` is set, it uses Cloud SQL Connector. Otherwise, it falls back to SQLite.
+When `DATABASE_URL` is set, the app connects to PostgreSQL via pg8000 with automatic SSL detection for Neon. Otherwise, it falls back to SQLite for local development.
 
 See [.env.example](.env.example) for a template.
 
 ## Backups
 
-The `backup-crm.ps1` script creates date-stamped PostgreSQL dumps:
+**Neon (cloud — current):** Neon provides automatic daily backups and point-in-time restore via branching. Create a branch before risky migrations:
 
 ```powershell
-# Run manually
-.\backup-crm.ps1
-
-# Backups saved to C:\CRM-Backups\bettermind-YYYY-MM-DD.sql
-# Automatically keeps only the last 12 backups
+# Create a branch in Neon dashboard or via API
+# https://console.neon.tech → bettermind-crm → Branches → Create Branch
 ```
 
-**Schedule weekly backups** via Windows Task Scheduler:
-
-1. Open Task Scheduler → Create Basic Task
-2. Name: `BetterMind CRM Backup`
-3. Trigger: Weekly
-4. Action: Start a program
-5. Program: `powershell.exe`
-6. Arguments: `-ExecutionPolicy Bypass -File "C:\Users\Jess\Desktop\BetterMind\CRM\backup-crm.ps1"`
-
-**Restore from backup:**
-
-```powershell
-# Stop the app, drop and recreate the database, then restore
-docker-compose stop app
-docker exec -i bettermind-db psql -U bettermind -d postgres -c "DROP DATABASE bettermind_crm;"
-docker exec -i bettermind-db psql -U bettermind -d postgres -c "CREATE DATABASE bettermind_crm;"
-Get-Content C:\CRM-Backups\bettermind-2026-03-29.sql | docker exec -i bettermind-db psql -U bettermind -d bettermind_crm
-docker-compose start app
-```
+**Local Docker (legacy):** The `backup-crm.ps1` script creates date-stamped PostgreSQL dumps for local Docker deployments. See [docs/SELF_HOSTED.md](docs/SELF_HOSTED.md) for details.
 
 ## Data Import / Export
 
 ### Import from JSON backups
 
 ```bash
-# Ensure containers are running
-docker-compose up -d
-
-# Run the import script (connects to PostgreSQL on localhost:5433)
 python import_data.py
 ```
 
 The `import_data.py` script loads data from JSON files (`orgs_full.json`, `contacts_full.json`, etc.), preserves original IDs, resets PostgreSQL sequences, and creates user accounts.
-
-### Export from Cloud SQL (migration tool)
-
-```bash
-# Requires gcloud auth and Cloud SQL Python Connector
-python export_from_cloud.py
-```
-
-The `export_from_cloud.py` script was used to migrate data from the original Google Cloud SQL instance. It exports all tables to JSON files for use with `import_data.py`.
 
 ## Design Decisions
 
@@ -285,22 +260,18 @@ The `export_from_cloud.py` script was used to migrate data from the original Goo
 - **Dual database support**: PostgreSQL via `DATABASE_URL` or Cloud SQL Connector, with SQLite fallback. Detected at startup.
 - **Stateless auth**: HMAC tokens with embedded claims (email, role, password version). No session store needed. 24-hour TTL.
 - **Migration-safe schema evolution**: new columns added via `ALTER TABLE ADD COLUMN IF NOT EXISTS` (PostgreSQL) or `try/except` (SQLite), so existing databases upgrade transparently on startup.
-- **Self-hosted by design**: migrated from Cloud Run ($150+/month) to Docker Desktop + Cloudflare Tunnel ($0/month) with zero downtime.
+- **Cloud-native**: migrated from Docker Desktop + Cloudflare Tunnel to Cloudflare Pages + Fly.io + Neon PostgreSQL (~$3-5/month) for 24/7 availability without tying up a PC.
 
 ## Migration History
 
-BetterMind CRM was originally deployed on Google Cloud Platform:
+| Date | From | To | Cost |
+|------|------|----|------|
+| March 2026 | Google Cloud Run + Cloud SQL (~$150/mo) | Docker Desktop + Cloudflare Tunnel ($0/mo) | $0/mo |
+| April 2026 | Docker Desktop + Cloudflare Tunnel ($0/mo) | Cloudflare Pages + Fly.io + Neon (~$3-5/mo) | ~$3-5/mo |
 
-| Service | Purpose | Monthly Cost |
-|---------|---------|-------------|
-| Cloud Run | App hosting | ~$5 |
-| Cloud SQL (db-f1-micro) | PostgreSQL 15 | ~$140 |
-| Artifact Registry | Docker images | ~$5 |
-| **Total** | | **~$150/month** |
+All GCP resources were deleted in March 2026. The local Docker setup was decommissioned in April 2026.
 
-In March 2026, the CRM was migrated to a self-hosted Docker Desktop setup with Cloudflare Tunnel for $0/month. All GCP resources (Cloud SQL, Cloud Run, Artifact Registry) were deleted. The GCP project (`bettermind-crm`) was preserved but is empty.
-
-See [docs/SELF_HOSTED.md](docs/SELF_HOSTED.md) for the self-hosted deployment guide.
+See [docs/CLOUD_DEPLOYMENT.md](docs/CLOUD_DEPLOYMENT.md) for the current deployment guide.
 
 ## Contributing
 

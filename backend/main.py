@@ -54,13 +54,14 @@ async def lifespan(app):
 app = FastAPI(
     title="BetterMind CRM API",
     description="Contact management, investor pipeline, and program tracking for startups.",
-    version="1.2.0",
+    version="1.3.0",
     lifespan=lifespan,
 )
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
+    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,8 +1,15 @@
 # Deployment Guide (Legacy — Google Cloud Run)
 
-> **Note:** This guide is for the original Google Cloud Run deployment, which has been **deprecated** in favor of self-hosted Docker Desktop + Cloudflare Tunnel. See [SELF_HOSTED.md](SELF_HOSTED.md) for the current deployment guide. All GCP resources (Cloud SQL, Cloud Run, Artifact Registry) were deleted in March 2026.
+> **Note:** This guide is for the original Google Cloud Run deployment, which has been **deprecated**. The CRM has been through two migrations since:
+>
+> 1. **March 2026:** GCP → Docker Desktop + Cloudflare Tunnel (see [SELF_HOSTED.md](SELF_HOSTED.md))
+> 2. **April 2026:** Docker Desktop → Cloudflare Pages + Fly.io + Neon (see [CLOUD_DEPLOYMENT.md](CLOUD_DEPLOYMENT.md))
+>
+> **Current deployment guide:** [CLOUD_DEPLOYMENT.md](CLOUD_DEPLOYMENT.md)
+>
+> All GCP resources (Cloud SQL, Cloud Run, Artifact Registry) were deleted in March 2026.
 
-BetterMind CRM was originally designed to deploy to Google Cloud Run with Cloud SQL (PostgreSQL). This guide is preserved for reference.
+BetterMind CRM was originally designed to deploy to Google Cloud Run with Cloud SQL (PostgreSQL). This guide is preserved for historical reference only.
 
 ## Prerequisites
 

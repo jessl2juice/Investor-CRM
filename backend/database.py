@@ -74,12 +74,22 @@ def _get_direct_pg_engine():
     global _engine
     if _engine is not None:
         return _engine
+    connect_args = {}
+    # Neon and other cloud PostgreSQL providers require SSL
+    url = DATABASE_URL
+    if "sslmode=" in DATABASE_URL or "neon.tech" in DATABASE_URL:
+        import ssl
+        ssl_context = ssl.create_default_context()
+        connect_args["ssl_context"] = ssl_context
+        # Strip sslmode param from URL (pg8000 doesn't understand it)
+        url = DATABASE_URL.split("?")[0] if "sslmode=" in DATABASE_URL else DATABASE_URL
     _engine = sqlalchemy.create_engine(
-        DATABASE_URL,
+        url,
         pool_size=5,
         max_overflow=2,
         pool_timeout=30,
         pool_recycle=1800,
+        connect_args=connect_args,
     )
     return _engine
 

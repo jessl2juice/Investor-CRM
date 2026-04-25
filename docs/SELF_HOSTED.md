@@ -1,4 +1,8 @@
-# Self-Hosted Deployment Guide
+# Self-Hosted Deployment Guide (Legacy)
+
+> **Note:** This guide is for the legacy Docker Desktop + Cloudflare Tunnel deployment, which was **decommissioned in April 2026** in favor of a cloud deployment. See [CLOUD_DEPLOYMENT.md](CLOUD_DEPLOYMENT.md) for the current deployment guide using Cloudflare Pages + Fly.io + Neon PostgreSQL.
+>
+> This guide is preserved for anyone who wants to run the CRM on their own machine.
 
 Run BetterMind CRM on your own machine with HTTPS access from anywhere, for **$0/month**.
 

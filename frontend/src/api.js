@@ -3,7 +3,7 @@
  * Token management and fetch wrapper for the REST API.
  */
 
-const API = "/api";
+const API = (import.meta.env.VITE_API_BASE_URL || "") + "/api";
 
 export function getToken() { return localStorage.getItem("bm_token"); }
 export function setToken(t) { if (t) localStorage.setItem("bm_token", t); else localStorage.removeItem("bm_token"); }
